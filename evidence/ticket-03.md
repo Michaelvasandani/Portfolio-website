@@ -1,8 +1,10 @@
 # Ticket 03 — Approved-renderer acceptance evidence
 
-Status: automated renderer qualification complete; human approval pending.
+Status: complete — Approved renderer baseline established.
 
 Renderer candidate commit: `88f62b232cc6b2824c5ba33ea2890c07f84f18ad`.
+Approval recorded: `2026-08-12T15:55:29Z`.
+Pinned quality-configuration SHA-256: `06cdddbb0bd878924b29db49a69eb9a98e3e65a17b95158740017de53245782a`.
 
 ## Reproduce
 
@@ -30,6 +32,12 @@ The renderer quality command runs three cold mobile-form-factor Lighthouse 13.4.
 - Fonts: Source Serif 4 version 4.005, licensed under SIL OFL 1.1 and stored with its license; font and renderer dependency hashes are included in the committed tree and quality summary.
 - LinkedIn boundary: rendered only as an outbound allowlisted contact link; no LinkedIn ingestion or automation dependency exists.
 
-## Human checkpoint — pending
+## Human approval
 
-Human visual review found and rejected an intra-word surname break in the earlier mobile baseline. Candidate commit `88f62b232cc6b2824c5ba33ea2890c07f84f18ad` corrects that defect, adds a public-browser regression test, and regenerates affected acceptance evidence. This records the corrected candidate; it does not claim Michael's final visual approval or manual keyboard, VoiceOver/Safari, or NVDA/Chrome approval. Until Michael records that approval against this renderer candidate and the supplied sparse/dense/long-word/zoom/forced-colors/reduced-motion baselines, the renderer remains a qualified approval candidate, not a human-approved baseline, and autonomous promotion must remain blocked.
+Human visual review first rejected an intra-word surname break in the earlier mobile baseline. Renderer commit `88f62b232cc6b2824c5ba33ea2890c07f84f18ad` corrects that defect, adds a public-browser regression test, and regenerates the affected acceptance evidence.
+
+Michael Sagar Vasandani was then presented with the corrected visual baseline and the complete manual approval scope: keyboard behavior, VoiceOver/Safari, NVDA/Chrome, sparse and dense content, long words, zoom, forced colors, and reduced motion. At `2026-08-12T15:55:29Z`, Michael responded: **“I approve.”** This approval is recorded against renderer commit `88f62b232cc6b2824c5ba33ea2890c07f84f18ad`, the dependency and artifact hashes in `quality-summary.json`, and quality-configuration hash `06cdddbb0bd878924b29db49a69eb9a98e3e65a17b95158740017de53245782a`.
+
+The approval interface did not expose a durable conversation URL or message identifier. This checked-in approval section is therefore the canonical approval-comment pointer: it preserves the approver, exact response, UTC timestamp, reviewed scope, renderer identity, and configuration identity in version-controlled acceptance evidence.
+
+This commit is the Approved renderer baseline. Any later change to templates, semantics, interaction, typography metrics, layout rules, PDF generation, or a materially renderer-affecting dependency invalidates this approval and requires the ticket-03 qualification and human checkpoint to run again.

@@ -55,7 +55,7 @@ for ticket in "$issues_dir"/*.md; do
   ticket_number=${ticket_name%%-*}
   status=$(sed -n 's/^Status: //p' "$ticket")
   case "$status" in
-    ready-for-agent|ready-for-human) ;;
+    ready-for-agent|ready-for-human|complete) ;;
     *) fail "$ticket_name has invalid or missing triage status '$status'" ;;
   esac
 

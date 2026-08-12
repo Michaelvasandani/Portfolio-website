@@ -1,6 +1,6 @@
 # Establish the Approved renderer
 
-Status: ready-for-agent
+Status: complete
 Blocked by: 01 (Establish foundations and executable contracts)
 
 ## Outcome
