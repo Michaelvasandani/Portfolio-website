@@ -1,7 +1,9 @@
 # Establish foundations and executable contracts
 
-Status: ready-for-agent
+Status: complete
 Blocked by: none
+
+Closure evidence: [`../../../evidence/ticket-01.md`](../../../evidence/ticket-01.md)
 
 ## Outcome
 
