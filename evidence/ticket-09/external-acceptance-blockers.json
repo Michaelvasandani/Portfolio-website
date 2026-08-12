@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "ticketStatus": "open",
+  "blockers": [
+    {
+      "dependency": "02",
+      "code": "live-control-plane-unavailable",
+      "missing": ["Neon PostgreSQL", "private Vercel Blob", "Vercel deployment control", "Resend"]
+    },
+    {
+      "dependency": "07",
+      "code": "live-candidate-provider-unavailable",
+      "missing": ["provider-backed zero-retention generated candidate"]
+    },
+    {
+      "dependency": "08",
+      "code": "live-provider-check-target-unavailable",
+      "missing": ["provider-created zero-traffic deployment", "production-domain check reports"]
+    }
+  ],
+  "failClosed": true,
+  "waivedBlockingChecks": []
+}

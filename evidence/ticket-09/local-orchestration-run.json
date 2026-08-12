@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "outcome": "locally-complete-live-acceptance-blocked",
+  "runId": "run:000001",
+  "terminal": "succeeded",
+  "serialization": {
+    "competingWorkerWinners": 1,
+    "scheduledCoalescing": "passed",
+    "resumeInputIsolation": "passed"
+  },
+  "stateTransitions": [
+    "queued->packaging",
+    "packaging->deploying-preview",
+    "deploying-preview->validating-preview",
+    "validating-preview->promoting",
+    "promoting->verifying-production",
+    "verifying-production->finalizing"
+  ],
+  "attempts": {
+    "packaging": 1,
+    "deploying-preview": 2,
+    "validating-preview": 1,
+    "promoting": 2,
+    "verifying-production": 3,
+    "finalizing": 1
+  },
+  "hashes": {
+    "candidate": "sha256:dda18a0e21ae47c53b4309434cbc02ae8bf764fa83a6defbb719431242722aa7",
+    "package": "sha256:e46b31a3979a9ac741e734eff1693098d27ddbd986b9a4bd9612fa674269e5da",
+    "manifest": "sha256:05b3abf2579a5eb66403cd78be557fd860633a1fe2103c7642030defe32c657f",
+    "publicOutput": "sha256:03cafab8b3e9ba43e6f0212c2bae995370e4b48fa6ec05975a3d4797f8fc98e0"
+  },
+  "build": {
+    "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "credentialRetrievals": 1
+  },
+  "deployment": {
+    "previewId": "provider:82d94ab13ab79de6db09a812",
+    "promotedId": "provider:82d94ab13ab79de6db09a812",
+    "exactCheckedDeploymentPromoted": true,
+    "previewCreations": 1,
+    "promotionEffects": 1
+  },
+  "productionPasses": [
+    "2026-08-12T22:00:00.000Z",
+    "2026-08-12T22:00:45.000Z",
+    "2026-08-12T22:01:30.000Z"
+  ],
+  "productionObservationWindowMilliseconds": 90000,
+  "finalTransaction": {
+    "lastValidDeploymentId": "deployment:provider:82d94ab13ab79de6db09a812",
+    "validDeploymentId": "deployment:provider:82d94ab13ab79de6db09a812",
+    "manifestDeploymentId": "deployment:provider:82d94ab13ab79de6db09a812",
+    "baselineDeploymentId": "deployment:provider:82d94ab13ab79de6db09a812",
+    "auditRecorded": true,
+    "retentionOutboxRecorded": true
+  },
+  "idempotencyLedger": {
+    "deployment": "applied",
+    "promotion": "applied",
+    "cleanup": "applied"
+  },
+  "ambiguityReconciliation": {
+    "previewEffects": 1,
+    "promotionEffects": 1,
+    "operationalEffects": 1
+  },
+  "sweeper": {
+    "expiredLeaseReleased": true,
+    "boundedRetriesTerminalized": true,
+    "missedScheduleDetected": true
+  },
+  "publicProjectionScan": []
+}

@@ -1,76 +1,36 @@
-export type PublicContact = {
-  kind: "email" | "github" | "linkedin";
-  label: string;
-  href: string;
-};
+import { z } from "zod";
 
-export type PublicExperience = {
-  organization: string;
-  title: string;
-  location?: string;
-  dates: string;
-  bullets: string[];
-};
+const publicContactSchema = z.object({ kind: z.enum(["email", "github", "linkedin"]), label: z.string(), href: z.string() }).strict();
+const publicExperienceSchema = z.object({ organization: z.string(), title: z.string(), location: z.string().optional(), dates: z.string(), bullets: z.array(z.string()) }).strict();
+const publicEducationSchema = z.object({ institution: z.string(), degree: z.string(), location: z.string().optional(), dates: z.string(), gpa: z.string().optional(), coursework: z.array(z.string()), details: z.array(z.string()) }).strict();
+const publicCareerProjectSchema = z.object({ name: z.string(), technologies: z.array(z.string()), repositoryHref: z.string().optional(), bullets: z.array(z.string()) }).strict();
+const publicPortfolioProjectSchema = z.object({ name: z.string(), technologies: z.array(z.string()), description: z.string(), repositoryHref: z.string(), demonstrationHref: z.string().optional(), bullets: z.array(z.string()) }).strict();
+const publicOptionalSectionSchema = z.object({ kind: z.string(), heading: z.string(), items: z.array(z.string()) }).strict();
+const publicSkillsSchema = z.object({ name: z.string(), items: z.array(z.string()) }).strict();
+const publicResumeInputSchema = z.object({ name: z.string(), location: z.string().optional(), contacts: z.array(publicContactSchema), experience: z.array(publicExperienceSchema), education: z.array(publicEducationSchema), projects: z.array(publicCareerProjectSchema), skills: z.array(publicSkillsSchema), optionalSections: z.array(publicOptionalSectionSchema) }).strict();
 
-export type PublicEducation = {
-  institution: string;
-  degree: string;
-  location?: string;
-  dates: string;
-  gpa?: string;
-  coursework: string[];
-  details: string[];
-};
+export const publicProjectionSchema = z.object({
+  schemaVersion: z.literal(1), metadata: z.object({ title: z.string(), description: z.string() }).strict(),
+  sections: z.tuple([
+    z.object({ kind: z.literal("card"), name: z.string(), location: z.string().optional(), kicker: z.string(), role: z.string(), proof: z.string(), contacts: z.array(publicContactSchema) }).strict(),
+    z.object({ kind: z.literal("about"), lede: z.string(), body: z.string() }).strict(),
+    z.object({ kind: z.literal("experience"), entries: z.array(publicExperienceSchema) }).strict(),
+    z.object({ kind: z.literal("projects"), entries: z.array(publicPortfolioProjectSchema) }).strict(),
+    z.object({ kind: z.literal("resume"), education: z.array(publicEducationSchema), skills: z.array(publicSkillsSchema), optionalSections: z.array(publicOptionalSectionSchema), htmlPath: z.string(), pdfPath: z.string() }).strict(),
+    z.object({ kind: z.literal("links"), contacts: z.array(publicContactSchema) }).strict(),
+  ]),
+  resume: z.object({ html: publicResumeInputSchema, pdf: publicResumeInputSchema }).strict(), lastUpdated: z.iso.datetime({ offset: true }), manifestHash: z.string().regex(/^sha256:[a-f0-9]{64}$/),
+}).strict();
 
-export type PublicCareerProject = {
-  name: string;
-  technologies: string[];
-  repositoryHref?: string;
-  bullets: string[];
-};
+export type PublicContact = z.infer<typeof publicContactSchema>;
 
-export type PublicPortfolioProject = {
-  name: string;
-  technologies: string[];
-  description: string;
-  repositoryHref: string;
-  demonstrationHref?: string;
-  bullets: string[];
-};
+export type PublicExperience = z.infer<typeof publicExperienceSchema>;
+export type PublicEducation = z.infer<typeof publicEducationSchema>;
+export type PublicCareerProject = z.infer<typeof publicCareerProjectSchema>;
+export type PublicPortfolioProject = z.infer<typeof publicPortfolioProjectSchema>;
+export type PublicResumeInput = z.infer<typeof publicResumeInputSchema>;
 
-export type PublicResumeInput = {
-  name: string;
-  location?: string;
-  contacts: PublicContact[];
-  experience: PublicExperience[];
-  education: PublicEducation[];
-  projects: PublicCareerProject[];
-  skills: { name: string; items: string[] }[];
-  optionalSections: { kind: string; heading: string; items: string[] }[];
-};
-
-export type PublicProjection = {
-  schemaVersion: 1;
-  metadata: { title: string; description: string };
-  sections: [
-    { kind: "card"; name: string; location?: string; kicker: string; role: string; proof: string; contacts: PublicContact[] },
-    { kind: "about"; lede: string; body: string },
-    { kind: "experience"; entries: PublicExperience[] },
-    { kind: "projects"; entries: PublicPortfolioProject[] },
-    {
-      kind: "resume";
-      education: PublicEducation[];
-      skills: { name: string; items: string[] }[];
-      optionalSections: { kind: string; heading: string; items: string[] }[];
-      htmlPath: string;
-      pdfPath: string;
-    },
-    { kind: "links"; contacts: PublicContact[] },
-  ];
-  resume: { html: PublicResumeInput; pdf: PublicResumeInput };
-  lastUpdated: string;
-  manifestHash: `sha256:${string}`;
-};
+export type PublicProjection = z.infer<typeof publicProjectionSchema> & { manifestHash: `sha256:${string}` };
 
 const forbiddenKeys = /(?:snapshot|evidence|provenance|sourceDocument|diagnostic|private|rawUpload|selectionState|generatorOutput)/i;
 const forbiddenValues = [
