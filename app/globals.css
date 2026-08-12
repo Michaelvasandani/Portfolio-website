@@ -144,6 +144,7 @@ a:hover { text-decoration-thickness: .13em; }
   font-variant-caps: small-caps;
   line-height: .88;
   letter-spacing: -.035em;
+  overflow-wrap: normal;
   text-wrap: balance;
   text-shadow: 0 1px 0 rgb(255 255 255 / 75%), 0 -1px 0 rgb(33 31 27 / 18%);
 }

@@ -26,54 +26,54 @@
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 212.55990000000003,
-      "speedIndex": 212.55990000000003,
-      "lcp": 571.5599,
+      "fcp": 212.0208,
+      "speedIndex": 212.0208,
+      "lcp": 570.0208,
       "tbt": 0,
       "cls": 0
     },
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 207.55939999999998,
-      "speedIndex": 207.55939999999998,
-      "lcp": 558.5594,
+      "fcp": 208.55650000000003,
+      "speedIndex": 208.55650000000003,
+      "lcp": 528.5565,
       "tbt": 0,
       "cls": 0
     },
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 206.97860000000003,
-      "speedIndex": 206.97860000000003,
-      "lcp": 526.9786,
+      "fcp": 209.54309999999998,
+      "speedIndex": 209.54309999999998,
+      "lcp": 563.5431,
       "tbt": 0,
       "cls": 0
     },
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 207.45999999999998,
-      "speedIndex": 207.45999999999998,
-      "lcp": 527.46,
+      "fcp": 205.01319999999998,
+      "speedIndex": 205.01319999999998,
+      "lcp": 555.0132,
       "tbt": 0,
       "cls": 0
     },
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 207.1793,
-      "speedIndex": 207.1793,
-      "lcp": 559.1793,
+      "fcp": 207.11270000000002,
+      "speedIndex": 207.11270000000002,
+      "lcp": 558.1127,
       "tbt": 0,
       "cls": 0
     },
     {
       "performance": 100,
       "accessibility": 100,
-      "fcp": 207.1365,
-      "speedIndex": 207.1365,
-      "lcp": 557.1365,
+      "fcp": 204.94549999999998,
+      "speedIndex": 204.94549999999998,
+      "lcp": 524.9455,
       "tbt": 0,
       "cls": 0
     }
@@ -84,36 +84,36 @@
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 212.55990000000003,
-          "speedIndex": 212.55990000000003,
-          "lcp": 571.5599,
+          "fcp": 212.0208,
+          "speedIndex": 212.0208,
+          "lcp": 570.0208,
           "tbt": 0,
           "cls": 0
         },
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 207.55939999999998,
-          "speedIndex": 207.55939999999998,
-          "lcp": 558.5594,
+          "fcp": 208.55650000000003,
+          "speedIndex": 208.55650000000003,
+          "lcp": 528.5565,
           "tbt": 0,
           "cls": 0
         },
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 206.97860000000003,
-          "speedIndex": 206.97860000000003,
-          "lcp": 526.9786,
+          "fcp": 209.54309999999998,
+          "speedIndex": 209.54309999999998,
+          "lcp": 563.5431,
           "tbt": 0,
           "cls": 0
         }
       ],
       "median": {
         "performance": 100,
-        "fcp": 207.55939999999998,
-        "speedIndex": 207.55939999999998,
-        "lcp": 558.5594,
+        "fcp": 209.54309999999998,
+        "speedIndex": 209.54309999999998,
+        "lcp": 563.5431,
         "tbt": 0,
         "cls": 0
       }
@@ -123,36 +123,36 @@
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 207.45999999999998,
-          "speedIndex": 207.45999999999998,
-          "lcp": 527.46,
+          "fcp": 205.01319999999998,
+          "speedIndex": 205.01319999999998,
+          "lcp": 555.0132,
           "tbt": 0,
           "cls": 0
         },
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 207.1793,
-          "speedIndex": 207.1793,
-          "lcp": 559.1793,
+          "fcp": 207.11270000000002,
+          "speedIndex": 207.11270000000002,
+          "lcp": 558.1127,
           "tbt": 0,
           "cls": 0
         },
         {
           "performance": 100,
           "accessibility": 100,
-          "fcp": 207.1365,
-          "speedIndex": 207.1365,
-          "lcp": 557.1365,
+          "fcp": 204.94549999999998,
+          "speedIndex": 204.94549999999998,
+          "lcp": 524.9455,
           "tbt": 0,
           "cls": 0
         }
       ],
       "median": {
         "performance": 100,
-        "fcp": 207.1793,
-        "speedIndex": 207.1793,
-        "lcp": 557.1365,
+        "fcp": 205.01319999999998,
+        "speedIndex": 205.01319999999998,
+        "lcp": 555.0132,
         "tbt": 0,
         "cls": 0
       }
@@ -160,9 +160,9 @@
   },
   "median": {
     "performance": 100,
-    "fcp": 207.45999999999998,
-    "speedIndex": 207.45999999999998,
-    "lcp": 558.5594,
+    "fcp": 208.55650000000003,
+    "speedIndex": 208.55650000000003,
+    "lcp": 558.1127,
     "tbt": 0,
     "cls": 0
   },
@@ -170,7 +170,7 @@
   "seo": 100,
   "budgets": {
     "compressedJavaScript": 129773,
-    "initialTransfer": 289706
+    "initialTransfer": 289713
   },
   "pdfUaFixtures": [
     "sparse",
@@ -183,7 +183,7 @@
   "hashes": [
     {
       "path": "package.json",
-      "sha256": "9dc189fd9cd3fec917905392ad72452d857f95a04acf83e9605bf44cb05199da"
+      "sha256": "a9c23da36772f66c326278701e118964bc73d1a964ac609bdcff52d16b0abd77"
     },
     {
       "path": "pnpm-lock.yaml",
@@ -191,7 +191,7 @@
     },
     {
       "path": "app/globals.css",
-      "sha256": "e92d21e547e187c5f9cea31313805ea63b472fc9e016b2c7e1600a3b1b2d5dd4"
+      "sha256": "5822e7314483c77612916765517e9e32f244a89c7824c3d759592b87ea97a018"
     },
     {
       "path": "public/michael-vasandani-resume.pdf",

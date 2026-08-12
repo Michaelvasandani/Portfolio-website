@@ -26,20 +26,29 @@
   "statement" : "PDF file is compliant with Validation Profile requirements.",
   "compliant" : true
 } ],"processingTime":{
-  "start" : 1786525541555,
-  "finish" : 1786525541826,
-  "duration" : "00:00:00.271",
-  "difference" : 271
+  "start" : 1786548306354,
+  "finish" : 1786548306619,
+  "difference" : 265,
+  "duration" : "00:00:00.265"
 }}],"batchSummary":{
   "duration" : {
-    "start" : 1786525541518,
-    "finish" : 1786525541837,
-    "duration" : "00:00:00.319",
-    "difference" : 319
+    "start" : 1786548306316,
+    "finish" : 1786548306628,
+    "difference" : 312,
+    "duration" : "00:00:00.312"
   },
   "totalJobs" : 1,
   "outOfMemory" : 0,
   "veraExceptions" : 0,
+  "failedEncryptedJobs" : 0,
+  "failedParsingJobs" : 0,
+  "validationSummary" : {
+    "nonCompliantPdfaCount" : 0,
+    "compliantPdfaCount" : 1,
+    "failedJobCount" : 0,
+    "totalJobCount" : 1,
+    "successfulJobCount" : 1
+  },
   "featuresSummary" : {
     "failedJobCount" : 0,
     "totalJobCount" : 0,
@@ -50,14 +59,5 @@
     "totalJobCount" : 0,
     "successfulJobCount" : 0
   },
-  "multiJob" : false,
-  "failedEncryptedJobs" : 0,
-  "failedParsingJobs" : 0,
-  "validationSummary" : {
-    "compliantPdfaCount" : 1,
-    "failedJobCount" : 0,
-    "totalJobCount" : 1,
-    "nonCompliantPdfaCount" : 0,
-    "successfulJobCount" : 1
-  }
+  "multiJob" : false
 }}}

@@ -67,6 +67,32 @@ test("Public résumé HTML is complete, semantic, and links to the PDF", async (
   await expectNoAxeViolations(page);
 });
 
+for (const width of [320, 390]) {
+  test(`the public identity wraps only between words at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto("/");
+
+    const wordLineCounts = await page.locator(".identity h1").evaluate((heading) => {
+      const text = heading.firstChild;
+      if (!text || text.nodeType !== Node.TEXT_NODE) throw new Error("Identity heading requires a text node.");
+      return [...(text.textContent?.matchAll(/\S+/g) ?? [])].map((match) => {
+        const range = document.createRange();
+        range.setStart(text, match.index ?? 0);
+        range.setEnd(text, (match.index ?? 0) + match[0].length);
+        const lines = new Set([...range.getClientRects()].map(({ top }) => Math.round(top)));
+        return { word: match[0], lines: lines.size };
+      });
+    });
+
+    expect(wordLineCounts).toEqual([
+      { word: "Michael", lines: 1 },
+      { word: "Sagar", lines: 1 },
+      { word: "Vasandani", lines: 1 },
+    ]);
+    await expectNoPageOverflow(page);
+  });
+}
+
 for (const viewport of viewports) {
   test(`sparse and dense fixtures reflow at ${viewport.width}×${viewport.height}`, async ({ page }) => {
     await page.setViewportSize(viewport);
