@@ -1,0 +1,49 @@
+{
+  "selectionMatrix": {
+    "target": [
+      "pin",
+      "strong",
+      "diverse"
+    ],
+    "sixPins": [
+      "pin-1",
+      "pin-2",
+      "pin-3",
+      "pin-4",
+      "pin-5",
+      "pin-6"
+    ],
+    "fewerThanFive": [
+      "one",
+      "two"
+    ]
+  },
+  "stability": {
+    "firstRun": [
+      "incumbent"
+    ],
+    "lead": 16,
+    "consecutiveRuns": 1,
+    "secondRun": [
+      "challenger"
+    ]
+  },
+  "matching": {
+    "direct": "direct-url",
+    "voice-agent": "alias-corroborated",
+    "ambiguous": "ambiguous-unscored"
+  },
+  "completeness": {
+    "missing": [],
+    "duplicates": []
+  },
+  "hashes": {
+    "semanticSourceHash": "sha256:4b158e44d4e6ed2588ea4954d0f85b6d9ecfaf6cb7777a08f66435720b831ca2",
+    "renderedContentHash": "sha256:4ea656faad3292d50759e07bf0e85f5a70cde4d126e131ada840620045785b96",
+    "candidateHash": "sha256:c56b4c3435472c9d3690fa725b9d1f1821d63f2136a55d437098179c8ae5ba06",
+    "publicManifestHash": "sha256:17385207b265b9208677a9d2546251d3a30bf23fb86b53809ecefdfe0fd500ca"
+  },
+  "repeatHashesMatch": true,
+  "publicLeakFindings": [],
+  "productionGenerator": "blocked-until-compliant-provider-is-configured"
+}
