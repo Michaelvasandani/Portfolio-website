@@ -1,0 +1,42 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.panel {
+  width: min(100%, 38rem);
+  padding: clamp(2rem, 6vw, 4rem);
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  box-shadow: 0 1.5rem 4.375rem rgb(55 46 32 / 14%);
+}
+
+.panel h1 {
+  margin: .5rem 0 1rem;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.panel p { line-height: 1.65; }
+
+.eyebrow {
+  margin: 0;
+  font: 700 .75rem/1.4 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.action {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  margin: 1rem 1.5rem 1rem 0;
+  padding: .65rem 1rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+}

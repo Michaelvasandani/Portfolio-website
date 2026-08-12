@@ -1,0 +1,58 @@
+.shell {
+  min-height: 100svh;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: var(--paper);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.title { font-size: 1.5rem; }
+.header form { margin: 0; }
+.header button, .content button { min-height: 2.75rem; padding: .5rem .9rem; }
+
+.eyebrow, .state {
+  margin: 0 0 .5rem;
+  font: 700 .75rem/1.4 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.frame {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-top: 2rem;
+}
+
+.navigation ul { margin: 0; padding: 0; list-style: none; }
+.navigation li + li { margin-top: .6rem; }
+.navigation a { min-height: 2.75rem; display: flex; align-items: center; }
+.content { min-width: 0; }
+.content h1 { margin: .35rem 0 1rem; font-size: clamp(2.4rem, 6vw, 4.75rem); font-weight: 400; line-height: 1; }
+.content > section > p { max-width: 48rem; line-height: 1.65; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.stateCard, .emptyState { padding: 1.25rem; border: 1px solid var(--rule); }
+.stateCard h2, .emptyState h2 { margin: 0 0 .8rem; font-size: 1.2rem; }
+.stateCard p:last-child, .emptyState p { margin-bottom: 0; line-height: 1.55; }
+
+@media (max-width: 46rem) {
+  .header { align-items: flex-start; }
+  .frame { grid-template-columns: minmax(0, 1fr); }
+  .navigation ul { display: flex; overflow-x: auto; gap: .5rem 1.25rem; padding-bottom: .5rem; }
+  .navigation li + li { margin-top: 0; }
+  .navigation a { white-space: nowrap; }
+}

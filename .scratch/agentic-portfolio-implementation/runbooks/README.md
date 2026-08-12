@@ -29,6 +29,20 @@ Complete every row independently for development, preview, and production. For e
 
 Stop and leave ticket 02 open if environment boundaries are unclear, a resource identifier or credential is shared, any service is public by default, a scope exceeds the matrix, a denied probe succeeds, a probe target is not the recorded resource, a temporary credential remains active, evidence is missing, or evidence would expose a secret.
 
+## Owner access and session recovery
+
+- [ ] Confirm the environment-specific GitHub App client ID/secret, immutable numeric owner ID, exact callback, and `OWNER_SESSION_SECRET` exist only in the matching Vercel Sensitive Environment Variable scope; no `NEXT_PUBLIC_` variant exists.
+- [ ] Confirm preview and production use a durable transactional `OwnerAccessStore`; an unavailable adapter must fail closed and must never fall back to process memory.
+- [ ] Exercise a successful Michael login and a denied valid non-owner login; retain only redacted event references and one-way actor fingerprints.
+- [ ] Exercise missing, mismatched, expired, and replayed OAuth state plus a forged/failed code exchange; confirm no session is issued and the external failure stays generic.
+- [ ] Inspect the session, CSRF, and OAuth cookies for `Secure`, `HttpOnly`, `__Host-`, bounded `Max-Age`, and the intended `SameSite` policy.
+- [ ] Exercise unauthenticated, expired, revoked, and forged sessions against every private page and API; confirm generic `404`, `no-store`, `noindex`, and no private content or diagnostic.
+- [ ] Exercise missing, forged, and cross-origin CSRF proofs on logout and every mutation; confirm the operation does not run.
+- [ ] Rotate the GitHub App client secret and `OWNER_SESSION_SECRET` together, deploy the replacement, revoke the old OAuth secret, and prove every old OAuth state/session cookie is denied before closing the change.
+- [ ] Run `pnpm verify:owner-access` against the acceptance build and deployed output, attach provider-native scans and header/cache captures, and inspect redacted logs/error responses for the private leak corpus.
+
+Stop and leave ticket 04 open if the persistent store or provider identity is uncertain, a private route returns a distinguishable diagnostic, a cookie lacks a required attribute, an old session survives rotation, or any public artifact/cache/log/error response contains a credential, owner identifier, private state, or control endpoint.
+
 ## Credential rotation
 
 - [ ] Obtain Michael's change approval; name the exact credential ID and environment from the [least-privilege matrix](../../../docs/provisioning/access-matrix.md). For suspected compromise, skip ordinary scheduling and begin **Incident response** immediately.
