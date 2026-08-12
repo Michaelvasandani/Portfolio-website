@@ -1,6 +1,6 @@
 # Make publication checks executable
 
-Status: ready-for-agent
+Status: blocked — locally executable contracts complete; live zero-traffic provider acceptance awaits control-plane provisioning
 Blocked by: 03 (Establish the Approved renderer), 07 (Compose evidence-bound candidates)
 
 ## Outcome

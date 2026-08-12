@@ -1,0 +1,1094 @@
+[
+  {
+    "requirement": "PUB-003",
+    "name": "preview hash mismatch",
+    "checkerId": "candidate-identity",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "candidateHashMatches": true,
+      "manifestHashMatches": true,
+      "publicOutputHashMatches": false
+    }
+  },
+  {
+    "requirement": "QAL-001",
+    "name": "manifest mismatch",
+    "checkerId": "manifest-hash",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "manifestFieldsBound": false
+    }
+  },
+  {
+    "requirement": "QAL-001",
+    "name": "orphan fact",
+    "checkerId": "provenance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "orphanFacts": 1,
+      "unknownEvidenceReferences": 0,
+      "alteredVerbatimValues": 0
+    }
+  },
+  {
+    "requirement": "CNT-002/CNT-003/QAL-001",
+    "name": "missing résumé content",
+    "checkerId": "completeness",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "missingSections": 0,
+      "missingEntities": 1,
+      "sourceOrderMatches": true
+    }
+  },
+  {
+    "requirement": "QAL-001",
+    "name": "non-allowlisted public field",
+    "checkerId": "public-projection",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "allowlistedFieldsOnly": false,
+      "publicManifestHashOnly": true
+    }
+  },
+  {
+    "requirement": "QAL-001",
+    "name": "private evidence identifier leak",
+    "checkerId": "privacy-leak",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "htmlLeaks": 0,
+      "jsonLeaks": 1,
+      "scriptLeaks": 0,
+      "sourceMapLeaks": 0,
+      "headerLeaks": 0,
+      "pdfLeaks": 0,
+      "imageMetadataLeaks": 0,
+      "downloadLeaks": 0
+    }
+  },
+  {
+    "requirement": "CNT-001/GEN-001",
+    "name": "unsupported generated claim",
+    "checkerId": "generated-copy",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "cardProofWords": 18,
+      "aboutWords": 71,
+      "projectDescriptionWords": 18,
+      "projectDescriptionSentences": 1,
+      "unsupportedClaims": 1
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "automated accessibility violation",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 1,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 3.2,
+      "uiContrast": 3.1,
+      "targetSize": 44,
+      "zoomPercent": 200
+    }
+  },
+  {
+    "requirement": "PRD-003/QAL-002",
+    "name": "320px horizontal overflow",
+    "checkerId": "responsive",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "browserViewportCombinations": 15,
+      "horizontalOverflow": 1,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": true,
+      "forcedColors": true,
+      "reducedMotion": true
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "Lighthouse threshold failure",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 89,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "accidental noindex",
+    "checkerId": "seo",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "successful": true,
+      "indexable": false,
+      "titleCount": 1,
+      "descriptionCount": 1,
+      "h1Count": 1,
+      "absoluteSelfCanonical": true,
+      "robotsValid": true,
+      "sitemapValid": true,
+      "openGraphComplete": true,
+      "duplicateIds": 0
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "non-allowlisted structured fact",
+    "checkerId": "structured-data",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "valid": true,
+      "typesAllowlisted": true,
+      "factsAllowlisted": false
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "confirmed external 404",
+    "checkerId": "links",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 3,
+      "attempts": 2,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 0,
+      "confirmedNotFound": 2,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": false
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "asset hash mismatch",
+    "checkerId": "assets",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "missing": 0,
+      "wrongStatus": 0,
+      "wrongHost": 0,
+      "wrongContentType": 0,
+      "hashMismatches": 1
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "résumé content-order mismatch",
+    "checkerId": "public-resume",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "htmlGatesPass": true,
+      "contentMatches": true,
+      "sourceOrderMatches": false
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF UA validator failure",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 1
+    }
+  },
+  {
+    "requirement": "QAL-006",
+    "name": "unpinned checker environment",
+    "checkerId": "checker-integrity",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "versionsPinned": true,
+      "rulesPinned": true,
+      "environmentPinned": false,
+      "configurationPinned": true,
+      "retryMaximum": 2,
+      "priorResultsReused": false
+    }
+  },
+  {
+    "requirement": "QAL-006",
+    "name": "subjective visual concern",
+    "checkerId": "subjective-visual",
+    "expected": "warning",
+    "actual": "warning",
+    "measurements": {
+      "acceptedBaseline": false
+    }
+  },
+  {
+    "requirement": "QAL-002/QAL-006",
+    "name": "content-driven screenshot difference",
+    "checkerId": "content-screenshot",
+    "expected": "warning",
+    "actual": "warning",
+    "measurements": {
+      "contentDrivenDifferences": 1
+    }
+  },
+  {
+    "requirement": "QAL-003/QAL-006",
+    "name": "poor field performance",
+    "checkerId": "field-performance",
+    "expected": "warning",
+    "actual": "warning",
+    "measurements": {
+      "fieldDataPresent": true,
+      "p75LcpMs": 2600,
+      "p75InpMs": 120,
+      "p75Cls": 0.05
+    }
+  },
+  {
+    "requirement": "QAL-004/QAL-006",
+    "name": "transient third-party failure",
+    "checkerId": "links",
+    "expected": "warning",
+    "actual": "warning",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 3,
+      "attempts": 3,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 0,
+      "confirmedNotFound": 0,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": true
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "normal contrast below 4.5",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 0,
+      "normalTextContrast": 4.49,
+      "largeTextContrast": 3.2,
+      "uiContrast": 3.1,
+      "targetSize": 44,
+      "zoomPercent": 200
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "large contrast below 3",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 0,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 2.99,
+      "uiContrast": 3.1,
+      "targetSize": 44,
+      "zoomPercent": 200
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "UI contrast below 3",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 0,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 3.2,
+      "uiContrast": 2.99,
+      "targetSize": 44,
+      "zoomPercent": 200
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "target below 44px",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 0,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 3.2,
+      "uiContrast": 3.1,
+      "targetSize": 43.99,
+      "zoomPercent": 200
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "zoom below 200 percent",
+    "checkerId": "accessibility",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "violations": 0,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 3.2,
+      "uiContrast": 3.1,
+      "targetSize": 44,
+      "zoomPercent": 199
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "browser viewport matrix incomplete",
+    "checkerId": "responsive",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "browserViewportCombinations": 14,
+      "horizontalOverflow": 0,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": true,
+      "forcedColors": true,
+      "reducedMotion": true
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "text spacing failure",
+    "checkerId": "responsive",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "browserViewportCombinations": 15,
+      "horizontalOverflow": 0,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": false,
+      "forcedColors": true,
+      "reducedMotion": true
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "forced colors failure",
+    "checkerId": "responsive",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "browserViewportCombinations": 15,
+      "horizontalOverflow": 0,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": true,
+      "forcedColors": false,
+      "reducedMotion": true
+    }
+  },
+  {
+    "requirement": "QAL-002",
+    "name": "reduced motion failure",
+    "checkerId": "responsive",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "browserViewportCombinations": 15,
+      "horizontalOverflow": 0,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": true,
+      "forcedColors": true,
+      "reducedMotion": false
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "Lighthouse individual score below 85",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 84,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "FCP median above 1.8s",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 1801,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "Speed Index median above 3.4s",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 3401,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "LCP median above 2.5s",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 2501,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "TBT median above 200ms",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 201,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "CLS median above 0.1",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0.101,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "Lighthouse poor band",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 4000,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "JavaScript above 150 KiB",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 153601,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "transfer above 500 KiB",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 512001,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "LCP dual-threshold regression",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 10.1,
+      "lcpRegressionMs": 101,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "TBT dual-threshold regression",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 10.1,
+      "tbtRegressionMs": 101,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    }
+  },
+  {
+    "requirement": "QAL-003",
+    "name": "transfer dual-threshold regression",
+    "checkerId": "performance",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 210,
+      "medianSpeedIndexMs": 210,
+      "medianLcpMs": 560,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 215,
+      "maximumSpeedIndexMs": 215,
+      "maximumLcpMs": 570,
+      "maximumTbtMs": 0,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 129773,
+      "initialTransferBytes": 289713,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 10.1,
+      "transferRegressionBytes": 25601
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "external redirect limit exceeded",
+    "checkerId": "links",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 4,
+      "attempts": 1,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 0,
+      "confirmedNotFound": 0,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": false
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "HTTPS downgrade",
+    "checkerId": "links",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 3,
+      "attempts": 3,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 1,
+      "identityMismatches": 0,
+      "confirmedNotFound": 0,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": true
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "repository identity mismatch",
+    "checkerId": "links",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 3,
+      "attempts": 3,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 1,
+      "confirmedNotFound": 0,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": true
+    }
+  },
+  {
+    "requirement": "QAL-004",
+    "name": "non-allowlisted mailto",
+    "checkerId": "links",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "internalRedirects": 0,
+      "maximumRedirects": 3,
+      "attempts": 1,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 0,
+      "confirmedNotFound": 0,
+      "mailtoAllowlisted": false,
+      "transientThirdParty": false
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF missing selectable text",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": false,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF missing title",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": false,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF missing language",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": false,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF untagged",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": false,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF reading order failure",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": false,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF tab order failure",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": false,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF headings and lists failure",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": false,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF link annotation failure",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": false,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF font not embedded",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": false,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    }
+  },
+  {
+    "requirement": "QAL-005",
+    "name": "PDF content clipped",
+    "checkerId": "pdf-ua",
+    "expected": "blocked",
+    "actual": "blocked",
+    "measurements": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 1,
+      "validatorFailures": 0
+    }
+  }
+]

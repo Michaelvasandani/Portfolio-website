@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-08-12T22:00:00.000Z",
+  "blockers": [
+    {
+      "requirement": "PUB-003",
+      "acceptanceCheck": "Run the full suite against a production-shaped, provider-created, zero-traffic immutable deployment.",
+      "status": "blocked",
+      "reason": "The current public routes render the Approved-renderer fixture rather than ticket 07's immutable candidate, ticket 09 has not yet provided the candidate-package deployment adapter, ticket 02 remains open, and no Vercel project or scoped control credential is available.",
+      "notClaimed": [
+        "live provider deployment identity",
+        "live preview URL",
+        "provider-observed public-output hash"
+      ]
+    }
+  ],
+  "availableInheritedEvidence": {
+    "approvedRendererManualAccessibility": "evidence/ticket-03.md#human-approval",
+    "pinnedPdfUaReports": "evidence/ticket-03/verapdf-ua1-*.json"
+  }
+}

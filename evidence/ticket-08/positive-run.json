@@ -1,0 +1,648 @@
+{
+  "outcome": "passed",
+  "checks": [
+    {
+      "checkerId": "candidate-identity",
+      "checkIdentity": "sha256:8c4112ee3a1b7183f1110d596a78114d73a65a4cd15af7c4a36c8418aba8f582",
+      "checkerVersion": "identity-v1",
+      "ruleset": "hash-chain-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "candidateHashMatches": true,
+        "manifestHashMatches": true,
+        "publicOutputHashMatches": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:b9348d1e87158aee8274d3c28928a2d636d75b8524d2498b421efae33d74bbb7",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/candidate-identity"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/candidate-identity",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "manifest-hash",
+      "checkIdentity": "sha256:49156964fd462f3709c6bba8ee3a47c568ae202de47f6e9a7168b4fc3d9322fc",
+      "checkerVersion": "manifest-v1",
+      "ruleset": "canonical-json-sha256-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "manifestFieldsBound": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:9fbe6e03c812628606a88716cc066cf11b2e3d21954dd20672bd89dee72622d0",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/manifest-hash"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/manifest-hash",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "provenance",
+      "checkIdentity": "sha256:38dcf359e560761b7304435bec6f1450860e5ae3cf04e7e45b07611b6f9e17ed",
+      "checkerVersion": "provenance-v1",
+      "ruleset": "field-clause-graph-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "orphanFacts": 0,
+        "unknownEvidenceReferences": 0,
+        "alteredVerbatimValues": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:6b9e0f9fc4f5690bd86bf020d0e94a7b2012903cce48598fa882845ab10c1bbb",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/provenance"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/provenance",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "completeness",
+      "checkIdentity": "sha256:cbaab7571d7c9e39dc20cdb26197398f6ca283ae26f1c400306f8f034c8ba848",
+      "checkerVersion": "completeness-v1",
+      "ruleset": "public-inventory-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "missingSections": 0,
+        "missingEntities": 0,
+        "sourceOrderMatches": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:32429eb00eee3746f7eebcf1e7ffb11a957b763c0464bc34ba98cffb703bf2b1",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/completeness"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/completeness",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "public-projection",
+      "checkIdentity": "sha256:e01c4df201fa4b50279b31044e05680c10ace179e48051e72d6accc8952c2f3e",
+      "checkerVersion": "projection-v1",
+      "ruleset": "allowlist-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "allowlistedFieldsOnly": true,
+        "publicManifestHashOnly": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:1636df104a7d8c4774100ad4f0bfdccadcef5c8fc9f6b66a9ec9ab9688cf7995",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/public-projection"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/public-projection",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "privacy-leak",
+      "checkIdentity": "sha256:c1c5812589160c8d7ca146eca3a4b21a6c236fcd8edf9f51af2c1e443902cb18",
+      "checkerVersion": "leak-scan-v1",
+      "ruleset": "html-json-assets-pdf-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "htmlLeaks": 0,
+        "jsonLeaks": 0,
+        "scriptLeaks": 0,
+        "sourceMapLeaks": 0,
+        "headerLeaks": 0,
+        "pdfLeaks": 0,
+        "imageMetadataLeaks": 0,
+        "downloadLeaks": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:9fd2613e0c073427bcad90d014c27ac17d83e82d2d6e4ccb82e832554c79425c",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/privacy-leak"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/privacy-leak",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "generated-copy",
+      "checkIdentity": "sha256:c446d3855bd9edeaa7f039fa4482c43b0d6cd7d95c3341116f136430cf1aa41e",
+      "checkerVersion": "copy-v1",
+      "ruleset": "copy-bounds-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "cardProofWords": 18,
+        "aboutWords": 71,
+        "projectDescriptionWords": 18,
+        "projectDescriptionSentences": 1,
+        "unsupportedClaims": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:d2cc0b01717928370d3aa559f58eeb32b1c2702c15c103d596bb910e1d741c5e",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/generated-copy"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/generated-copy",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "accessibility",
+      "checkIdentity": "sha256:72c60501044c22914986ecb3faaa41107e04238dd9fad19a70c09f96c06e6b35",
+      "checkerVersion": "axe-4.13.0",
+      "ruleset": "wcag-2.2-aa-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "violations": 0,
+        "normalTextContrast": 4.8,
+        "largeTextContrast": 3.2,
+        "uiContrast": 3.1,
+        "targetSize": 44,
+        "zoomPercent": 200
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:08159c648802845bb897be8813b4cc49addbc6f8b60dd0c413f598149adc388a",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/accessibility"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/accessibility",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "responsive",
+      "checkIdentity": "sha256:8d14e74a202c3e5b9e7cb7589935ec9b06debff3b77e19c85c0e1914be2e059c",
+      "checkerVersion": "playwright-1.51.1",
+      "ruleset": "responsive-matrix-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "browserViewportCombinations": 15,
+        "horizontalOverflow": 0,
+        "overlaps": 0,
+        "clippedItems": 0,
+        "readingOrderMatches": true,
+        "textSpacing": true,
+        "forcedColors": true,
+        "reducedMotion": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:e8ce91c99c9d290c8263492ba7470991eb457bf25e4eb2d31281c369940ac11e",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/responsive"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/responsive",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "performance",
+      "checkIdentity": "sha256:cf8b186f52310b8f46cabe55fc66b19da62fb7dc5a9d4385a0cbe635a7354244",
+      "checkerVersion": "lighthouse-13.4.1",
+      "ruleset": "mobile-three-cold-runs-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "runs": 3,
+        "medianScore": 100,
+        "minimumScore": 100,
+        "medianFcpMs": 210,
+        "medianSpeedIndexMs": 210,
+        "medianLcpMs": 560,
+        "medianTbtMs": 0,
+        "medianCls": 0,
+        "maximumFcpMs": 215,
+        "maximumSpeedIndexMs": 215,
+        "maximumLcpMs": 570,
+        "maximumTbtMs": 0,
+        "maximumCls": 0,
+        "compressedJavaScriptBytes": 129773,
+        "initialTransferBytes": 289713,
+        "lcpRegressionPercent": 0,
+        "lcpRegressionMs": 0,
+        "tbtRegressionPercent": 0,
+        "tbtRegressionMs": 0,
+        "transferRegressionPercent": 0,
+        "transferRegressionBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:e6aac48ab8b9a3217c5bd07bf4fc8b2d8e83081b8d49367f6bd0e13232a07601",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/performance"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/performance",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "seo",
+      "checkIdentity": "sha256:bf0c8bd17b1bf5d700ad729224b2bed923dd22d7ee8c3d82b84ef030aaac3526",
+      "checkerVersion": "seo-v1",
+      "ruleset": "production-shaped-seo-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "successful": true,
+        "indexable": true,
+        "titleCount": 1,
+        "descriptionCount": 1,
+        "h1Count": 1,
+        "absoluteSelfCanonical": true,
+        "robotsValid": true,
+        "sitemapValid": true,
+        "openGraphComplete": true,
+        "duplicateIds": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:7e87e087c8f8994efea52105242fbde951ee226734b260d7cce1543f06858bf7",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/seo"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/seo",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "structured-data",
+      "checkIdentity": "sha256:43357753b871bc73b03c9efe7fe02140342ff79542ba897fec8e92b18139bb9d",
+      "checkerVersion": "jsonld-v1",
+      "ruleset": "person-profile-page-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "valid": true,
+        "typesAllowlisted": true,
+        "factsAllowlisted": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:db1b5e44c0d907c8794d6ef5d848546ccb55fb75a1128cc0a5bc03d55e094fd8",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/structured-data"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/structured-data",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "links",
+      "checkIdentity": "sha256:b3a764d7ddec7f0378381a34b8f1edd679cd831cd729604b46d889c841c666e3",
+      "checkerVersion": "link-v1",
+      "ruleset": "head-get-three-attempt-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "internalRedirects": 0,
+        "maximumRedirects": 3,
+        "attempts": 1,
+        "methodOrder": "HEAD,GET",
+        "malformed": 0,
+        "downgrades": 0,
+        "identityMismatches": 0,
+        "confirmedNotFound": 0,
+        "mailtoAllowlisted": true,
+        "transientThirdParty": false
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:35363842b00cd7ad82b8dd6fda9163b1d568d4d5cc6da7e3dad7dd4f4bd04a03",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/links"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/links",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "assets",
+      "checkIdentity": "sha256:e2068f7c2be835987a84588e46dc3448a7b703a086153bb9a5c3f6e8e906d489",
+      "checkerVersion": "asset-v1",
+      "ruleset": "status-type-host-hash-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "missing": 0,
+        "wrongStatus": 0,
+        "wrongHost": 0,
+        "wrongContentType": 0,
+        "hashMismatches": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:27cfed211e48381ee42e83fb5aa082971f13a0f5f9c1d1314b74ee1dcd584560",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/assets"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/assets",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "public-resume",
+      "checkIdentity": "sha256:9e29ff2a3476990c3164d8f03bb4a2340528a54822f210d9c03a53a4340aa711",
+      "checkerVersion": "resume-v1",
+      "ruleset": "content-order-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "htmlGatesPass": true,
+        "contentMatches": true,
+        "sourceOrderMatches": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:7d4034845ea89796fd6f3b5d9e1b90dd279c69ff36f699e263e56064bffb7fdd",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/public-resume"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/public-resume",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "pdf-ua",
+      "checkIdentity": "sha256:77b10954f48a8e2c54c5d4252ef3d240a394fae7f7b02d46e502b6cf506ba7ae",
+      "checkerVersion": "veraPDF-1.30.2",
+      "ruleset": "pdf-ua-1-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "selectableText": true,
+        "title": true,
+        "language": true,
+        "tagged": true,
+        "readingOrder": true,
+        "tabOrder": true,
+        "headingsAndLists": true,
+        "linkAnnotations": true,
+        "embeddedFonts": true,
+        "clippedOrMissing": 0,
+        "validatorFailures": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:4a9d5d9411025b184cac9375785de1f13e6a4b076511552467d2bb6e673e235d",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/pdf-ua"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/pdf-ua",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "checker-integrity",
+      "checkIdentity": "sha256:50a57b89f30421ca7718ddf10fd57725788eb351f9c0f161a8f1f51ac32e2b05",
+      "checkerVersion": "runner-v1",
+      "ruleset": "fail-closed-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "versionsPinned": true,
+        "rulesPinned": true,
+        "environmentPinned": true,
+        "configurationPinned": true,
+        "retryMaximum": 2,
+        "priorResultsReused": false
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:1f717c6577ff3f5365a24fd5efd945a197d8ac9f7f9de5120344fa32c166f0da",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/checker-integrity"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/checker-integrity",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "subjective-visual",
+      "checkIdentity": "sha256:c66b96fb93b1df8e72a4481fa982d7e2c643560b3cd8f4e8c856d195481955a7",
+      "checkerVersion": "visual-review-v1",
+      "ruleset": "subjective-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "acceptedBaseline": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:3cfeda4a96dad4581287fcc267abaf058fcc4fef301125578561bcafa05637e6",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/subjective-visual"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/subjective-visual",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "content-screenshot",
+      "checkIdentity": "sha256:8814b8ff3b50df6ae23fba0b2fadfd94b14e1cefefa412f53ca3f300503b4f0e",
+      "checkerVersion": "screenshot-v1",
+      "ruleset": "content-diff-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "contentDrivenDifferences": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:321aadd70346e024d203453b4af2a52b3c418d9fb1d62e0636491acafc71084a",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/content-screenshot"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/content-screenshot",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "field-performance",
+      "checkIdentity": "sha256:f91ffffb6e00d690e565949bab723785f4a9112daff0ab252d695f4fbb3b62df",
+      "checkerVersion": "field-vitals-v1",
+      "ruleset": "p75-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "https://ticket-08-preview.invalid",
+      "targetIdentity": "sha256:00f4eadba5e91085fc363eed12e720788139155c42b9c03a9b52ee4050754a7c",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "fieldDataPresent": true,
+        "p75LcpMs": 1800,
+        "p75InpMs": 120,
+        "p75Cls": 0.05
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:25c95c2aac016fae18eb57d88d9294c9aa3199792e0b109b0786a62c428d534d",
+          "integrity": "valid",
+          "reportPointer": "fixture://publication-checks/field-performance"
+        }
+      ],
+      "reportPointer": "fixture://publication-checks/field-performance",
+      "retentionClass": "compact-one-year"
+    }
+  ],
+  "evidence": {
+    "schemaVersion": 1,
+    "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+    "candidateHash": "sha256:b22321b6630310779ffd9ed5d8aa2a45eca611e195282fa470155b39c89a5021",
+    "manifestHash": "sha256:46b95bb405595a630b67f120ba980ddcbff18738792dc77d5483b47736d1992b",
+    "publicOutputHash": "sha256:3af78ec12c0af79ac553ee39738065cbfb8aa0232c684a6be411ae2b9d264664",
+    "deploymentId": "deployment:zero-traffic-ticket-08",
+    "retentionClass": "compact-one-year"
+  }
+}

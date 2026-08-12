@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "environment": {
+    "node": "22.23.1",
+    "packageManager": "pnpm@10.4.1",
+    "lighthouse": "13.4.1",
+    "axeCore": "4.13.0",
+    "playwright": "1.51.1",
+    "pdfUaValidator": "veraPDF 1.30.2 PDF/UA-1",
+    "browsers": [
+      { "name": "chromium", "version": "134.0.6998.35", "revision": "1161" },
+      { "name": "firefox", "version": "135.0", "revision": "1475" },
+      { "name": "webkit", "version": "18.4", "revision": "2140" }
+    ]
+  },
+  "viewports": [
+    { "width": 320, "height": 568 },
+    { "width": 390, "height": 844 },
+    { "width": 768, "height": 1024 },
+    { "width": 1440, "height": 900 },
+    { "width": 1920, "height": 1080 }
+  ],
+  "accessibility": {
+    "standard": "WCAG 2.2 AA",
+    "normalTextContrast": 4.5,
+    "largeTextContrast": 3,
+    "uiContrast": 3,
+    "zoomPercent": 200,
+    "targetSizeCssPixels": 44,
+    "modes": ["text-spacing", "forced-colors", "reduced-motion"]
+  },
+  "thresholds": {
+    "performance": {
+      "runs": 3,
+      "minimumMedianScore": 90,
+      "minimumRunScore": 85,
+      "medianFcpMs": 1800,
+      "medianSpeedIndexMs": 3400,
+      "medianLcpMs": 2500,
+      "medianTbtMs": 200,
+      "medianCls": 0.1,
+      "poorFcpMs": 3000,
+      "poorSpeedIndexMs": 5800,
+      "poorLcpMs": 4000,
+      "poorTbtMs": 600,
+      "poorCls": 0.25,
+      "compressedInitialJavaScriptBytes": 153600,
+      "totalInitialTransferBytes": 512000,
+      "regressionPercent": 10,
+      "timingMaterialToleranceMs": 100,
+      "transferMaterialToleranceBytes": 25600
+    },
+    "generatedCopy": {
+      "cardProofWords": [15, 25],
+      "aboutMaximumWords": 100,
+      "projectDescriptionWords": [12, 30],
+      "projectDescriptionSentences": 1
+    },
+    "githubFreshnessHours": 48,
+    "externalLinks": {
+      "maximumRedirects": 3,
+      "maximumAttempts": 3,
+      "attemptWindowSeconds": 120,
+      "confirmedNotFoundAttempts": 2,
+      "methodOrder": ["HEAD", "GET"]
+    }
+  },
+  "retry": { "maximumRetries": 2, "cleanEnvironmentEachAttempt": true, "attemptTimeoutMs": 30000 },
+  "checkers": [
+    { "id": "candidate-identity", "version": "identity-v1", "ruleset": "hash-chain-v1", "classification": "blocking" },
+    { "id": "manifest-hash", "version": "manifest-v1", "ruleset": "canonical-json-sha256-v1", "classification": "blocking" },
+    { "id": "provenance", "version": "provenance-v1", "ruleset": "field-clause-graph-v1", "classification": "blocking" },
+    { "id": "completeness", "version": "completeness-v1", "ruleset": "public-inventory-v1", "classification": "blocking" },
+    { "id": "public-projection", "version": "projection-v1", "ruleset": "allowlist-v1", "classification": "blocking" },
+    { "id": "privacy-leak", "version": "leak-scan-v1", "ruleset": "html-json-assets-pdf-v1", "classification": "blocking" },
+    { "id": "generated-copy", "version": "copy-v1", "ruleset": "copy-bounds-v1", "classification": "blocking" },
+    { "id": "accessibility", "version": "axe-4.13.0", "ruleset": "wcag-2.2-aa-v1", "classification": "blocking" },
+    { "id": "responsive", "version": "playwright-1.51.1", "ruleset": "responsive-matrix-v1", "classification": "blocking" },
+    { "id": "performance", "version": "lighthouse-13.4.1", "ruleset": "mobile-three-cold-runs-v1", "classification": "blocking" },
+    { "id": "seo", "version": "seo-v1", "ruleset": "production-shaped-seo-v1", "classification": "blocking" },
+    { "id": "structured-data", "version": "jsonld-v1", "ruleset": "person-profile-page-v1", "classification": "blocking" },
+    { "id": "links", "version": "link-v1", "ruleset": "head-get-three-attempt-v1", "classification": "blocking" },
+    { "id": "assets", "version": "asset-v1", "ruleset": "status-type-host-hash-v1", "classification": "blocking" },
+    { "id": "public-resume", "version": "resume-v1", "ruleset": "content-order-v1", "classification": "blocking" },
+    { "id": "pdf-ua", "version": "veraPDF-1.30.2", "ruleset": "pdf-ua-1-v1", "classification": "blocking" },
+    { "id": "checker-integrity", "version": "runner-v1", "ruleset": "fail-closed-v1", "classification": "blocking" },
+    { "id": "subjective-visual", "version": "visual-review-v1", "ruleset": "subjective-warning-v1", "classification": "warning" },
+    { "id": "content-screenshot", "version": "screenshot-v1", "ruleset": "content-diff-warning-v1", "classification": "warning" },
+    { "id": "field-performance", "version": "field-vitals-v1", "ruleset": "p75-warning-v1", "classification": "warning" }
+  ],
+  "retention": { "compactDays": 365, "bulkyRejectedDays": 30, "restorableValidDeployments": 20 },
+  "lighthouse": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "rttMs": 40,
+    "throughputKbps": 10240,
+    "cpuSlowdownMultiplier": 2,
+    "coldRuns": true
+  }
+}

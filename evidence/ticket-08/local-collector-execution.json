@@ -1,0 +1,557 @@
+{
+  "commands": [
+    {
+      "command": "pnpm build",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:ae41988a701181d4ad63d03aab5b75c07e51896554040cdef98f2e8d064f7e2f",
+          "startedAt": "2026-08-12T22:44:07.235Z",
+          "finishedAt": "2026-08-12T22:44:13.601Z",
+          "integrity": "valid",
+          "output": "> agentic-portfolio@0.1.0 build /Users/michaelvasandani/Documents/Portfolio-website\n> next build\n\n▲ Next.js 16.3.0 (Turbopack)\n✓ Running next.config.ts took 36ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 687ms\n  Running TypeScript ...\n  Finished TypeScript in 2.8s ...\n  Collecting page data using 10 workers ...\n  Generating static pages using 10 workers (0/28) ...\n  Generating static pages using 10 workers (7/28) \r\n  Generating static pages using 10 workers (14/28) \r\n  Generating static pages using 10 workers (21/28) \r\n✓ Generating static pages using 10 workers (28/28) in 442ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n├ ○ /_not-found\n├ ƒ /api/auth/github/callback\n├ ƒ /api/auth/github/start\n├ ƒ /api/auth/logout\n├ ƒ /api/control/status/[section]\n├ ƒ /api/control/uploads/complete\n├ ƒ /api/control/uploads/intent\n├ ƒ /api/control/uploads/maintenance\n├ ƒ /api/control/uploads/status\n├ ƒ /api/ingestion/github\n├ ƒ /control\n├ ƒ /control/[section]\n├ ○ /opengraph-image\n├ ƒ /owner-access\n├   /renderer-fixtures/[fixture]\n│ ├ ● /renderer-fixtures/sparse\n│ ├ ● /renderer-fixtures/typical\n│ ├ ● /renderer-fixtures/dense\n│ └ ● [+3 more paths]\n├   /renderer-fixtures/[fixture]/resume\n│ ├ ● /renderer-fixtures/sparse/resume\n│ ├ ● /renderer-fixtures/dense/resume\n│ ├ ● /renderer-fixtures/long-word/resume\n│ └ ● [+2 more paths]\n├ ○ /resume\n├ ○ /robots.txt\n└ ○ /sitemap.xml\n\n\nƒ Proxy (Middleware)\n\n○  (Static)   prerendered as static content\n●  (SSG)      prerendered as static HTML (uses generateStaticParams)\nƒ  (Dynamic)  server-rendered on demand"
+        }
+      ]
+    },
+    {
+      "command": "pnpm exec tsx scripts/composition/verify.ts",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:f34abb75e96d8ff9d5a8c99c3e23e1451c916fe31c159a1e0545f9bea2214042",
+          "startedAt": "2026-08-12T22:44:13.601Z",
+          "finishedAt": "2026-08-12T22:44:14.190Z",
+          "integrity": "valid",
+          "output": "{\n  \"generatedAt\": \"deterministic-fixture\",\n  \"selectionMatrix\": {\n    \"target\": {\n      \"selected\": [\n        \"pin\",\n        \"strong\",\n        \"diverse\"\n      ],\n      \"scores\": [\n        {\n          \"repositoryName\": \"pin\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"strong\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 10,\n            \"recency\": 5,\n            \"total\": 35\n          }\n        },\n        {\n          \"repositoryName\": \"diverse\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 15,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 28\n          }\n        },\n        {\n          \"repositoryName\": \"ineligible\",\n          \"eligible\": false,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 33\n          }\n        }\n      ]\n    },\n    \"sixPins\": {\n      \"selected\": [\n        \"pin-1\",\n        \"pin-2\",\n        \"pin-3\",\n        \"pin-4\",\n        \"pin-5\",\n        \"pin-6\"\n      ],\n      \"scores\": [\n        {\n          \"repositoryName\": \"pin-1\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"pin-2\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"pin-3\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"pin-4\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"pin-5\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        },\n        {\n          \"repositoryName\": \"pin-6\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 35,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 68\n          }\n        }\n      ]\n    },\n    \"fewerThanFive\": {\n      \"selected\": [\n        \"one\",\n        \"two\"\n      ],\n      \"scores\": [\n        {\n          \"repositoryName\": \"one\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 33\n          }\n        },\n        {\n          \"repositoryName\": \"two\",\n          \"eligible\": true,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 33\n          }\n        },\n        {\n          \"repositoryName\": \"weak\",\n          \"eligible\": false,\n          \"score\": {\n            \"pin\": 0,\n            \"resumeMatch\": 0,\n            \"evidence\": 20,\n            \"relevance\": 8,\n            \"recency\": 5,\n            \"total\": 33\n          }\n        }\n      ]\n    }\n  },\n  \"stability\": {\n    \"firstRun\": [\n      \"incumbent\"\n    ],\n    \"firstComparisons\": [\n      {\n        \"incumbentRepositoryId\": \"repository:incumbent\",\n        \"challengerRepositoryId\": \"repository:challenger\",\n        \"lead\": 16,\n        \"consecutiveRuns\": 1\n      }\n    ],\n    \"secondRun\": [\n      \"challenger\"\n    ]\n  },\n  \"matching\": [\n    {\n      \"repositoryName\": \"direct\",\n      \"match\": {\n        \"kind\": \"direct-url\",\n        \"resumeProjectId\": \"project:direct\",\n        \"candidateProjectIds\": [\n          \"project:direct\"\n        ],\n        \"evidencePaths\": [\n          \"projects.project:direct.sourceLinks\",\n          \"repositories.repository:direct.url\"\n        ]\n      }\n    },\n    {\n      \"repositoryName\": \"voice-agent\",\n      \"match\": {\n        \"kind\": \"alias-corroborated\",\n        \"resumeProjectId\": \"project:voice\",\n        \"candidateProjectIds\": [\n          \"project:voice\"\n        ],\n        \"evidencePaths\": [\n          \"projects.project:voice.technologies.0\",\n          \"repositories.repository:voice-agent.languages.0\",\n          \"projects.project:voice.bullets.0\",\n          \"repositories.repository:voice-agent.documents.0\"\n        ]\n      }\n    },\n    {\n      \"repositoryName\": \"ambiguous\",\n      \"match\": {\n        \"kind\": \"ambiguous\",\n        \"resumeProjectId\": null,\n        \"candidateProjectIds\": [\n          \"project:ambiguous-a\",\n          \"project:ambiguous-b\"\n        ],\n        \"evidencePaths\": [\n          \"projects.project:ambiguous-a.technologies.0\",\n          \"repositories.repository:ambiguous.languages.0\",\n          \"projects.project:ambiguous-a.bullets.0\",\n          \"repositories.repository:ambiguous.documents.0\",\n          \"projects.project:ambiguous-b.technologies.0\",\n          \"repositories.repository:ambiguous.languages.0\",\n          \"projects.project:ambiguous-b.bullets.0\",\n          \"repositories.repository:ambiguous.documents.0\"\n        ]\n      }\n    }\n  ],\n  \"completeness\": {\n    \"missing\": [],\n    \"duplicates\": []\n  },\n  \"hashes\": {\n    \"semanticSourceHash\": \"sha256:4b158e44d4e6ed2588ea4954d0f85b6d9ecfaf6cb7777a08f66435720b831ca2\",\n    \"renderedContentHash\": \"sha256:4ea656faad3292d50759e07bf0e85f5a70cde4d126e131ada840620045785b96\",\n    \"candidateHash\": \"sha256:c56b4c3435472c9d3690fa725b9d1f1821d63f2136a55d437098179c8ae5ba06\",\n    \"publicManifestHash\": \"sha256:17385207b265b9208677a9d2546251d3a30bf23fb86b53809ecefdfe0fd500ca\"\n  },\n  \"repeatHashes\": {\n    \"semanticSourceHash\": \"sha256:4b158e44d4e6ed2588ea4954d0f85b6d9ecfaf6cb7777a08f66435720b831ca2\",\n    \"renderedContentHash\": \"sha256:4ea656faad3292d50759e07bf0e85f5a70cde4d126e131ada840620045785b96\",\n    \"candidateHash\": \"sha256:c56b4c3435472c9d3690fa725b9d1f1821d63f2136a55d437098179c8ae5ba06\",\n    \"publicManifestHash\": \"sha256:17385207b265b9208677a9d2546251d3a30bf23fb86b53809ecefdfe0fd500ca\"\n  },\n  \"deterministic\": true,\n  \"publicLeakFindings\": [],\n  \"productionGenerator\": \"blocked-until-compliant-provider-is-configured\"\n}"
+        }
+      ]
+    },
+    {
+      "command": "pnpm exec tsx scripts/renderer/check-resume-pdf.ts",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:86a7d1d77b6dcb28b7c923e7928284118fb1ee89ed19ac81a11847ab046bfe6e",
+          "startedAt": "2026-08-12T22:44:14.190Z",
+          "finishedAt": "2026-08-12T22:44:15.004Z",
+          "integrity": "valid",
+          "output": "6 résumé fixture PDFs exactly match their visible source and passed 36 structural checks."
+        }
+      ]
+    },
+    {
+      "command": "pnpm exec playwright test tests/browser/renderer.spec.ts --reporter=json",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:5cdcedbe13299293f49215ed1a88623c4bc3475d0c1828e708ef879ce547347e",
+          "startedAt": "2026-08-12T22:44:15.004Z",
+          "finishedAt": "2026-08-12T22:44:51.185Z",
+          "integrity": "valid",
+          "output": "{\n  \"config\": {\n    \"configFile\": \"/Users/michaelvasandani/Documents/Portfolio-website/playwright.config.ts\",\n    \"rootDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/tests/browser\",\n    \"forbidOnly\": true,\n    \"fullyParallel\": true,\n    \"globalSetup\": null,\n    \"globalTeardown\": null,\n    \"globalTimeout\": 0,\n    \"grep\": {},\n    \"grepInvert\": null,\n    \"maxFailures\": 0,\n    \"metadata\": {\n      \"actualWorkers\": 5\n    },\n    \"preserveOutput\": \"always\",\n    \"reporter\": [\n      [\n        \"json\"\n      ]\n    ],\n    \"reportSlowTests\": {\n      \"max\": 5,\n      \"threshold\": 300000\n    },\n    \"quiet\": false,\n    \"projects\": [\n      {\n        \"outputDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/test-results\",\n        \"repeatEach\": 1,\n        \"retries\": 0,\n        \"metadata\": {\n          \"actualWorkers\": 5\n        },\n        \"id\": \"chromium\",\n        \"name\": \"chromium\",\n        \"testDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/tests/browser\",\n        \"testIgnore\": [],\n        \"testMatch\": [\n          \"**/*.@(spec|test).?(c|m)[jt]s?(x)\"\n        ],\n        \"timeout\": 30000\n      },\n      {\n        \"outputDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/test-results\",\n        \"repeatEach\": 1,\n        \"retries\": 0,\n        \"metadata\": {\n          \"actualWorkers\": 5\n        },\n        \"id\": \"firefox\",\n        \"name\": \"firefox\",\n        \"testDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/tests/browser\",\n        \"testIgnore\": [],\n        \"testMatch\": [\n          \"**/*.@(spec|test).?(c|m)[jt]s?(x)\"\n        ],\n        \"timeout\": 30000\n      },\n      {\n        \"outputDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/test-results\",\n        \"repeatEach\": 1,\n        \"retries\": 0,\n        \"metadata\": {\n          \"actualWorkers\": 5\n        },\n        \"id\": \"webkit\",\n        \"name\": \"webkit\",\n        \"testDir\": \"/Users/michaelvasandani/Documents/Portfolio-website/tests/browser\",\n        \"testIgnore\": [],\n        \"testMatch\": [\n          \"**/*.@(spec|test).?(c|m)[jt]s?(x)\"\n        ],\n        \"timeout\": 30000\n      }\n    ],\n    \"shard\": null,\n    \"updateSnapshots\": \"missing\",\n    \"updateSourceMethod\": \"patch\",\n    \"version\": \"1.51.1\",\n    \"workers\": 5,\n    \"webServer\": {\n      \"command\": \"pnpm dev --hostname 127.0.0.1 --port 3100\",\n      \"env\": {\n        \"APP_ENV\": \"test\",\n        \"DATABASE_URL\": \"postgresql://portfolio_test:local-only@127.0.0.1:5432/portfolio_test\",\n        \"PRIVATE_BLOB_TOKEN\": \"vercel_blob_rw_test_local_only\",\n        \"GITHUB_INGESTION_SECRET\": \"test-only-github-ingestion-secret-value\",\n        \"MODEL_API_KEY\": \"test-only-model-api-key-value\",\n        \"RESEND_API_KEY\": \"re_test_only_resend_api_key_value\",\n        \"VERCEL_CONTROL_TOKEN\": \"test-only-vercel-control-token\",\n        \"PUBLIC_ORIGIN\": \"http://127.0.0.1:3100\",\n        \"GITHUB_APP_CLIENT_ID\": \"test-github-client-id\",\n        \"GITHUB_APP_CLIENT_SECRET\": \"test-github-client-secret-at-least-32-characters\",\n        \"GITHUB_OWNER_NUMERIC_ID\": \"31415926\",\n        \"OWNER_SESSION_SECRET\": \"test-owner-session-secret-at-least-32-characters\"\n      },\n      \"url\": \"http://127.0.0.1:3100\",\n      \"reuseExistingServer\": false,\n      \"timeout\": 120000\n    }\n  },\n  \"suites\": [\n    {\n      \"title\": \"renderer.spec.ts\",\n      \"file\": \"renderer.spec.ts\",\n      \"column\": 0,\n      \"line\": 0,\n      \"specs\": [\n        {\n          \"title\": \"Portfolio renders the Engraved Folio journey and public provenance\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 0,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 1791,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:18.977Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-b125b482e2592bc77177\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 42,\n          \"column\": 1\n        },\n        {\n          \"title\": \"Public résumé HTML is complete, semantic, and links to the PDF\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 1,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 1802,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:18.978Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-29ed051327c9b7b1e992\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 54,\n          \"column\": 1\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 320px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 2,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 1777,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:18.956Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-4c0d754adf39918fac9d\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 390px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 3,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 1777,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:18.963Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-4928d078d67fa13f4ca4\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 320×568\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 4,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 5407,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:18.952Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-1ad14a89565a08dbf545\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 390×844\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 2,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 3558,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:21.221Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-b93cb24dc06e2d177603\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 768×1024\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 3,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 3627,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:21.222Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-ff681245a781d3f480b6\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1440×900\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 0,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 3589,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:21.236Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-426c45bacb61b1ab8f45\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1920×1080\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 1,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 3597,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:21.246Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-ae8a3e2ec4261c99b227\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"all baseline fixture routes render their distinctive content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 2,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 1741,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:24.793Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-93e6332f3ec89e54e19b\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 114,\n          \"column\": 1\n        },\n        {\n          \"title\": \"320px long words, 200% zoom, and WCAG text spacing do not hide content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 0,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 997,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:24.830Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-25e3a9549757d8763630\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 122,\n          \"column\": 1\n        },\n        {\n          \"title\": \"forced colors, reduced motion, and keyboard focus preserve the journey\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 4,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 1077,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:24.848Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-69e912bdb9ee35e5c2dd\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 135,\n          \"column\": 1\n        },\n        {\n          \"title\": \"discrete navigation and action links expose 44px targets\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 1,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 939,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:24.848Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-d60187aab2cf50d28d37\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 151,\n          \"column\": 1\n        },\n        {\n          \"title\": \"robots, sitemap, social image, and the tagged PDF are directly available\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"chromium\",\n              \"projectName\": \"chromium\",\n              \"results\": [\n                {\n                  \"workerIndex\": 3,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 645,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:24.854Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-c0211c6b89c4aebc6bb5\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 168,\n          \"column\": 1\n        },\n        {\n          \"title\": \"Portfolio renders the Engraved Folio journey and public provenance\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 5,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 2384,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:26.570Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-1f20e6f4440cdfdebe36\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 42,\n          \"column\": 1\n        },\n        {\n          \"title\": \"Public résumé HTML is complete, semantic, and links to the PDF\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 6,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 4122,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:26.706Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-8bad9e21315eba91a616\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 54,\n          \"column\": 1\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 320px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 7,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 3973,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:26.755Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-3ab2f18de1e5597b2fa6\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 390px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 8,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 3188,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:26.781Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-5adb22a49c5d0b0bd4f4\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 320×568\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 9,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 6538,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:27.273Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-9c1d7996976030c23142\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 390×844\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 5,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 6829,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:29.825Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-ce128919158ec36de52c\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 768×1024\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 8,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 7653,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:31.570Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-f266137fb850d6368aed\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1440×900\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 6,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 6967,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:33.267Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-c9ac9690c82a1707e226\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1920×1080\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 7,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 6872,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:33.822Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-30348cb582ff0a8ee389\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"all baseline fixture routes render their distinctive content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 9,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 6020,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:34.427Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-2605e735d19aa95b39e0\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 114,\n          \"column\": 1\n        },\n        {\n          \"title\": \"320px long words, 200% zoom, and WCAG text spacing do not hide content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 5,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 2472,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:36.659Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-38e37e8532a451d924b6\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 122,\n          \"column\": 1\n        },\n        {\n          \"title\": \"forced colors, reduced motion, and keyboard focus preserve the journey\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 5,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 1768,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:39.137Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-5cfcd21e9c3299bd4891\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 135,\n          \"column\": 1\n        },\n        {\n          \"title\": \"discrete navigation and action links expose 44px targets\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 8,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 1530,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:39.229Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-7a9fa56cab7f1add454f\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 151,\n          \"column\": 1\n        },\n        {\n          \"title\": \"robots, sitemap, social image, and the tagged PDF are directly available\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"firefox\",\n              \"projectName\": \"firefox\",\n              \"results\": [\n                {\n                  \"workerIndex\": 6,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 197,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:40.240Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-752b753324369ae5e4c4\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 168,\n          \"column\": 1\n        },\n        {\n          \"title\": \"Portfolio renders the Engraved Folio journey and public provenance\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 11,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 2934,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:41.791Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-a17ed0eb0f8ec626e56e\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 42,\n          \"column\": 1\n        },\n        {\n          \"title\": \"Public résumé HTML is complete, semantic, and links to the PDF\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 10,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 2927,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:41.794Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-9e3d1de286c24052e55b\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 54,\n          \"column\": 1\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 320px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 12,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 2373,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:41.940Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-8e6cc8cd275dc82d007d\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"the public identity wraps only between words at 390px\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 13,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 2323,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:41.977Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-2eb853ddeb38f244e918\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 71,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 320×568\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 14,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 4717,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:42.076Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-3e71f86c39a9100239e6\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 390×844\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 12,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 4926,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:44.513Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-ad6cbc53ffc0b41007f6\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 768×1024\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 13,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 4943,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:44.513Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-73f6d6a501b12efa75c3\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1440×900\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 10,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 4527,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:44.956Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-762dffa70e51c87fb38d\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"sparse and dense fixtures reflow at 1920×1080\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 11,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 4707,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:44.954Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-80ca0dac3d0d6fb3d84a\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 97,\n          \"column\": 3\n        },\n        {\n          \"title\": \"all baseline fixture routes render their distinctive content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 14,\n                  \"parallelIndex\": 3,\n                  \"status\": \"passed\",\n                  \"duration\": 3750,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:47.314Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-d6931e9f36b391c3e835\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 114,\n          \"column\": 1\n        },\n        {\n          \"title\": \"320px long words, 200% zoom, and WCAG text spacing do not hide content\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 12,\n                  \"parallelIndex\": 0,\n                  \"status\": \"passed\",\n                  \"duration\": 1281,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:49.466Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-d758e9130d613a09c11a\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 122,\n          \"column\": 1\n        },\n        {\n          \"title\": \"forced colors, reduced motion, and keyboard focus preserve the journey\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 13,\n                  \"parallelIndex\": 4,\n                  \"status\": \"passed\",\n                  \"duration\": 1318,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:49.465Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-95b9eb214729337ac030\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 135,\n          \"column\": 1\n        },\n        {\n          \"title\": \"discrete navigation and action links expose 44px targets\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 10,\n                  \"parallelIndex\": 2,\n                  \"status\": \"passed\",\n                  \"duration\": 1205,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:49.490Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-f6e13f4434a3270b2e0d\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 151,\n          \"column\": 1\n        },\n        {\n          \"title\": \"robots, sitemap, social image, and the tagged PDF are directly available\",\n          \"ok\": true,\n          \"tags\": [],\n          \"tests\": [\n            {\n              \"timeout\": 30000,\n              \"annotations\": [],\n              \"expectedStatus\": \"passed\",\n              \"projectId\": \"webkit\",\n              \"projectName\": \"webkit\",\n              \"results\": [\n                {\n                  \"workerIndex\": 11,\n                  \"parallelIndex\": 1,\n                  \"status\": \"passed\",\n                  \"duration\": 410,\n                  \"errors\": [],\n                  \"stdout\": [],\n                  \"stderr\": [],\n                  \"retry\": 0,\n                  \"startTime\": \"2026-08-12T22:44:49.670Z\",\n                  \"attachments\": []\n                }\n              ],\n              \"status\": \"expected\"\n            }\n          ],\n          \"id\": \"2554cc55ec191e6d66a6-85f56ff3aba77380e822\",\n          \"file\": \"renderer.spec.ts\",\n          \"line\": 168,\n          \"column\": 1\n        }\n      ]\n    }\n  ],\n  \"errors\": [],\n  \"stats\": {\n    \"startTime\": \"2026-08-12T22:44:15.850Z\",\n    \"duration\": 35301.704,\n    \"expected\": 42,\n    \"skipped\": 0,\n    \"unexpected\": 0,\n    \"flaky\": 0\n  }\n}"
+        }
+      ]
+    },
+    {
+      "command": "pnpm exec tsx scripts/renderer/check-quality.ts",
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:40dafeb7e3410f931ef8feb999fb181cd8cf37aa733603e36c2e9e7121ef74b9",
+          "startedAt": "2026-08-12T22:44:51.185Z",
+          "finishedAt": "2026-08-12T22:46:22.622Z",
+          "integrity": "valid",
+          "output": "Renderer quality checks passed: median Performance 100, JavaScript 130226 B, transfer 290166 B."
+        }
+      ]
+    }
+  ],
+  "artifactHashes": [
+    {
+      "path": ".next/server/app/_global-error.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:991dbc13f6162e89f571f33de74330d6e90e67995c71fcc1821b99153fd09e74",
+      "bytes": 8758
+    },
+    {
+      "path": ".next/server/app/_global-error.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:1b79091aa6e8d24c81528b77545f91fadaa80b601741ce2646f776bc89327c76",
+      "bytes": 421
+    },
+    {
+      "path": ".next/server/app/_not-found.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:fb66f1cc9e6e7f607e2b78ded92b1e8432e33866c42105a60f141473fd27ebec",
+      "bytes": 11886
+    },
+    {
+      "path": ".next/server/app/_not-found.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:946026aa7bf14dbf3fe552a4e8ac164cec004f4fa9bebabd2551bbe35290ec60",
+      "bytes": 517
+    },
+    {
+      "path": ".next/server/app/index.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:1ecbbef0b8e756f26745b1c2b3fe709a58b01451b10e370b78c78419788a3314",
+      "bytes": 38546
+    },
+    {
+      "path": ".next/server/app/index.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:3be21fbb98c3dc277274ab620d7802d7035a29b1a58e80b4bb78f14cb002b01a",
+      "bytes": 362
+    },
+    {
+      "path": ".next/server/app/opengraph-image.body",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:f06dafbf496848965fed14398052c52900ce949a24f262ec522dfb6d393ea626",
+      "bytes": 59287
+    },
+    {
+      "path": ".next/server/app/opengraph-image.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:18985ba300bfd649ab293976b20f4b2066b8fc553925a1070bc76cd65cf80c43",
+      "bytes": 220
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/dense.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:3852faa5d6818afba5ac971ab0b272b8f54ece42f33d06ce8b321eae6fc380cf",
+      "bytes": 45938
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/dense.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:0370dcdd3c85836a484aa22f33bba6325086206bd8dd5753faefbea368459396",
+      "bytes": 710
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/dense/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:99d4ee9d431c3865f0d96c19dbc7d5f8e1afbb2a9371af0b03ac73efb311682b",
+      "bytes": 33469
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/dense/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:665cf7b4905003c3b86fd3d2cf913c433d889629ad16f3c1ea89e385fecdf6e2",
+      "bytes": 913
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/long-word.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:fe1e59a56652c2a5d21a8615111a49efc6021305492266f4ae60f7b7b30dbbeb",
+      "bytes": 38841
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/long-word.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:0907c2d4441b2bec6b7804ee12e24353dd830b6349e6fd24435016fca470a00c",
+      "bytes": 714
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/long-word/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:70cdadd8d489214c9516cd417b40751afe8d0488e65d62458bc4871950d5cd8d",
+      "bytes": 29635
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/long-word/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:03473a44d6306b8277abf6072a80267ffd8895b9b62b1dd5fd04eefdc7d134f3",
+      "bytes": 917
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/optional-section.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:026907bb4ebcd8476d62b6bd76807217785308a5a738a2be4f0aed582fd7354d",
+      "bytes": 40644
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/optional-section.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:e58bb072287f5039de0ae16d8fd24ea1c0d347b63451fafe255fa0181a6188b1",
+      "bytes": 721
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/optional-section/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:7932b757be6fdf96f9b8a7525c4ba5bfd573afe03bc0c76d27cb5f869df6d5e4",
+      "bytes": 32062
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/optional-section/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:159e9d0b01659705b7391ea1fd8a3ec6b671c8caeeb5e2bd2b961125ce302b04",
+      "bytes": 924
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/six-pin.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:ab9cf1b38d72ba21addd472481a881fa0b6c92c4d53087415d15a8b2a8d97305",
+      "bytes": 41755
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/six-pin.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:b8dde0d72e79ea367902448c0d05a89cbc7d99a92fb14f0359027e3d564b611e",
+      "bytes": 712
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/six-pin/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:e460185724a1c3894b3f6efbfd2293bad759192165de9a434ba0cdae53ed29c8",
+      "bytes": 29627
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/six-pin/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:9fefa8f192a7859345beaf60d3e180ec682f7c2a2c1b3d3d4543b2eabc05ee37",
+      "bytes": 915
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/sparse.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:793c51f55d2699216bc15bc402eab9c102a5dbd743737494de178435502e9420",
+      "bytes": 26952
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/sparse.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:eae0f7f122e15c9761ce55190404462b7e535f3372cb5747f60107bec53827aa",
+      "bytes": 711
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/sparse/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:d34e37786f740a0978761dc9221e1297f0a6855c80eff75bc5695ddc1814d900",
+      "bytes": 14860
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/sparse/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:da3aba901bc4894acd472399520385eafd40bf939c94a11b0de49af7873ae1cf",
+      "bytes": 914
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/typical.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:dc4a8bc7ec60733e5a541ae39f4b1bab3ee48ee4212dc2f45263ed14cd10c5dc",
+      "bytes": 38112
+    },
+    {
+      "path": ".next/server/app/renderer-fixtures/typical.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:e79e1b01fdd0fde1515dbfd89b6ffeafb63f8545136953fa2790081e853c685a",
+      "bytes": 712
+    },
+    {
+      "path": ".next/server/app/resume.html",
+      "contentType": "text/html",
+      "contentHash": "sha256:b9bf898e71c0bd1db8cbbf4efa06b5af2de991d4dabd420d50f46a7297e4f4af",
+      "bytes": 28822
+    },
+    {
+      "path": ".next/server/app/resume.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:dd47353ea4ef68bda2fe23004b2c4ae61f3b968035f32c96bebec6b05bac9a8d",
+      "bytes": 484
+    },
+    {
+      "path": ".next/server/app/robots.txt.body",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:eced5eaf6b7f4c6416ebf7497b8a5c2e73250136604524fd9a0570d678035469",
+      "bytes": 139
+    },
+    {
+      "path": ".next/server/app/robots.txt.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:5526cb4400a75de40bf6650db1828f7be55499537ea8864ac226d00700692004",
+      "bytes": 206
+    },
+    {
+      "path": ".next/server/app/sitemap.xml.body",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:46d22671d9c7b47220f5e9143c2dcbba0e0bf16006f235ba60df719c4b1c1263",
+      "bytes": 424
+    },
+    {
+      "path": ".next/server/app/sitemap.xml.meta",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:0e02e9abc171955fee6614cf434f312afd56fd555978ff95fa98665b490d4116",
+      "bytes": 214
+    },
+    {
+      "path": ".next/static/chunks/0-iht-vuxwp7d.css",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:f07aaf25f15ecaea157b89eb554a337ec9e2b5537d8e74f0a576ebedfd9d89e2",
+      "bytes": 2093
+    },
+    {
+      "path": ".next/static/chunks/02iaehxk_6aa5.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:8ad41c1149acbdbaedc3df3feabffaa58f38a5d12095f4cf14675785cc075e66",
+      "bytes": 14384
+    },
+    {
+      "path": ".next/static/chunks/0cz1d0mv5g_q7.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:0973c1d64c88adc8e3c950410cb58b288f72118d5965b78049438deb8f2f9683",
+      "bytes": 112594
+    },
+    {
+      "path": ".next/static/chunks/0pwavkwq3ewze.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:b55fa1568e3aeb4b3778f49bbf8279af92aca131fff70481e66fafb99ddef5ee",
+      "bytes": 164305
+    },
+    {
+      "path": ".next/static/chunks/0s07shu81qjw0.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:f55b70bc335393b6b204dfc544396911c28f8495091f5daa487f5dd029894336",
+      "bytes": 1029
+    },
+    {
+      "path": ".next/static/chunks/19njn63lb_nr6.css",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:287a05c47dda47adca44c7abd05fac62e11f995ec3f7818c32d9133df539a8c6",
+      "bytes": 818
+    },
+    {
+      "path": ".next/static/chunks/1hjyhof2olpwn.css",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:235e35a84988fbf845603894e9eed53f74cef2a854d3934a772e30ed974cb144",
+      "bytes": 8350
+    },
+    {
+      "path": ".next/static/chunks/1nun5cr-1ch1v.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:2f3bb95255788ae8973745bcad2a074609e3569c8469b3a0e8a93ec1f4745767",
+      "bytes": 8869
+    },
+    {
+      "path": ".next/static/chunks/2ak06qt5ryajj.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:d61597a1fc5f7a31a983cc18bfe10f8194d5b13bf03a960b44cf3ab709b94b57",
+      "bytes": 229068
+    },
+    {
+      "path": ".next/static/chunks/37pyehsdjomt2.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:51e7c119daa94e0ddd471f4d331fb39591b8bc77e794bd2bea6a2610ab9c7377",
+      "bytes": 29053
+    },
+    {
+      "path": ".next/static/chunks/3e2hs_eop6790.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:20853b293f0ba873969c6dc0b4143fc30a3584d90a8d70c6a1997117c8f1de7f",
+      "bytes": 5362
+    },
+    {
+      "path": ".next/static/chunks/turbopack-3ka_xai4mggb5.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:83ff4ba261e6f627831239c99d6d44e57b13f74d6a1df3d9c3e41d28d3e6c5ed",
+      "bytes": 10877
+    },
+    {
+      "path": ".next/static/ywf4j8e8Kys2SltQgtXMW/_buildManifest.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:9476e0afd3f9da68a64e6ec58631191fd3eaca62c9f5a377e7517fe9a89e59ea",
+      "bytes": 219
+    },
+    {
+      "path": ".next/static/ywf4j8e8Kys2SltQgtXMW/_clientMiddlewareManifest.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:939822e7feec1188c11814f42b374c7ac0e150d677dc8d6568758457eaa057aa",
+      "bytes": 318
+    },
+    {
+      "path": ".next/static/ywf4j8e8Kys2SltQgtXMW/_ssgManifest.js",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:d0eaf18de192d8af615f5870089fb25a3835775d486cbd72d1c1fd6dd8e7c3ef",
+      "bytes": 173
+    },
+    {
+      "path": "public/fonts/source-serif-4.005/LICENSE.md",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:c21d7293d87b6d7ab1d0229a2f55b77f33a7613a6a4e66f6693d68d7d8d09464",
+      "bytes": 4491
+    },
+    {
+      "path": "public/fonts/source-serif-4.005/source-serif-regular.woff2",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:6b053e98f0838afe81f3e784727be4583a7c13bb42f198dc5202ecffee0aaee0",
+      "bytes": 76260
+    },
+    {
+      "path": "public/fonts/source-serif-4.005/source-serif-semibold.woff2",
+      "contentType": "application/octet-stream",
+      "contentHash": "sha256:457a13ac92e977d82e376038a2daac7fdb5433610910bf5787bdf6c1c3781865",
+      "bytes": 80732
+    },
+    {
+      "path": "public/michael-vasandani-resume.pdf",
+      "contentType": "application/pdf",
+      "contentHash": "sha256:3be92edaac5d51ba120e7b259fe54cc9dbae650e4c1c4d11c3fa11ea1daa2d5e",
+      "bytes": 85524
+    }
+  ],
+  "derivedMeasurements": {
+    "candidate-identity": {
+      "candidateHashMatches": true,
+      "manifestHashMatches": true,
+      "publicOutputHashMatches": true
+    },
+    "manifest-hash": {
+      "manifestFieldsBound": true
+    },
+    "provenance": {
+      "orphanFacts": 0,
+      "unknownEvidenceReferences": 0,
+      "alteredVerbatimValues": 0
+    },
+    "completeness": {
+      "missingSections": 0,
+      "missingEntities": 0,
+      "sourceOrderMatches": true
+    },
+    "public-projection": {
+      "allowlistedFieldsOnly": false,
+      "publicManifestHashOnly": true
+    },
+    "privacy-leak": {
+      "htmlLeaks": 0,
+      "jsonLeaks": 0,
+      "scriptLeaks": 0,
+      "sourceMapLeaks": 0,
+      "headerLeaks": 0,
+      "pdfLeaks": 15,
+      "imageMetadataLeaks": 0,
+      "downloadLeaks": 0
+    },
+    "generated-copy": {
+      "cardProofWords": 17,
+      "aboutWords": 47,
+      "projectDescriptionWords": 18,
+      "projectDescriptionSentences": 1,
+      "unsupportedClaims": 0
+    },
+    "accessibility": {
+      "violations": 0,
+      "normalTextContrast": 4.8,
+      "largeTextContrast": 3.2,
+      "uiContrast": 3.1,
+      "targetSize": 44,
+      "zoomPercent": 200
+    },
+    "responsive": {
+      "browserViewportCombinations": 15,
+      "horizontalOverflow": 0,
+      "overlaps": 0,
+      "clippedItems": 0,
+      "readingOrderMatches": true,
+      "textSpacing": true,
+      "forcedColors": true,
+      "reducedMotion": true
+    },
+    "performance": {
+      "runs": 3,
+      "medianScore": 100,
+      "minimumScore": 100,
+      "medianFcpMs": 218.48559999999998,
+      "medianSpeedIndexMs": 218.48559999999998,
+      "medianLcpMs": 587.5569,
+      "medianTbtMs": 0,
+      "medianCls": 0,
+      "maximumFcpMs": 223.27749999999997,
+      "maximumSpeedIndexMs": 223.27749999999997,
+      "maximumLcpMs": 595.2775,
+      "maximumTbtMs": 2,
+      "maximumCls": 0,
+      "compressedJavaScriptBytes": 130226,
+      "initialTransferBytes": 290166,
+      "lcpRegressionPercent": 0,
+      "lcpRegressionMs": 0,
+      "tbtRegressionPercent": 0,
+      "tbtRegressionMs": 0,
+      "transferRegressionPercent": 0,
+      "transferRegressionBytes": 0
+    },
+    "seo": {
+      "successful": true,
+      "indexable": true,
+      "titleCount": 1,
+      "descriptionCount": 1,
+      "h1Count": 1,
+      "absoluteSelfCanonical": true,
+      "robotsValid": true,
+      "sitemapValid": true,
+      "openGraphComplete": true,
+      "duplicateIds": 0
+    },
+    "structured-data": {
+      "valid": true,
+      "typesAllowlisted": true,
+      "factsAllowlisted": false
+    },
+    "links": {
+      "internalRedirects": 0,
+      "maximumRedirects": 0,
+      "attempts": 3,
+      "methodOrder": "HEAD,GET",
+      "malformed": 0,
+      "downgrades": 0,
+      "identityMismatches": 0,
+      "confirmedNotFound": 2,
+      "mailtoAllowlisted": true,
+      "transientThirdParty": true
+    },
+    "assets": {
+      "missing": 0,
+      "wrongStatus": 0,
+      "wrongHost": 0,
+      "wrongContentType": 0,
+      "hashMismatches": 0
+    },
+    "public-resume": {
+      "htmlGatesPass": true,
+      "contentMatches": true,
+      "sourceOrderMatches": true
+    },
+    "pdf-ua": {
+      "selectableText": true,
+      "title": true,
+      "language": true,
+      "tagged": true,
+      "readingOrder": true,
+      "tabOrder": true,
+      "headingsAndLists": true,
+      "linkAnnotations": true,
+      "embeddedFonts": true,
+      "clippedOrMissing": 0,
+      "validatorFailures": 0
+    },
+    "checker-integrity": {
+      "versionsPinned": true,
+      "rulesPinned": true,
+      "environmentPinned": true,
+      "configurationPinned": true,
+      "retryMaximum": 2,
+      "priorResultsReused": false
+    },
+    "subjective-visual": {
+      "acceptedBaseline": true
+    },
+    "content-screenshot": {
+      "contentDrivenDifferences": 0
+    },
+    "field-performance": {
+      "fieldDataPresent": false,
+      "p75LcpMs": 0,
+      "p75InpMs": 0,
+      "p75Cls": 0
+    }
+  }
+}

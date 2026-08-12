@@ -1,0 +1,648 @@
+{
+  "outcome": "blocked",
+  "checks": [
+    {
+      "checkerId": "candidate-identity",
+      "checkIdentity": "sha256:cdb7a87af0ef91e9d1e2806d3505224bef9be35940ab73729c781a82d55b8648",
+      "checkerVersion": "identity-v1",
+      "ruleset": "hash-chain-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "blocked",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "candidateHashMatches": true,
+        "manifestHashMatches": true,
+        "publicOutputHashMatches": false
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:e99a03c28821884b407fc90b4c1ab177ed6f4d4eb9fa3748b7d676997f43bc21",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "manifest-hash",
+      "checkIdentity": "sha256:e3ad520e544ff5b7b1e198a31e1de064a645f0608d1512aa7b2ec9b791e344f0",
+      "checkerVersion": "manifest-v1",
+      "ruleset": "canonical-json-sha256-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "manifestFieldsBound": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:8dbf7b727af286a6f9af58fd9ffb94afc1116d87fb05a229f95c56c90e57d71c",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "provenance",
+      "checkIdentity": "sha256:f2874029d9a35d143744d499c6b8ee0218d47d53dd3d2ff78e4ed7704f40420b",
+      "checkerVersion": "provenance-v1",
+      "ruleset": "field-clause-graph-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "orphanFacts": 0,
+        "unknownEvidenceReferences": 0,
+        "alteredVerbatimValues": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:15987309f259a90437356470a8262aa07faca51059547261d1885735d2e866de",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "completeness",
+      "checkIdentity": "sha256:7bde1d4d56e1d0340f706d4b57af4d734faa7801509bbca641aaf4fcdf1ae5f5",
+      "checkerVersion": "completeness-v1",
+      "ruleset": "public-inventory-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "missingSections": 0,
+        "missingEntities": 0,
+        "sourceOrderMatches": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:51be37984c64f632e5d84f73b259dc15f9e5652c830a07f1a74fdbca7a568477",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "public-projection",
+      "checkIdentity": "sha256:91edde6422d5ce42ba3b08ce335097f0052acf5ee1dd32597140b492b7dffc6c",
+      "checkerVersion": "projection-v1",
+      "ruleset": "allowlist-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "blocked",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "allowlistedFieldsOnly": false,
+        "publicManifestHashOnly": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:845def047cb4f5131736cd473e02c8e92046684df000ae32ba0712b611a16d1a",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "privacy-leak",
+      "checkIdentity": "sha256:f8037e107c9e0960aea40edde123acdc32710304a70d0e4aafa7b271097e13bc",
+      "checkerVersion": "leak-scan-v1",
+      "ruleset": "html-json-assets-pdf-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "blocked",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "htmlLeaks": 0,
+        "jsonLeaks": 0,
+        "scriptLeaks": 0,
+        "sourceMapLeaks": 0,
+        "headerLeaks": 0,
+        "pdfLeaks": 15,
+        "imageMetadataLeaks": 0,
+        "downloadLeaks": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:b17528cd9f8978af4d05d501b5ea0335fa18022df819b26093e336d01ac83af5",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "generated-copy",
+      "checkIdentity": "sha256:93af39baa5dc9e675bb688f8a4b5c6aa1fedc949bd386c4a088b04f34fc9169e",
+      "checkerVersion": "copy-v1",
+      "ruleset": "copy-bounds-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "cardProofWords": 17,
+        "aboutWords": 47,
+        "projectDescriptionWords": 18,
+        "projectDescriptionSentences": 1,
+        "unsupportedClaims": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:97dd375b8f6702654a253c82d07786af397c05fbcf0f2326d6a7038cef3525b8",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "accessibility",
+      "checkIdentity": "sha256:51eef1a94ca08be00dc9b5cd8326c8787ba0ddd90ca3e57e42d8b9065582633b",
+      "checkerVersion": "axe-4.13.0",
+      "ruleset": "wcag-2.2-aa-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "violations": 0,
+        "normalTextContrast": 4.8,
+        "largeTextContrast": 3.2,
+        "uiContrast": 3.1,
+        "targetSize": 44,
+        "zoomPercent": 200
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:c92f19d96b5c3333a499049ac31c2f30233d3136a74cff6687f5ffd2ac271fe9",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "responsive",
+      "checkIdentity": "sha256:2006c4221cee6ff2e2e1c050df4873e3c5ee0bf76716edf233019c6ad184ebbd",
+      "checkerVersion": "playwright-1.51.1",
+      "ruleset": "responsive-matrix-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "browserViewportCombinations": 15,
+        "horizontalOverflow": 0,
+        "overlaps": 0,
+        "clippedItems": 0,
+        "readingOrderMatches": true,
+        "textSpacing": true,
+        "forcedColors": true,
+        "reducedMotion": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:fe930414fec19d00000672166ccf65560ab915d8a00630b602ec0d270cf7d206",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "performance",
+      "checkIdentity": "sha256:979b1f43c19ebedabf8f7994f272a8dbadc4dcb784f42268b99b00f9f17380ba",
+      "checkerVersion": "lighthouse-13.4.1",
+      "ruleset": "mobile-three-cold-runs-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "runs": 3,
+        "medianScore": 100,
+        "minimumScore": 100,
+        "medianFcpMs": 218.48559999999998,
+        "medianSpeedIndexMs": 218.48559999999998,
+        "medianLcpMs": 587.5569,
+        "medianTbtMs": 0,
+        "medianCls": 0,
+        "maximumFcpMs": 223.27749999999997,
+        "maximumSpeedIndexMs": 223.27749999999997,
+        "maximumLcpMs": 595.2775,
+        "maximumTbtMs": 2,
+        "maximumCls": 0,
+        "compressedJavaScriptBytes": 130226,
+        "initialTransferBytes": 290166,
+        "lcpRegressionPercent": 0,
+        "lcpRegressionMs": 0,
+        "tbtRegressionPercent": 0,
+        "tbtRegressionMs": 0,
+        "transferRegressionPercent": 0,
+        "transferRegressionBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:ca2843caeadf946c3cb7cf3afb0f13a927694ef967a4be8a2ced1e77020d8544",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "seo",
+      "checkIdentity": "sha256:1068cb2ae296e740ab1cdc2a15550770937599ee7f5f9a9ab483ac3ebaf4857f",
+      "checkerVersion": "seo-v1",
+      "ruleset": "production-shaped-seo-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "successful": true,
+        "indexable": true,
+        "titleCount": 1,
+        "descriptionCount": 1,
+        "h1Count": 1,
+        "absoluteSelfCanonical": true,
+        "robotsValid": true,
+        "sitemapValid": true,
+        "openGraphComplete": true,
+        "duplicateIds": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:12918be7f4921eb1a824d3dcf7dacb29ee07c65891f3c728d37ec8bbbb31727a",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "structured-data",
+      "checkIdentity": "sha256:f9600626d8a2433c83270ebf8a06a8a4a6c8c0034c8af1e663f93ea238b4da06",
+      "checkerVersion": "jsonld-v1",
+      "ruleset": "person-profile-page-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "blocked",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "valid": true,
+        "typesAllowlisted": true,
+        "factsAllowlisted": false
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:07d62be0122be0616b1083aad99b5061c6dd43cedc2e2f281ce64d49bb289689",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "links",
+      "checkIdentity": "sha256:f0092514b1513ba461c88e14ddb985ee1a10ca8f6061a6d709f32f77f3a59a6c",
+      "checkerVersion": "link-v1",
+      "ruleset": "head-get-three-attempt-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "blocked",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "internalRedirects": 0,
+        "maximumRedirects": 0,
+        "attempts": 3,
+        "methodOrder": "HEAD,GET",
+        "malformed": 0,
+        "downgrades": 0,
+        "identityMismatches": 0,
+        "confirmedNotFound": 2,
+        "mailtoAllowlisted": true,
+        "transientThirdParty": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:083febc38f87e25afda7172ab2122f8238d02cce212abeeb7d3dbcc6a32697dd",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "assets",
+      "checkIdentity": "sha256:b7a9384d2abffdc2cc6a89436549762c5d46083eb0dca7dcf5d3862a6c1a7d07",
+      "checkerVersion": "asset-v1",
+      "ruleset": "status-type-host-hash-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "missing": 0,
+        "wrongStatus": 0,
+        "wrongHost": 0,
+        "wrongContentType": 0,
+        "hashMismatches": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:a223f9aff72f3d5292f050e9257b8ec81955287f72ee6c12b2f4827fb6f8805c",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "public-resume",
+      "checkIdentity": "sha256:c5c7b873935aee58d579c4efcf11fc67fa6230565c03eed53b27748b14df5504",
+      "checkerVersion": "resume-v1",
+      "ruleset": "content-order-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "htmlGatesPass": true,
+        "contentMatches": true,
+        "sourceOrderMatches": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:0af87f7ee3c1b6b1f59bfa7254b5ee5154a1174b66ef0d8204d974d0d2a4d252",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "pdf-ua",
+      "checkIdentity": "sha256:287b3e354dfb6197775fa75d027c10a2dcf94e754b74c2b7416a867ca0c36499",
+      "checkerVersion": "veraPDF-1.30.2",
+      "ruleset": "pdf-ua-1-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "selectableText": true,
+        "title": true,
+        "language": true,
+        "tagged": true,
+        "readingOrder": true,
+        "tabOrder": true,
+        "headingsAndLists": true,
+        "linkAnnotations": true,
+        "embeddedFonts": true,
+        "clippedOrMissing": 0,
+        "validatorFailures": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:73ccd30a73205dcf542fdd84af63ee70a83b89e64cbb96ae49d3e7cfead61bd4",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "checker-integrity",
+      "checkIdentity": "sha256:8a09198f073309c1af71021e5b629d5b5e8d1b9ba6e74a33437d5b9134ff443d",
+      "checkerVersion": "runner-v1",
+      "ruleset": "fail-closed-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "blocking",
+      "integrity": "valid",
+      "measurements": {
+        "versionsPinned": true,
+        "rulesPinned": true,
+        "environmentPinned": true,
+        "configurationPinned": true,
+        "retryMaximum": 2,
+        "priorResultsReused": false
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:0d2616968bd0e35874e51729f90df993208134a83945685ee7ff3fbeaf0ba533",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "subjective-visual",
+      "checkIdentity": "sha256:4c97f5688a3a0a1b07a476cd38093279c4a89a3bdfb06a4c0bcc52af556f3e03",
+      "checkerVersion": "visual-review-v1",
+      "ruleset": "subjective-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "acceptedBaseline": true
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:e75f5f0907d4167ea701b0668d5e27629f29e666af36e303cfcdcdbb1ad96f31",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "content-screenshot",
+      "checkIdentity": "sha256:d505b00ff7c8eec35e43568d504c53a7ce4e5120f7c22a63ad0b3aac40bdb1a0",
+      "checkerVersion": "screenshot-v1",
+      "ruleset": "content-diff-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "contentDrivenDifferences": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:6ef7704b6f407cfed1229ac9e10b296084cee02632c3ea815fe1ef0293ee6adb",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    },
+    {
+      "checkerId": "field-performance",
+      "checkIdentity": "sha256:883edf577531150f17e2f5e440e8195029d58191d88177ed3970efb785f53feb",
+      "checkerVersion": "field-vitals-v1",
+      "ruleset": "p75-warning-v1",
+      "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+      "target": "http://127.0.0.1:3100",
+      "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "warning",
+      "classification": "warning",
+      "integrity": "valid",
+      "measurements": {
+        "fieldDataPresent": false,
+        "p75LcpMs": 0,
+        "p75InpMs": 0,
+        "p75Cls": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "cleanEnvironmentId": "sha256:29b67133c5d4bd47dfcdd1b0282cc63c395559d1b955955b44bbbccf25c4488f",
+          "integrity": "valid",
+          "reportPointer": "evidence/ticket-08/local-collector-execution.json"
+        }
+      ],
+      "reportPointer": "evidence/ticket-08/local-collector-execution.json",
+      "retentionClass": "compact-one-year"
+    }
+  ],
+  "evidence": {
+    "schemaVersion": 1,
+    "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+    "candidateHash": "sha256:c56b4c3435472c9d3690fa725b9d1f1821d63f2136a55d437098179c8ae5ba06",
+    "manifestHash": "sha256:17385207b265b9208677a9d2546251d3a30bf23fb86b53809ecefdfe0fd500ca",
+    "publicOutputHash": "sha256:4ea656faad3292d50759e07bf0e85f5a70cde4d126e131ada840620045785b96",
+    "deploymentId": "local-immutable-preview:aabeebc0738dffc9d5fdf963",
+    "retentionClass": "compact-one-year"
+  }
+}

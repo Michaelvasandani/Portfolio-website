@@ -1,0 +1,162 @@
+[
+  {
+    "id": "candidate-identity",
+    "version": "identity-v1",
+    "ruleset": "hash-chain-v1",
+    "classification": "blocking",
+    "requirement": "PUB-003",
+    "contradicts": []
+  },
+  {
+    "id": "manifest-hash",
+    "version": "manifest-v1",
+    "ruleset": "canonical-json-sha256-v1",
+    "classification": "blocking",
+    "requirement": "QAL-001",
+    "contradicts": []
+  },
+  {
+    "id": "provenance",
+    "version": "provenance-v1",
+    "ruleset": "field-clause-graph-v1",
+    "classification": "blocking",
+    "requirement": "QAL-001",
+    "contradicts": []
+  },
+  {
+    "id": "completeness",
+    "version": "completeness-v1",
+    "ruleset": "public-inventory-v1",
+    "classification": "blocking",
+    "requirement": "CNT-002,CNT-003,QAL-001",
+    "contradicts": []
+  },
+  {
+    "id": "public-projection",
+    "version": "projection-v1",
+    "ruleset": "allowlist-v1",
+    "classification": "blocking",
+    "requirement": "QAL-001",
+    "contradicts": []
+  },
+  {
+    "id": "privacy-leak",
+    "version": "leak-scan-v1",
+    "ruleset": "html-json-assets-pdf-v1",
+    "classification": "blocking",
+    "requirement": "QAL-001",
+    "contradicts": []
+  },
+  {
+    "id": "generated-copy",
+    "version": "copy-v1",
+    "ruleset": "copy-bounds-v1",
+    "classification": "blocking",
+    "requirement": "CNT-001,GEN-001",
+    "contradicts": []
+  },
+  {
+    "id": "accessibility",
+    "version": "axe-4.13.0",
+    "ruleset": "wcag-2.2-aa-v1",
+    "classification": "blocking",
+    "requirement": "QAL-002",
+    "contradicts": []
+  },
+  {
+    "id": "responsive",
+    "version": "playwright-1.51.1",
+    "ruleset": "responsive-matrix-v1",
+    "classification": "blocking",
+    "requirement": "PRD-003,QAL-002",
+    "contradicts": []
+  },
+  {
+    "id": "performance",
+    "version": "lighthouse-13.4.1",
+    "ruleset": "mobile-three-cold-runs-v1",
+    "classification": "blocking",
+    "requirement": "QAL-003",
+    "contradicts": []
+  },
+  {
+    "id": "seo",
+    "version": "seo-v1",
+    "ruleset": "production-shaped-seo-v1",
+    "classification": "blocking",
+    "requirement": "QAL-004",
+    "contradicts": []
+  },
+  {
+    "id": "structured-data",
+    "version": "jsonld-v1",
+    "ruleset": "person-profile-page-v1",
+    "classification": "blocking",
+    "requirement": "QAL-004",
+    "contradicts": []
+  },
+  {
+    "id": "links",
+    "version": "link-v1",
+    "ruleset": "head-get-three-attempt-v1",
+    "classification": "blocking",
+    "requirement": "QAL-004",
+    "contradicts": []
+  },
+  {
+    "id": "assets",
+    "version": "asset-v1",
+    "ruleset": "status-type-host-hash-v1",
+    "classification": "blocking",
+    "requirement": "QAL-004",
+    "contradicts": []
+  },
+  {
+    "id": "public-resume",
+    "version": "resume-v1",
+    "ruleset": "content-order-v1",
+    "classification": "blocking",
+    "requirement": "QAL-005",
+    "contradicts": []
+  },
+  {
+    "id": "pdf-ua",
+    "version": "veraPDF-1.30.2",
+    "ruleset": "pdf-ua-1-v1",
+    "classification": "blocking",
+    "requirement": "QAL-005",
+    "contradicts": []
+  },
+  {
+    "id": "checker-integrity",
+    "version": "runner-v1",
+    "ruleset": "fail-closed-v1",
+    "classification": "blocking",
+    "requirement": "QAL-006",
+    "contradicts": []
+  },
+  {
+    "id": "subjective-visual",
+    "version": "visual-review-v1",
+    "ruleset": "subjective-warning-v1",
+    "classification": "warning",
+    "requirement": "QAL-006",
+    "contradicts": []
+  },
+  {
+    "id": "content-screenshot",
+    "version": "screenshot-v1",
+    "ruleset": "content-diff-warning-v1",
+    "classification": "warning",
+    "requirement": "QAL-002,QAL-006",
+    "contradicts": []
+  },
+  {
+    "id": "field-performance",
+    "version": "field-vitals-v1",
+    "ruleset": "p75-warning-v1",
+    "classification": "warning",
+    "requirement": "QAL-003,QAL-006",
+    "contradicts": []
+  }
+]

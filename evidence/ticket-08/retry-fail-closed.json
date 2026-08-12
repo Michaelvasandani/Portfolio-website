@@ -1,0 +1,37 @@
+{
+  "checkerId": "candidate-identity",
+  "checkIdentity": "sha256:cdb7a87af0ef91e9d1e2806d3505224bef9be35940ab73729c781a82d55b8648",
+  "checkerVersion": "identity-v1",
+  "ruleset": "hash-chain-v1",
+  "configurationHash": "sha256:e76c65695e08dadb1ebb6f3069ca70651a9dbc85af5712225423672fccf6d405",
+  "target": "http://127.0.0.1:3100",
+  "targetIdentity": "sha256:747f1ea060d034d9a55051315253342154ef02d006fd0cd3a0fa85cbedfe4a0b",
+  "startedAt": "2026-08-12T22:00:00.000Z",
+  "finishedAt": "2026-08-12T22:00:00.000Z",
+  "outcome": "blocked",
+  "classification": "blocking",
+  "integrity": "crashed",
+  "measurements": {},
+  "attempts": [
+    {
+      "attempt": 1,
+      "cleanEnvironmentId": "sha256:e99a03c28821884b407fc90b4c1ab177ed6f4d4eb9fa3748b7d676997f43bc21",
+      "integrity": "crashed",
+      "reportPointer": null
+    },
+    {
+      "attempt": 2,
+      "cleanEnvironmentId": "sha256:9eff1e34b856b266fc5506d1390b61c1d1842ff992b8c501e321b2ffa5cfbb21",
+      "integrity": "crashed",
+      "reportPointer": null
+    },
+    {
+      "attempt": 3,
+      "cleanEnvironmentId": "sha256:500f4d6670a24fa6515caeb598ee102e3be934ff7c0583ba3521112d36760c41",
+      "integrity": "crashed",
+      "reportPointer": null
+    }
+  ],
+  "reportPointer": null,
+  "retentionClass": "compact-one-year"
+}

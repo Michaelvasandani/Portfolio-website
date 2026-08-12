@@ -1,0 +1,24 @@
+{
+  "evidenceSchemaVersion": 1,
+  "mandatoryCheckFields": [
+    "checkIdentity",
+    "checkerId",
+    "checkerVersion",
+    "ruleset",
+    "configurationHash",
+    "target",
+    "targetIdentity",
+    "startedAt",
+    "finishedAt",
+    "outcome",
+    "classification",
+    "integrity",
+    "measurements",
+    "attempts",
+    "reportPointer",
+    "retentionClass"
+  ],
+  "compactAuditDays": 365,
+  "bulkyRejectedAndQuarantinedDays": 30,
+  "reproducibilityMaterialForLatestValidDeployments": 20
+}

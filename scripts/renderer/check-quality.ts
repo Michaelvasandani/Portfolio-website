@@ -7,7 +7,8 @@ import { gzipSync } from "node:zlib";
 import { fixtureNames, type RendererFixtureName } from "../../src/renderer/fixtures";
 import { startRendererServer } from "./server";
 
-const reportDirectory = "evidence/ticket-03";
+const reportDirectory = process.env.RENDERER_REPORT_DIRECTORY ?? "evidence/ticket-03";
+const fixtureDirectory = process.env.RENDERER_FIXTURE_DIRECTORY ?? "evidence/ticket-03";
 mkdirSync(reportDirectory, { recursive: true });
 const server = await startRendererServer(3201);
 const { origin } = server;
@@ -114,7 +115,7 @@ try {
   const validator = process.env.VERAPDF_BIN ?? "/tmp/verapdf-1.30.2-ticket03/verapdf";
   const pdfPaths = Object.fromEntries(fixtureNames.map((fixture: RendererFixtureName) => [fixture, fixture === "typical"
     ? "public/michael-vasandani-resume.pdf"
-    : `${reportDirectory}/pdfs/${fixture}.pdf`]));
+    : `${fixtureDirectory}/pdfs/${fixture}.pdf`]));
   for (const [fixture, pdfPath] of Object.entries(pdfPaths)) {
     const validation = spawnSync(validator, ["-f", "ua1", "--format", "json", pdfPath], { encoding: "utf8" });
     if (validation.status !== 0) throw new Error(`veraPDF 1.30.2 PDF/UA-1 validation failed for ${fixture}: ${validation.stdout || validation.stderr}`);
