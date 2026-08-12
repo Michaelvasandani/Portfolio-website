@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "migrations": [
+    {
+      "file": "0001_foundations.sql",
+      "sha256": "f94404ebb699a16062cbbcd061956883e66267745c22ed6368411b8e5018bae0"
+    }
+  ]
+}

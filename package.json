@@ -1,0 +1,45 @@
+{
+  "name": "agentic-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.23.1"
+  },
+  "packageManager": "pnpm@10.4.1",
+  "scripts": {
+    "dev": "tsx scripts/validate-environment.ts && next dev",
+    "build": "next build",
+    "start": "tsx scripts/validate-environment.ts && next start",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:contracts": "vitest run src/domain/contracts.test.ts src/domain/transitions.test.ts src/domain/trust-boundaries.test.ts",
+    "test:fixtures": "vitest run src/fixtures/catalog.test.ts",
+    "test:environment": "vitest run src/config/environment.test.ts",
+    "test:schema": "tsx scripts/check-schema.ts",
+    "test:migrations": "tsx scripts/check-migrations.ts",
+    "test:browser": "playwright test",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test:schema && pnpm test && pnpm test:migrations && pnpm build && pnpm test:browser"
+  },
+  "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "next": "16.3.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.4",
+    "@playwright/test": "1.51.1",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.39.2",
+    "eslint-config-next": "16.3.0",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  }
+}
