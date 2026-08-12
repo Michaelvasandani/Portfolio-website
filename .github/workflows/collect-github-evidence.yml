@@ -1,0 +1,61 @@
+name: Collect GitHub evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: Environment-scoped private receiver and signing secret
+        required: true
+        type: choice
+        options:
+          - development
+          - preview
+          - production
+  schedule:
+    - cron: "17 9 * * *"
+
+permissions: {}
+
+concurrency:
+  group: collect-github-evidence
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: ${{ github.event_name == 'schedule' && 'production' || inputs.target_environment }}
+    steps:
+      - name: Fetch public collector source
+        env:
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git init source
+          git -C source remote add origin "https://github.com/${SOURCE_REPOSITORY}.git"
+          git -C source fetch --depth=1 origin "${SOURCE_SHA}"
+          git -C source checkout --detach FETCH_HEAD
+
+      - name: Restore public conditional-response cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: source/.github-evidence-cache/conditional.json
+          key: ${{ runner.os }}-github-evidence-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-github-evidence-
+
+      - name: Install pinned dependencies
+        working-directory: source
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile
+
+      - name: Collect and deliver signed evidence
+        working-directory: source
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_INGESTION_ENDPOINT: ${{ secrets.GITHUB_INGESTION_ENDPOINT }}
+          GITHUB_INGESTION_SECRET: ${{ secrets.GITHUB_INGESTION_SECRET }}
+          GITHUB_EVIDENCE_OWNER: ${{ vars.GITHUB_EVIDENCE_OWNER }}
+          GITHUB_CONDITIONAL_CACHE: .github-evidence-cache/conditional.json
+        run: pnpm exec tsx scripts/github/collect.ts
