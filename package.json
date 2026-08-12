@@ -17,6 +17,7 @@
     "test:contracts": "vitest run src/domain/contracts.test.ts src/domain/transitions.test.ts src/domain/trust-boundaries.test.ts",
     "test:fixtures": "vitest run src/fixtures/catalog.test.ts",
     "test:environment": "vitest run src/config/environment.test.ts",
+    "verify:provisioning": "tsx scripts/verify-provisioning.ts",
     "test:renderer": "vitest run src/renderer && playwright test tests/browser/renderer.spec.ts",
     "renderer:pdf": "tsx scripts/renderer/generate-resume-pdf.ts",
     "renderer:baselines": "tsx scripts/renderer/capture-baselines.ts",

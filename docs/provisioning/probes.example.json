@@ -1,0 +1,20 @@
+[
+  {
+    "id": "database-runtime-development-allowed",
+    "environment": "development",
+    "credentialId": "database-runtime-development",
+    "targetResourceId": "REPLACE_NEON_PROJECT_DEVELOPMENT",
+    "expected": "allowed",
+    "observed": "unavailable",
+    "redactedLogRef": "probe://ticket-02/development/database-runtime/allowed"
+  },
+  {
+    "id": "database-runtime-development-cross-environment-denied",
+    "environment": "preview",
+    "credentialId": "database-runtime-development",
+    "targetResourceId": "REPLACE_NEON_PROJECT_PREVIEW",
+    "expected": "denied",
+    "observed": "unavailable",
+    "redactedLogRef": "probe://ticket-02/development/database-runtime/denied"
+  }
+]

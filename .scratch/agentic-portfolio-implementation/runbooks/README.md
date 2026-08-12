@@ -9,30 +9,38 @@ Never paste credential values into this repository, tickets, screenshots, logs, 
 
 Human owner: Michael
 
-- [ ] Create or confirm a Vercel Pro team and separate development, preview, and production projects/environments.
-- [ ] Connect Neon PostgreSQL through Vercel Marketplace; enable pooled runtime connections, a separate migration identity, backups, and point-in-time recovery.
-- [ ] Create private Vercel Blob stores with environment separation and confirm anonymous reads/listing fail.
-- [ ] Confirm Vercel Sandbox availability and the ability to run a pinned network-disabled parser image with resource limits.
-- [ ] Create a GitHub App with only the identity permissions needed for login; record Michael's immutable numeric GitHub user ID in the secret store.
-- [ ] Register exact OAuth callbacks per environment and reject wildcard callbacks.
-- [ ] Configure the GitHub Actions ingestion secret; grant the workflow no database, Blob, model, Resend, or deployment credential.
-- [ ] Select a model provider/model that supports the GEN-001 structured evidence contract and approved privacy/retention settings; record provider/model/version in run manifests.
-- [ ] Verify a Resend sending domain and create an environment-scoped send credential restricted to the actionable-notification path.
-- [ ] Create environment-scoped Vercel control credentials with only required deployment/read/promote operations.
-- [ ] Run successful and denied connection probes for every identity, then revoke temporary probe credentials.
-- [ ] Run repository, deployment, and public-bundle secret scans.
-- [ ] Attach redacted configuration evidence and sign off [Provision the managed control plane](../issues/02-provision-the-managed-control-plane.md).
+Complete every row independently for development, preview, and production. For each checked row, record a date and an opaque redacted-evidence reference in the private ticket evidence package. A provider console screenshot is not acceptable until account email, user IDs, secret values, connection hosts, and private endpoints are redacted.
 
-Stop if environment boundaries are unclear, any service is public by default, a credential is shared across unrelated roles, denied probes succeed, or evidence would expose a secret.
+- [ ] Confirm Vercel Pro team ownership, MFA, billing approval, and three distinct project/resource identifiers; record plan and project-setting exports.
+- [ ] Connect three distinct Neon PostgreSQL projects through Vercel Marketplace; create pooled runtime and separate direct migration roles; verify backups and point-in-time recovery; record redacted role, pooling, and PITR exports.
+- [ ] Create three private Vercel Blob stores; prove authenticated access succeeds and anonymous read/list plus cross-environment identity access fail.
+- [ ] Confirm Vercel Sandbox access; pin the parser image by digest; configure network default-deny plus explicit CPU, memory, timeout, file-count, and extracted-size limits; retain one allowed-control, one resource-limit, and one network-denial log.
+- [ ] Create three GitHub Apps with only identity metadata read; store Michael's immutable numeric GitHub user ID and client secrets in the matching Vercel Sensitive Environment Variable scope.
+- [ ] Register one exact HTTPS origin and OAuth callback per environment; reject wildcard, wrong-origin, replayed, and cross-environment callbacks.
+- [ ] Create one Actions ingestion identity per environment; use only the matching GitHub Actions environment secret and `contents: read`; prove the workflow has no database, Blob, OAuth, model, Resend, migration, or Vercel-control credential.
+- [ ] Select and record a provider, model, and pinned version satisfying GEN-001 structured output; obtain provider evidence that training is disabled and retention is zero for every environment identity.
+- [ ] Verify three distinct Resend sending subdomains/domains; restrict each identity to actionable email from its environment domain; retain verified-domain exports and expected-denial logs.
+- [ ] Create three environment-scoped Vercel control identities restricted to read/create/promote operations for their own project; do not grant team administration, billing, secret read, or unrelated-project access.
+- [ ] Review and sign the repository [least-privilege matrix](../../../docs/provisioning/access-matrix.md); confirm every credential has a holder, exact operations, approved environment-scoped store, Michael as rotation owner, and a provider revocation path.
+- [ ] Populate a credential-free provisioning manifest and run an allowed and cross-environment denied probe for every identity with `pnpm verify:provisioning`; revoke any temporary probe credential and prove it is denied afterward.
+- [ ] Build the site and scan the repository, deployment output, source maps, headers/settings export, and public bundle; retain the redacted JSON verifier report plus provider-native secret-scan output.
+- [ ] Attach all redacted provider-setting exports, resource identifiers, probe logs, scan reports, PITR state, and matrix review to the private evidence package.
+- [ ] Michael Sagar Vasandani records final sign-off as both owner and reviewer with an exact UTC ISO date, canonical manifest SHA-256, non-placeholder private evidence-package reference, and the statement: “All provisioning checklist items are complete; no credential value is present in evidence.” Rerun verification after binding the hash; any later manifest change invalidates sign-off.
+
+Stop and leave ticket 02 open if environment boundaries are unclear, a resource identifier or credential is shared, any service is public by default, a scope exceeds the matrix, a denied probe succeeds, a probe target is not the recorded resource, a temporary credential remains active, evidence is missing, or evidence would expose a secret.
 
 ## Credential rotation
 
+- [ ] Obtain Michael's change approval; name the exact credential ID and environment from the [least-privilege matrix](../../../docs/provisioning/access-matrix.md). For suspected compromise, skip ordinary scheduling and begin **Incident response** immediately.
 - [ ] Identify credential, environments, holder, dependent components, provider revocation behavior, and incident status.
 - [ ] Create a replacement with equal or narrower scope in the approved secret store.
-- [ ] Deploy consumers without printing the value; prove successful use and expected denial outside scope.
+- [ ] Record only new credential metadata, creation date, scope, and secret-store reference; never export or diff its value.
+- [ ] Deploy consumers without printing the value; prove successful use in the intended environment and expected denial in another environment.
 - [ ] Revoke the old credential and verify it fails.
 - [ ] Invalidate sessions when OAuth/session material changed; reconcile in-flight outbox/provider operations before rotating Vercel or Blob control credentials.
-- [ ] Update credential metadata and rotation date, not the value; run secret and public-bundle scans.
+- [ ] For database migration/runtime roles, verify the old role cannot connect; for Actions ingestion, verify old signatures fail; for provider APIs, retain a redacted denied response fingerprint.
+- [ ] Update credential metadata and rotation date, not the value; rebuild consumers when required and run repository, deployment, and public-bundle scans.
+- [ ] Record completion, verifier-report reference, provider activity-event reference, and next review date; delete local temporary files containing the value through the approved secret-handling process.
 - [ ] If compromise is suspected, follow **Incident response** and inspect every provider/audit event within the exposure window.
 
 ## Normal publication

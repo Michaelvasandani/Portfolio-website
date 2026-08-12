@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "reviewedBy": "pending-human-review",
+  "environments": [
+    {
+      "environment": "development",
+      "publicOrigin": "https://development.REPLACE_DOMAIN",
+      "oauthCallback": "https://development.REPLACE_DOMAIN/api/auth/github/callback",
+      "services": {
+        "vercel": { "plan": "pro", "projectId": "REPLACE_VERCEL_PROJECT_DEVELOPMENT", "controlCredentialId": "vercel-control-development" },
+        "database": { "provider": "neon-marketplace", "marketplace": "vercel-marketplace", "resourceId": "REPLACE_NEON_PROJECT_DEVELOPMENT", "pooledRuntime": true, "runtimeCredentialId": "database-runtime-development", "migrationCredentialId": "database-migration-development", "pointInTimeRecovery": { "enabled": false, "evidenceRef": "evidence://ticket-02/development/pitr" } },
+        "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_DEVELOPMENT", "access": "private", "runtimeCredentialId": "blob-runtime-development" },
+        "sandbox": { "resourceId": "REPLACE_SANDBOX_DEVELOPMENT", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
+        "githubApp": { "appId": "REPLACE_GITHUB_APP_DEVELOPMENT", "oauthCredentialId": "github-oauth-development", "immutableOwnerIdSecretRef": "secret-store://vercel/development/github-owner-id", "permissions": { "metadata": "read" } },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-development", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-development", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
+        "resend": { "domain": "development.REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-development" }
+      }
+    },
+    {
+      "environment": "preview",
+      "publicOrigin": "https://preview.REPLACE_DOMAIN",
+      "oauthCallback": "https://preview.REPLACE_DOMAIN/api/auth/github/callback",
+      "services": {
+        "vercel": { "plan": "pro", "projectId": "REPLACE_VERCEL_PROJECT_PREVIEW", "controlCredentialId": "vercel-control-preview" },
+        "database": { "provider": "neon-marketplace", "marketplace": "vercel-marketplace", "resourceId": "REPLACE_NEON_PROJECT_PREVIEW", "pooledRuntime": true, "runtimeCredentialId": "database-runtime-preview", "migrationCredentialId": "database-migration-preview", "pointInTimeRecovery": { "enabled": false, "evidenceRef": "evidence://ticket-02/preview/pitr" } },
+        "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_PREVIEW", "access": "private", "runtimeCredentialId": "blob-runtime-preview" },
+        "sandbox": { "resourceId": "REPLACE_SANDBOX_PREVIEW", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
+        "githubApp": { "appId": "REPLACE_GITHUB_APP_PREVIEW", "oauthCredentialId": "github-oauth-preview", "immutableOwnerIdSecretRef": "secret-store://vercel/preview/github-owner-id", "permissions": { "metadata": "read" } },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-preview", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-preview", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
+        "resend": { "domain": "preview.REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-preview" }
+      }
+    },
+    {
+      "environment": "production",
+      "publicOrigin": "https://REPLACE_DOMAIN",
+      "oauthCallback": "https://REPLACE_DOMAIN/api/auth/github/callback",
+      "services": {
+        "vercel": { "plan": "pro", "projectId": "REPLACE_VERCEL_PROJECT_PRODUCTION", "controlCredentialId": "vercel-control-production" },
+        "database": { "provider": "neon-marketplace", "marketplace": "vercel-marketplace", "resourceId": "REPLACE_NEON_PROJECT_PRODUCTION", "pooledRuntime": true, "runtimeCredentialId": "database-runtime-production", "migrationCredentialId": "database-migration-production", "pointInTimeRecovery": { "enabled": false, "evidenceRef": "evidence://ticket-02/production/pitr" } },
+        "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_PRODUCTION", "access": "private", "runtimeCredentialId": "blob-runtime-production" },
+        "sandbox": { "resourceId": "REPLACE_SANDBOX_PRODUCTION", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
+        "githubApp": { "appId": "REPLACE_GITHUB_APP_PRODUCTION", "oauthCredentialId": "github-oauth-production", "immutableOwnerIdSecretRef": "secret-store://vercel/production/github-owner-id", "permissions": { "metadata": "read" } },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-production", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-production", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
+        "resend": { "domain": "REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-production" }
+      }
+    }
+  ],
+  "credentials": [
+    { "id": "database-runtime-development", "role": "database-runtime", "environment": "development", "holder": "vercel-server", "environmentVariable": "DATABASE_URL", "allowedOperations": ["connect-pooled", "read", "write"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/development/runtime-role" },
+    { "id": "database-migration-development", "role": "database-migration", "environment": "development", "holder": "vercel-server", "environmentVariable": "DATABASE_MIGRATION_URL", "allowedOperations": ["connect-direct", "migrate-schema"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/development/migration-role" },
+    { "id": "blob-runtime-development", "role": "blob-runtime", "environment": "development", "holder": "vercel-server", "environmentVariable": "PRIVATE_BLOB_TOKEN", "allowedOperations": ["read-private", "write-private", "delete-private"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/development/blob" },
+    { "id": "github-oauth-development", "role": "github-oauth", "environment": "development", "holder": "vercel-server", "environmentVariable": "GITHUB_APP_CLIENT_SECRET", "allowedOperations": ["oauth-user-identity"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://github/development/app-secret" },
+    { "id": "github-ingestion-development", "role": "github-ingestion", "environment": "development", "holder": "github-actions", "environmentVariable": "GITHUB_INGESTION_SECRET", "allowedOperations": ["submit-signed-snapshot"], "secretStore": "github-actions:development", "rotationOwner": "Michael", "revocationPath": "provider-console://github/development/actions-secret" },
+    { "id": "model-generation-development", "role": "model-generation", "environment": "development", "holder": "vercel-server", "environmentVariable": "MODEL_API_KEY", "allowedOperations": ["generate-structured-output"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://model/development/key" },
+    { "id": "resend-notification-development", "role": "resend-notification", "environment": "development", "holder": "vercel-server", "environmentVariable": "RESEND_API_KEY", "allowedOperations": ["send-actionable-email"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://resend/development/key" },
+    { "id": "vercel-control-development", "role": "vercel-control", "environment": "development", "holder": "vercel-server", "environmentVariable": "VERCEL_CONTROL_TOKEN", "allowedOperations": ["read-deployment", "create-deployment", "promote-deployment"], "secretStore": "vercel-sensitive-env:development", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/development/control" },
+    { "id": "database-runtime-preview", "role": "database-runtime", "environment": "preview", "holder": "vercel-server", "environmentVariable": "DATABASE_URL", "allowedOperations": ["connect-pooled", "read", "write"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/preview/runtime-role" },
+    { "id": "database-migration-preview", "role": "database-migration", "environment": "preview", "holder": "vercel-server", "environmentVariable": "DATABASE_MIGRATION_URL", "allowedOperations": ["connect-direct", "migrate-schema"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/preview/migration-role" },
+    { "id": "blob-runtime-preview", "role": "blob-runtime", "environment": "preview", "holder": "vercel-server", "environmentVariable": "PRIVATE_BLOB_TOKEN", "allowedOperations": ["read-private", "write-private", "delete-private"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/preview/blob" },
+    { "id": "github-oauth-preview", "role": "github-oauth", "environment": "preview", "holder": "vercel-server", "environmentVariable": "GITHUB_APP_CLIENT_SECRET", "allowedOperations": ["oauth-user-identity"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://github/preview/app-secret" },
+    { "id": "github-ingestion-preview", "role": "github-ingestion", "environment": "preview", "holder": "github-actions", "environmentVariable": "GITHUB_INGESTION_SECRET", "allowedOperations": ["submit-signed-snapshot"], "secretStore": "github-actions:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://github/preview/actions-secret" },
+    { "id": "model-generation-preview", "role": "model-generation", "environment": "preview", "holder": "vercel-server", "environmentVariable": "MODEL_API_KEY", "allowedOperations": ["generate-structured-output"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://model/preview/key" },
+    { "id": "resend-notification-preview", "role": "resend-notification", "environment": "preview", "holder": "vercel-server", "environmentVariable": "RESEND_API_KEY", "allowedOperations": ["send-actionable-email"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://resend/preview/key" },
+    { "id": "vercel-control-preview", "role": "vercel-control", "environment": "preview", "holder": "vercel-server", "environmentVariable": "VERCEL_CONTROL_TOKEN", "allowedOperations": ["read-deployment", "create-deployment", "promote-deployment"], "secretStore": "vercel-sensitive-env:preview", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/preview/control" },
+    { "id": "database-runtime-production", "role": "database-runtime", "environment": "production", "holder": "vercel-server", "environmentVariable": "DATABASE_URL", "allowedOperations": ["connect-pooled", "read", "write"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/production/runtime-role" },
+    { "id": "database-migration-production", "role": "database-migration", "environment": "production", "holder": "vercel-server", "environmentVariable": "DATABASE_MIGRATION_URL", "allowedOperations": ["connect-direct", "migrate-schema"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://neon/production/migration-role" },
+    { "id": "blob-runtime-production", "role": "blob-runtime", "environment": "production", "holder": "vercel-server", "environmentVariable": "PRIVATE_BLOB_TOKEN", "allowedOperations": ["read-private", "write-private", "delete-private"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/production/blob" },
+    { "id": "github-oauth-production", "role": "github-oauth", "environment": "production", "holder": "vercel-server", "environmentVariable": "GITHUB_APP_CLIENT_SECRET", "allowedOperations": ["oauth-user-identity"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://github/production/app-secret" },
+    { "id": "github-ingestion-production", "role": "github-ingestion", "environment": "production", "holder": "github-actions", "environmentVariable": "GITHUB_INGESTION_SECRET", "allowedOperations": ["submit-signed-snapshot"], "secretStore": "github-actions:production", "rotationOwner": "Michael", "revocationPath": "provider-console://github/production/actions-secret" },
+    { "id": "model-generation-production", "role": "model-generation", "environment": "production", "holder": "vercel-server", "environmentVariable": "MODEL_API_KEY", "allowedOperations": ["generate-structured-output"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://model/production/key" },
+    { "id": "resend-notification-production", "role": "resend-notification", "environment": "production", "holder": "vercel-server", "environmentVariable": "RESEND_API_KEY", "allowedOperations": ["send-actionable-email"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://resend/production/key" },
+    { "id": "vercel-control-production", "role": "vercel-control", "environment": "production", "holder": "vercel-server", "environmentVariable": "VERCEL_CONTROL_TOKEN", "allowedOperations": ["read-deployment", "create-deployment", "promote-deployment"], "secretStore": "vercel-sensitive-env:production", "rotationOwner": "Michael", "revocationPath": "provider-console://vercel/production/control" }
+  ],
+  "evidence": {
+    "providerSettings": [
+      { "environment": "development", "provider": "vercel", "redactedRef": "evidence://ticket-02/development/vercel" },
+      { "environment": "development", "provider": "database", "redactedRef": "evidence://ticket-02/development/database" },
+      { "environment": "development", "provider": "blob", "redactedRef": "evidence://ticket-02/development/blob" },
+      { "environment": "development", "provider": "sandbox", "redactedRef": "evidence://ticket-02/development/sandbox" },
+      { "environment": "development", "provider": "github-app", "redactedRef": "evidence://ticket-02/development/github-app" },
+      { "environment": "development", "provider": "model", "redactedRef": "evidence://ticket-02/development/model" },
+      { "environment": "development", "provider": "resend", "redactedRef": "evidence://ticket-02/development/resend" },
+      { "environment": "preview", "provider": "vercel", "redactedRef": "evidence://ticket-02/preview/vercel" },
+      { "environment": "preview", "provider": "database", "redactedRef": "evidence://ticket-02/preview/database" },
+      { "environment": "preview", "provider": "blob", "redactedRef": "evidence://ticket-02/preview/blob" },
+      { "environment": "preview", "provider": "sandbox", "redactedRef": "evidence://ticket-02/preview/sandbox" },
+      { "environment": "preview", "provider": "github-app", "redactedRef": "evidence://ticket-02/preview/github-app" },
+      { "environment": "preview", "provider": "model", "redactedRef": "evidence://ticket-02/preview/model" },
+      { "environment": "preview", "provider": "resend", "redactedRef": "evidence://ticket-02/preview/resend" },
+      { "environment": "production", "provider": "vercel", "redactedRef": "evidence://ticket-02/production/vercel" },
+      { "environment": "production", "provider": "database", "redactedRef": "evidence://ticket-02/production/database" },
+      { "environment": "production", "provider": "blob", "redactedRef": "evidence://ticket-02/production/blob" },
+      { "environment": "production", "provider": "sandbox", "redactedRef": "evidence://ticket-02/production/sandbox" },
+      { "environment": "production", "provider": "github-app", "redactedRef": "evidence://ticket-02/production/github-app" },
+      { "environment": "production", "provider": "model", "redactedRef": "evidence://ticket-02/production/model" },
+      { "environment": "production", "provider": "resend", "redactedRef": "evidence://ticket-02/production/resend" }
+    ],
+    "humanSignoff": { "status": "pending", "owner": "Michael Sagar Vasandani" }
+  }
+}
