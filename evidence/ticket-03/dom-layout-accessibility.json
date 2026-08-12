@@ -1,0 +1,1686 @@
+{
+  "browser": "chromium",
+  "axeCore": "4.13.0",
+  "entries": [
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/resume",
+      "status": 200,
+      "title": "Michael Sagar Vasandani — Public Résumé",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani — Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer Intern — ResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI Intern — Qualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research Assistant — Smarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — Boost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — TipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H3",
+          "text": "University of California, San Diego - San Diego, CA"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/sparse",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "Software EngineerExample Systems"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/dense",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H3",
+          "text": "Publication Systems EngineerFixture Laboratory"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H3",
+          "text": "clinical-trial-finder"
+        },
+        {
+          "level": "H3",
+          "text": "ClosetOS"
+        },
+        {
+          "level": "H3",
+          "text": "Keeping-Up-AI"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H3",
+          "text": "Awards"
+        },
+        {
+          "level": "H3",
+          "text": "Certifications"
+        },
+        {
+          "level": "H3",
+          "text": "Publications"
+        },
+        {
+          "level": "H3",
+          "text": "Volunteering"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/resume",
+      "status": 200,
+      "title": "Michael Sagar Vasandani — Public Résumé",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani — Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer Intern — ResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI Intern — Qualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research Assistant — Smarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — Boost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — TipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H3",
+          "text": "University of California, San Diego - San Diego, CA"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/sparse",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "Software EngineerExample Systems"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/dense",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H3",
+          "text": "Publication Systems EngineerFixture Laboratory"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H3",
+          "text": "clinical-trial-finder"
+        },
+        {
+          "level": "H3",
+          "text": "ClosetOS"
+        },
+        {
+          "level": "H3",
+          "text": "Keeping-Up-AI"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H3",
+          "text": "Awards"
+        },
+        {
+          "level": "H3",
+          "text": "Certifications"
+        },
+        {
+          "level": "H3",
+          "text": "Publications"
+        },
+        {
+          "level": "H3",
+          "text": "Volunteering"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/resume",
+      "status": 200,
+      "title": "Michael Sagar Vasandani — Public Résumé",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani — Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer Intern — ResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI Intern — Qualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research Assistant — Smarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — Boost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — TipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H3",
+          "text": "University of California, San Diego - San Diego, CA"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/sparse",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "Software EngineerExample Systems"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/dense",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H3",
+          "text": "Publication Systems EngineerFixture Laboratory"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H3",
+          "text": "clinical-trial-finder"
+        },
+        {
+          "level": "H3",
+          "text": "ClosetOS"
+        },
+        {
+          "level": "H3",
+          "text": "Keeping-Up-AI"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H3",
+          "text": "Awards"
+        },
+        {
+          "level": "H3",
+          "text": "Certifications"
+        },
+        {
+          "level": "H3",
+          "text": "Publications"
+        },
+        {
+          "level": "H3",
+          "text": "Volunteering"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/resume",
+      "status": 200,
+      "title": "Michael Sagar Vasandani — Public Résumé",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani — Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer Intern — ResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI Intern — Qualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research Assistant — Smarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — Boost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — TipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H3",
+          "text": "University of California, San Diego - San Diego, CA"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/sparse",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "Software EngineerExample Systems"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/dense",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H3",
+          "text": "Publication Systems EngineerFixture Laboratory"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H3",
+          "text": "clinical-trial-finder"
+        },
+        {
+          "level": "H3",
+          "text": "ClosetOS"
+        },
+        {
+          "level": "H3",
+          "text": "Keeping-Up-AI"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H3",
+          "text": "Awards"
+        },
+        {
+          "level": "H3",
+          "text": "Certifications"
+        },
+        {
+          "level": "H3",
+          "text": "Publications"
+        },
+        {
+          "level": "H3",
+          "text": "Volunteering"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/resume",
+      "status": 200,
+      "title": "Michael Sagar Vasandani — Public Résumé",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani — Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer Intern — ResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI Intern — Qualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research Assistant — Smarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — Boost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer Intern — TipTop Technologies"
+        },
+        {
+          "level": "H2",
+          "text": "Education"
+        },
+        {
+          "level": "H3",
+          "text": "University of California, San Diego - San Diego, CA"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Technical Skills"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/sparse",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "Software EngineerExample Systems"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    },
+    {
+      "route": "/renderer-fixtures/dense",
+      "status": 200,
+      "title": "Michael Vasandani — AI Engineering Portfolio",
+      "language": "en",
+      "headings": [
+        {
+          "level": "H1",
+          "text": "Michael Sagar Vasandani"
+        },
+        {
+          "level": "H2",
+          "text": "About"
+        },
+        {
+          "level": "H2",
+          "text": "Experience"
+        },
+        {
+          "level": "H3",
+          "text": "AI Engineer InternResMed"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer - AI InternQualcomm Institute"
+        },
+        {
+          "level": "H3",
+          "text": "Research AssistantSmarr Lab"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternBoost Health Labs"
+        },
+        {
+          "level": "H3",
+          "text": "Software Engineer InternTipTop Technologies"
+        },
+        {
+          "level": "H3",
+          "text": "Publication Systems EngineerFixture Laboratory"
+        },
+        {
+          "level": "H2",
+          "text": "Projects"
+        },
+        {
+          "level": "H3",
+          "text": "Hackathon-In-A-Box"
+        },
+        {
+          "level": "H3",
+          "text": "SafeTrip SF"
+        },
+        {
+          "level": "H3",
+          "text": "Personal Call Agent"
+        },
+        {
+          "level": "H3",
+          "text": "clinical-trial-finder"
+        },
+        {
+          "level": "H3",
+          "text": "ClosetOS"
+        },
+        {
+          "level": "H3",
+          "text": "Keeping-Up-AI"
+        },
+        {
+          "level": "H2",
+          "text": "Résumé"
+        },
+        {
+          "level": "H3",
+          "text": "Bachelor of Science in Data Science - GPA: 3.82"
+        },
+        {
+          "level": "H3",
+          "text": "Languages"
+        },
+        {
+          "level": "H3",
+          "text": "Frameworks"
+        },
+        {
+          "level": "H3",
+          "text": "Tools & Cloud"
+        },
+        {
+          "level": "H3",
+          "text": "Libraries"
+        },
+        {
+          "level": "H3",
+          "text": "Awards"
+        },
+        {
+          "level": "H3",
+          "text": "Certifications"
+        },
+        {
+          "level": "H3",
+          "text": "Publications"
+        },
+        {
+          "level": "H3",
+          "text": "Volunteering"
+        },
+        {
+          "level": "H2",
+          "text": "Links"
+        }
+      ],
+      "fixture": "typical",
+      "documentWidth": 1920,
+      "viewportWidth": 1920,
+      "horizontalOverflow": false,
+      "clippedElements": 0,
+      "axeViolations": []
+    }
+  ]
+}

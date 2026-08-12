@@ -1,0 +1,201 @@
+{
+  "checker": "lighthouse",
+  "version": "13.4.1",
+  "environment": {
+    "node": "v22.23.1",
+    "operatingSystem": "darwin 23.6.0",
+    "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "throttling": {
+      "rttMs": 40,
+      "throughputKbps": 10240,
+      "cpuSlowdownMultiplier": 2
+    },
+    "coldRunsPerFixture": 3,
+    "chromeFlags": [
+      "--headless",
+      "--no-sandbox"
+    ],
+    "fixtures": [
+      "sparse",
+      "dense"
+    ]
+  },
+  "runs": [
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 212.55990000000003,
+      "speedIndex": 212.55990000000003,
+      "lcp": 571.5599,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 207.55939999999998,
+      "speedIndex": 207.55939999999998,
+      "lcp": 558.5594,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 206.97860000000003,
+      "speedIndex": 206.97860000000003,
+      "lcp": 526.9786,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 207.45999999999998,
+      "speedIndex": 207.45999999999998,
+      "lcp": 527.46,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 207.1793,
+      "speedIndex": 207.1793,
+      "lcp": 559.1793,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 207.1365,
+      "speedIndex": 207.1365,
+      "lcp": 557.1365,
+      "tbt": 0,
+      "cls": 0
+    }
+  ],
+  "fixtureGroups": {
+    "sparse": {
+      "runs": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 212.55990000000003,
+          "speedIndex": 212.55990000000003,
+          "lcp": 571.5599,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 207.55939999999998,
+          "speedIndex": 207.55939999999998,
+          "lcp": 558.5594,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 206.97860000000003,
+          "speedIndex": 206.97860000000003,
+          "lcp": 526.9786,
+          "tbt": 0,
+          "cls": 0
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "fcp": 207.55939999999998,
+        "speedIndex": 207.55939999999998,
+        "lcp": 558.5594,
+        "tbt": 0,
+        "cls": 0
+      }
+    },
+    "dense": {
+      "runs": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 207.45999999999998,
+          "speedIndex": 207.45999999999998,
+          "lcp": 527.46,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 207.1793,
+          "speedIndex": 207.1793,
+          "lcp": 559.1793,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 207.1365,
+          "speedIndex": 207.1365,
+          "lcp": 557.1365,
+          "tbt": 0,
+          "cls": 0
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "fcp": 207.1793,
+        "speedIndex": 207.1793,
+        "lcp": 557.1365,
+        "tbt": 0,
+        "cls": 0
+      }
+    }
+  },
+  "median": {
+    "performance": 100,
+    "fcp": 207.45999999999998,
+    "speedIndex": 207.45999999999998,
+    "lcp": 558.5594,
+    "tbt": 0,
+    "cls": 0
+  },
+  "configurationHash": "06cdddbb0bd878924b29db49a69eb9a98e3e65a17b95158740017de53245782a",
+  "seo": 100,
+  "budgets": {
+    "compressedJavaScript": 129773,
+    "initialTransfer": 289706
+  },
+  "pdfUaFixtures": [
+    "sparse",
+    "typical",
+    "dense",
+    "long-word",
+    "optional-section",
+    "six-pin"
+  ],
+  "hashes": [
+    {
+      "path": "package.json",
+      "sha256": "9dc189fd9cd3fec917905392ad72452d857f95a04acf83e9605bf44cb05199da"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "53f9d38b40dca81c4dab191623c673ced354f751013e649919d10d910093f83b"
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "e92d21e547e187c5f9cea31313805ea63b472fc9e016b2c7e1600a3b1b2d5dd4"
+    },
+    {
+      "path": "public/michael-vasandani-resume.pdf",
+      "sha256": "3be92edaac5d51ba120e7b259fe54cc9dbae650e4c1c4d11c3fa11ea1daa2d5e"
+    }
+  ]
+}
