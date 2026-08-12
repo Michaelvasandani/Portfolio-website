@@ -1,0 +1,9 @@
+{
+  "parser": "portfolio-career-parser@1.0.0-local",
+  "environment": "repository-local executable harness; not Vercel Sandbox",
+  "results": [
+    { "filename": "resume.md", "bytes": 428, "documentHash": "sha256:ae3eab2881f9cd77713889cc9e7b64870ff069d82cf467950c71c9df0a685d41", "snapshotId": "career:c0092bcb71818bf92aa6d02e", "deletionState": "applied" },
+    { "filename": "resume.docx", "bytes": 2625, "documentHash": "sha256:8ba46e50bc3cb886f752827be77f37de910fb0ec2f09cf0a7fa737fe43077b3d", "snapshotId": "career:d13804ebfc46ff2d8a22732d", "deletionState": "applied" },
+    { "filename": "resume.pdf", "bytes": 1088, "documentHash": "sha256:4245cebc6193416abf1ac36bb9a9d122ca88115b73fccd89073d42acd98ad757", "snapshotId": "career:ed346d3bc05174f0179cc9ad", "deletionState": "applied" }
+  ]
+}
