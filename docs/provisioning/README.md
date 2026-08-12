@@ -32,7 +32,7 @@ The verifier checks:
 - development, preview, and production resource and credential separation;
 - exact per-environment HTTPS origins and OAuth callbacks;
 - Vercel Pro, Neon Marketplace, pooled runtime access, separate migration identity, and PITR;
-- private Blob, a network-denied pinned Sandbox with explicit CPU, memory, timeout, file-count, and extracted-size limits, minimal GitHub App permissions, and isolated Actions ingestion with exactly `contents: read`;
+- private Blob, a network-denied pinned Sandbox with explicit CPU, memory, timeout, file-count, and extracted-size limits, minimal GitHub App permissions, and isolated Actions ingestion with `permissions: {}` for the built-in `GITHUB_TOKEN`;
 - structured model output with training disabled and zero retention, plus verified environment-specific Resend domains;
 - exact least-privilege operations, approved environment-scoped secret stores, rotation ownership, and revocation paths;
 - fixed server-only secret variable names, with any `NEXT_PUBLIC_` credential rejected;

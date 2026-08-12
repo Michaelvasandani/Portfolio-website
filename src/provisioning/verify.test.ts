@@ -72,7 +72,7 @@ function completeManifest(): ProvisioningManifest {
         },
         githubActions: {
           ingestionCredentialId: `github-ingestion-${environment}`,
-          permissions: { contents: "read" },
+          permissions: {},
           forbiddenCredentialRolesPresent: [],
         },
         model: {
@@ -204,6 +204,18 @@ describe("provisioning manifest contract", () => {
     expect(validateProvisioningManifest(completeManifest())).toEqual([]);
   });
 
+  it("requires no configurable permissions on the built-in GitHub Actions token", () => {
+    const manifest = completeManifest();
+    const untrustedGitHubActions = manifest.environments[2]!.services.githubActions as unknown as {
+      permissions: Record<string, string>;
+    };
+    untrustedGitHubActions.permissions = { contents: "read" };
+
+    expect(validateProvisioningManifest(manifest)).toEqual(
+      expect.arrayContaining([expect.stringMatching(/GitHub Actions.*no configurable.*permissions/i)]),
+    );
+  });
+
   it("fails closed when a credential or resource is shared across environments", () => {
     const manifest = completeManifest();
     manifest.environments[1]!.services.database.resourceId =
@@ -227,7 +239,10 @@ describe("provisioning manifest contract", () => {
     production.services.database.pointInTimeRecovery.enabled = false;
     production.services.githubApp.permissions = { contents: "write" };
     production.services.githubActions.forbiddenCredentialRolesPresent = ["database-runtime"];
-    production.services.githubActions.permissions = { contents: "write", packages: "read" };
+    const untrustedGitHubActions = production.services.githubActions as unknown as {
+      permissions: Record<string, string>;
+    };
+    untrustedGitHubActions.permissions = { contents: "write", packages: "read" };
     production.oauthCallback = "https://*.portfolio.example/api/auth/github/callback";
     production.services.model.providerTraining = true;
     production.services.resend.domainVerified = false;
@@ -239,7 +254,7 @@ describe("provisioning manifest contract", () => {
         expect.stringMatching(/point-in-time recovery/i),
         expect.stringMatching(/GitHub App.*minimal/i),
         expect.stringMatching(/GitHub Actions.*forbidden/i),
-        expect.stringMatching(/GitHub Actions.*contents.*read/i),
+        expect.stringMatching(/GitHub Actions.*no configurable.*permissions/i),
         expect.stringMatching(/callback.*exact/i),
         expect.stringMatching(/training/i),
         expect.stringMatching(/Resend domain.*verified/i),

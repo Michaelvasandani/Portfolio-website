@@ -48,3 +48,7 @@ The example verification correctly failed because PITR/domain/provider evidence 
 - Completed access-matrix review, revoked temporary probe credentials, repository/deployment/public-bundle/provider-native scan reports, manifest hash, and Michael's signed provisioning checklist.
 
 Until every item above is attached without secret values and Michael signs the checklist, ticket 02 must remain open and later work must not treat the managed control plane as provisioned.
+
+## Repository-contract audit amendment
+
+The implementation audit corrected the Actions manifest contract to require `permissions: {}`, matching GIT-001, the traceability matrix, and the successful least-privilege token proof. A manifest that grants `contents: read` now fails validation. This repository correction does not change the ticket status or assert that an environment identity or workflow has been provisioned.

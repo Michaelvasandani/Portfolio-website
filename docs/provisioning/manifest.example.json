@@ -12,7 +12,7 @@
         "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_DEVELOPMENT", "access": "private", "runtimeCredentialId": "blob-runtime-development" },
         "sandbox": { "resourceId": "REPLACE_SANDBOX_DEVELOPMENT", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
         "githubApp": { "appId": "REPLACE_GITHUB_APP_DEVELOPMENT", "oauthCredentialId": "github-oauth-development", "immutableOwnerIdSecretRef": "secret-store://vercel/development/github-owner-id", "permissions": { "metadata": "read" } },
-        "githubActions": { "ingestionCredentialId": "github-ingestion-development", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-development", "permissions": {}, "forbiddenCredentialRolesPresent": [] },
         "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-development", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
         "resend": { "domain": "development.REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-development" }
       }
@@ -27,7 +27,7 @@
         "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_PREVIEW", "access": "private", "runtimeCredentialId": "blob-runtime-preview" },
         "sandbox": { "resourceId": "REPLACE_SANDBOX_PREVIEW", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
         "githubApp": { "appId": "REPLACE_GITHUB_APP_PREVIEW", "oauthCredentialId": "github-oauth-preview", "immutableOwnerIdSecretRef": "secret-store://vercel/preview/github-owner-id", "permissions": { "metadata": "read" } },
-        "githubActions": { "ingestionCredentialId": "github-ingestion-preview", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-preview", "permissions": {}, "forbiddenCredentialRolesPresent": [] },
         "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-preview", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
         "resend": { "domain": "preview.REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-preview" }
       }
@@ -42,7 +42,7 @@
         "blob": { "resourceId": "REPLACE_PRIVATE_BLOB_PRODUCTION", "access": "private", "runtimeCredentialId": "blob-runtime-production" },
         "sandbox": { "resourceId": "REPLACE_SANDBOX_PRODUCTION", "networkDefault": "deny", "parserImageDigest": "sha256:REPLACE_WITH_64_LOWERCASE_HEX_CHARACTERS", "limits": { "cpuCores": 1, "memoryMiB": 1024, "timeoutSeconds": 300, "maximumFiles": 256, "maximumExtractedBytes": 50000000 } },
         "githubApp": { "appId": "REPLACE_GITHUB_APP_PRODUCTION", "oauthCredentialId": "github-oauth-production", "immutableOwnerIdSecretRef": "secret-store://vercel/production/github-owner-id", "permissions": { "metadata": "read" } },
-        "githubActions": { "ingestionCredentialId": "github-ingestion-production", "permissions": { "contents": "read" }, "forbiddenCredentialRolesPresent": [] },
+        "githubActions": { "ingestionCredentialId": "github-ingestion-production", "permissions": {}, "forbiddenCredentialRolesPresent": [] },
         "model": { "provider": "REPLACE_APPROVED_PROVIDER", "model": "REPLACE_MODEL", "version": "REPLACE_PINNED_VERSION", "credentialId": "model-generation-production", "structuredOutput": true, "providerTraining": false, "retention": "zero" },
         "resend": { "domain": "REPLACE_MAIL_DOMAIN", "domainVerified": false, "credentialId": "resend-notification-production" }
       }

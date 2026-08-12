@@ -28,6 +28,8 @@ export interface CredentialGrant {
   revocationPath: string;
 }
 
+export type NoConfigurableGitHubTokenPermissions = Readonly<Record<string, never>>;
+
 export interface EnvironmentProvisioning {
   environment: ManagedEnvironment;
   publicOrigin: string;
@@ -72,7 +74,7 @@ export interface EnvironmentProvisioning {
     };
     githubActions: {
       ingestionCredentialId: string;
-      permissions: Record<string, string>;
+      permissions: NoConfigurableGitHubTokenPermissions;
       forbiddenCredentialRolesPresent: string[];
     };
     model: {
@@ -282,11 +284,8 @@ function validateProvisioningManifestShape(manifest: ProvisioningManifest): stri
     if (services.githubActions.forbiddenCredentialRolesPresent.length > 0) {
       errors.push(`${entry.environment} GitHub Actions contains forbidden provider credential roles`);
     }
-    if (
-      Object.keys(services.githubActions.permissions).length !== 1 ||
-      services.githubActions.permissions.contents !== "read"
-    ) {
-      errors.push(`${entry.environment} GitHub Actions permissions must be exactly contents read`);
+    if (Object.keys(services.githubActions.permissions).length !== 0) {
+      errors.push(`${entry.environment} GitHub Actions must grant no configurable GITHUB_TOKEN permissions`);
     }
     if (!services.model.structuredOutput) errors.push(`${entry.environment} model must support structured output`);
     if (services.model.providerTraining) errors.push(`${entry.environment} model provider training must be disabled`);
