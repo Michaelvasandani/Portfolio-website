@@ -34,7 +34,10 @@ pnpm test:environment
 pnpm test:schema
 pnpm test:migrations
 pnpm test:browser
+pnpm verify:production-qualification
 ```
+
+The production-qualification command intentionally exits nonzero while live provider and Michael-owned acceptance evidence remains pending. It still writes a fail-closed report and operator handoff under `evidence/ticket-11/`; use the private-path arguments documented in [`docs/control-plane/production-qualification.md`](docs/control-plane/production-qualification.md) for the real handoff package.
 
 Local environment configuration starts from [`.env.example`](.env.example). `loadEnvironment` fails closed when a required value is absent or malformed. Tests use only loopback/local placeholder credentials from `testEnvironment`; production credentials are neither required nor permitted in test configuration.
 

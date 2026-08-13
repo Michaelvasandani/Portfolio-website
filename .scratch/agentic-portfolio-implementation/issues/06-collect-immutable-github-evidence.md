@@ -1,6 +1,6 @@
 # Collect immutable GitHub evidence
 
-Status: open — local contracts complete; live acceptance blocked by 02 and 04
+Status: ready-for-human
 Blocked by: 01 (Establish foundations and executable contracts), 02 (Provision the managed control plane), 04 (Establish owner access and the operational shell)
 
 Local evidence: [`../../../evidence/ticket-06.md`](../../../evidence/ticket-06.md)
