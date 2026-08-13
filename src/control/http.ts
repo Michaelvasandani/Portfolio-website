@@ -145,4 +145,30 @@ export class OwnerAccessHttpController {
       return concealedPrivateResponse();
     }
   }
+
+  async command(request: Request): Promise<Response> {
+    const runtime = this.runtime();
+    if (!runtime.available) return concealedPrivateResponse();
+    try {
+      const cookies = parseCookies(request.headers.get("cookie"));
+      const form = await request.formData();
+      const csrfToken = String(form.get("csrfToken") ?? "");
+      await runtime.service.authorizeMutation({
+        sessionToken: cookies.get("__Host-portfolio-session") ?? "",
+        csrfToken,
+        origin: request.headers.get("origin"),
+      });
+      const action = String(form.get("action") ?? "");
+      if (action !== "retry" && action !== "restore" && action !== "clear-breaker") return concealedPrivateResponse();
+      const targetId = String(form.get("targetId") ?? "").trim() || null;
+      const reason = String(form.get("reason") ?? "").trim();
+      if ((action === "retry" || action === "restore") && !targetId) return concealedPrivateResponse();
+      if (action === "restore" && reason.length < 8) return concealedPrivateResponse();
+      await runtime.controls.execute({ action, targetId, reason, actor: "owner" });
+      const section = action === "retry" ? "publication-runs" : action === "restore" ? "restore-retry" : "breaker";
+      return redirectResponse(`${runtime.configuration.publicOrigin}/control/${section}?command=accepted`);
+    } catch {
+      return concealedPrivateResponse();
+    }
+  }
 }

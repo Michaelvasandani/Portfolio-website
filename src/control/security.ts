@@ -1,6 +1,6 @@
 import type { OperationalShellView } from "./operations";
 
-const privilegedField = /(?:\bid\b|access|refresh|session|oauth|csrf|api|client|private|credential|secret|password|database|blob|vercel|resend|evidenceGraph|manifest|diagnostic|endpoint|token|key)/i;
+const privilegedField = /(?:access|refresh|session|oauth|csrf|api(?:[_ -]?key)?|client[_ -]?secret|credential|secret|password|database[_ -]?(?:url|credential)|blob[_ -]?(?:token|credential)|vercel[_ -]?(?:token|credential)|resend[_ -]?(?:api|credential)|evidenceGraph|private[_ -]?endpoint|token)/i;
 const privilegedValue = /(?:\bBearer\s+[A-Za-z0-9._~-]+|\bgh[opusr]_[A-Za-z0-9_]{20,}\b|postgres(?:ql)?:\/\/|\b(?:vercel_blob_rw_|re_)[A-Za-z0-9_-]{16,})/i;
 
 type CookieOptions = {

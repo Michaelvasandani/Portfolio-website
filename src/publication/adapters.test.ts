@@ -12,17 +12,19 @@ import { InMemoryPublicationStore } from "./store";
 import { publicationFixture } from "./test-fixtures";
 
 describe("publication production boundaries", () => {
-  it("fails closed until live resources from tickets 02, 07, and 08 are available", () => {
+  it("fails closed until live resources and the ticket 10 promotion gate are available", () => {
     const unavailable = {
       store: new InMemoryPublicationStore(),
       packages: new FailClosedCandidatePackageStore(),
       deployments: new FailClosedDeploymentProvider(),
       checks: new FailClosedPublicationChecks(),
       operationalEffects: { read: async () => null, apply: async () => { throw new Error("unavailable"); } },
+      promotionGate: { assertPromotionAllowed: async () => undefined },
     };
-    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: false, candidateComposition07: false, providerChecks08: false } })).toThrow("ticket-02-control-plane-production-adapter-unavailable");
-    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: true, candidateComposition07: false, providerChecks08: false } })).toThrow("ticket-07-candidate-composition-production-adapter-unavailable");
-    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: true, candidateComposition07: true, providerChecks08: false } })).toThrow("ticket-08-provider-checks-production-adapter-unavailable");
+    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: false, candidateComposition07: false, providerChecks08: false, recovery10: false } })).toThrow("ticket-02-control-plane-production-adapter-unavailable");
+    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: true, candidateComposition07: false, providerChecks08: false, recovery10: false } })).toThrow("ticket-07-candidate-composition-production-adapter-unavailable");
+    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: true, candidateComposition07: true, providerChecks08: false, recovery10: false } })).toThrow("ticket-08-provider-checks-production-adapter-unavailable");
+    expect(() => createProductionPublicationOrchestrator({ ...unavailable, tickets: { controlPlane02: true, candidateComposition07: true, providerChecks08: true, recovery10: false } })).toThrow("ticket-10-recovery-production-adapter-unavailable");
   });
 
   it("rejects private projection fields and expired candidate-scoped credentials", async () => {

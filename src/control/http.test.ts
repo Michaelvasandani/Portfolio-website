@@ -99,6 +99,49 @@ describe("owner-access HTTP boundary", () => {
     expect(response.headers.get("set-cookie")).toContain("Max-Age=0");
   });
 
+  it("authorizes and dispatches explicit retry, restore, and breaker-clear commands", async () => {
+    const authorizeMutation = vi.fn(async () => ({ owner: true as const }));
+    const execute = vi.fn(async () => ({ outcome: "accepted" as const }));
+    const runtime = {
+      available: true,
+      configuration: { publicOrigin: "https://portfolio.example.com" },
+      service: { authorizeMutation },
+      controls: { execute },
+      operations: {},
+    } as unknown as OwnerAccessRuntime;
+    const request = new Request("https://portfolio.example.com/api/control/commands", {
+      method: "POST",
+      headers: {
+        Cookie: "__Host-portfolio-session=session; __Host-portfolio-csrf=csrf",
+        Origin: "https://portfolio.example.com",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: "csrfToken=csrf&action=restore&targetId=deployment%3Aprior&reason=Owner-requested+exceptional+restore",
+    });
+
+    const response = await new OwnerAccessHttpController(() => runtime).command(request);
+
+    expect(authorizeMutation).toHaveBeenCalledWith({ sessionToken: "session", csrfToken: "csrf", origin: "https://portfolio.example.com" });
+    expect(execute).toHaveBeenCalledWith({ action: "restore", targetId: "deployment:prior", reason: "Owner-requested exceptional restore", actor: "owner" });
+    expect(response.status).toBe(303);
+    expect(response.headers.get("location")).toBe("https://portfolio.example.com/control/restore-retry?command=accepted");
+  });
+
+  it("conceals malformed or unauthorized recovery commands", async () => {
+    const execute = vi.fn();
+    const runtime = {
+      available: true,
+      configuration: { publicOrigin: "https://portfolio.example.com" },
+      service: { authorizeMutation: async () => Promise.reject(new Error("csrf")) },
+      controls: { execute },
+      operations: {},
+    } as unknown as OwnerAccessRuntime;
+    const response = await new OwnerAccessHttpController(() => runtime).command(new Request("https://portfolio.example.com/api/control/commands", { method: "POST", body: new URLSearchParams({ action: "restore", targetId: "deployment:prior", reason: "reason", csrfToken: "wrong" }) }));
+
+    expect(response.status).toBe(404);
+    expect(execute).not.toHaveBeenCalled();
+  });
+
   it("conceals private APIs when no valid owner session is present", async () => {
     const runtime = {
       available: true,

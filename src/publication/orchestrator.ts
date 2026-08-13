@@ -23,6 +23,7 @@ type Dependencies = {
   leaseMilliseconds?: number;
   maximumAttempts?: number;
   credentialLifetimeMilliseconds?: number;
+  promotionGate?: { assertPromotionAllowed(candidateHash: PublicationInput["candidate"]["candidateHash"]): Promise<void> };
 };
 
 export class PublicationOrchestrator {
@@ -202,6 +203,7 @@ export class PublicationOrchestrator {
 
   async #promote(run: Awaited<ReturnType<PublicationStore["readRun"]>> & {}, worker: string) {
     if (run.checkpoint.phase !== "promoting") throw new Error("publication-checkpoint-phase-mismatch");
+    await this.dependencies.promotionGate?.assertPromotionAllowed(run.input.candidate.candidateHash);
     const providerDeploymentId = run.checkpoint.providerDeploymentId;
     const key = `promotion:${run.id}:${providerDeploymentId}`;
     const effect = await this.#store.enqueueEffect(run.id, "promotion", key, this.#clock.now());

@@ -414,6 +414,21 @@ export const outboxRecordSchema = z
   })
   .strict();
 
+export const notificationRecordSchema = z
+  .object({
+    ...immutableRecord,
+    kind: z.enum(["automatic-rollback", "rollback-failure", "terminal-publication-failure", "stuck-reconciliation", "missed-github-collection", "security-rejection"]),
+    aggregateId: immutableIdSchema,
+    idempotencyKey: z.string().min(1),
+    subject: z.string().min(1),
+    details: z.string().min(1),
+    manualSteps: z.array(z.string().min(1)),
+    state: z.enum(["pending", "delivered", "failed"]),
+    providerMessageId: z.string().min(1).nullable(),
+    attempts: z.number().int().nonnegative(),
+  })
+  .strict();
+
 export const breakerStateSchema = z
   .object({
     ...immutableRecord,
@@ -447,6 +462,7 @@ export const contractSchemas = {
   deployment: deploymentSchema,
   checkResult: checkResultSchema,
   outboxRecord: outboxRecordSchema,
+  notificationRecord: notificationRecordSchema,
   breakerState: breakerStateSchema,
   auditRecord: auditRecordSchema,
 } as const;
@@ -468,5 +484,6 @@ export const parsePublicationRun = publicationRunSchema.parse;
 export const parseDeployment = deploymentSchema.parse;
 export const parseCheckResult = checkResultSchema.parse;
 export const parseOutboxRecord = outboxRecordSchema.parse;
+export const parseNotificationRecord = notificationRecordSchema.parse;
 export const parseBreakerState = breakerStateSchema.parse;
 export const parseAuditRecord = auditRecordSchema.parse;

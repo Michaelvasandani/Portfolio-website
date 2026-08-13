@@ -71,6 +71,31 @@ describe("publication orchestration", () => {
     ]));
   });
 
+  it("consults the recovery promotion gate before any provider route mutation", async () => {
+    const fixture = publicationFixture();
+    const scenario = createPublicationScenario();
+    const checks: string[] = [];
+    const orchestrator = new PublicationOrchestrator({
+      store: scenario.store,
+      packages: scenario.packages,
+      deployments: scenario.deployments,
+      checks: scenario.checks,
+      clock: scenario.clock,
+      promotionGate: {
+        assertPromotionAllowed: async (candidateHash) => {
+          checks.push(candidateHash);
+          throw new Error("publication-breaker-open");
+        },
+      },
+    });
+    const run = await orchestrator.trigger(fixture.input());
+    for (let step = 0; step < 5; step += 1) await orchestrator.advance(run.id, "worker");
+
+    expect(checks).toEqual([fixture.input().candidate.candidateHash]);
+    expect(scenario.deployments.promotions).toHaveLength(0);
+    expect((await scenario.store.readRun(run.id))?.phase).toBe("promoting");
+  });
+
   it("reconciles ambiguous deployment, promotion, and outbox responses without duplicate effects", async () => {
     const fixture = publicationFixture();
     const { clock, store, packages, deployments, operationalEffects, orchestrator } = createPublicationScenario({ ambiguousPreviewResponses: 1, ambiguousPromotionResponses: 1, ambiguousOperationalResponses: 1 });

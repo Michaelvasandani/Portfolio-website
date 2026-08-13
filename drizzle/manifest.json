@@ -1,9 +1,13 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "migrations": [
     {
       "file": "0001_foundations.sql",
       "sha256": "f94404ebb699a16062cbbcd061956883e66267745c22ed6368411b8e5018bae0"
+    },
+    {
+      "file": "0002_recovery.sql",
+      "sha256": "54e379d5e9c0d19c0d17456975ada8d387ce30367e6ecc3cfc5228bf12f43d78"
     }
   ]
 }

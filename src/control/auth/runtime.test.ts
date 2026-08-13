@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { createOwnerAccessRuntime } from "./runtime";
 import { InMemoryOwnerAccessStore } from "./store";
+import { UnavailableOperationalRepository } from "../operations";
 
 const configured = {
   APP_ENV: "production",
@@ -28,10 +29,12 @@ describe("owner-access runtime boundary", () => {
   });
 
   it("accepts an injected persistent-store boundary for a remote environment", () => {
-    const runtime = createOwnerAccessRuntime(configured, new InMemoryOwnerAccessStore());
+    const operations = new UnavailableOperationalRepository("test operations");
+    const runtime = createOwnerAccessRuntime(configured, new InMemoryOwnerAccessStore(), operations);
     expect(runtime.available).toBe(true);
     if (runtime.available) {
       expect(runtime.configuration.environment).toBe("production");
+      expect(runtime.operations).toBe(operations);
     }
   });
 

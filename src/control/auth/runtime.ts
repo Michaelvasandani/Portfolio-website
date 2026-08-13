@@ -1,6 +1,6 @@
 import "server-only";
 
-import { UnavailableOperationalRepository, type OperationalRepository } from "../operations";
+import { UnavailableOperationalControls, UnavailableOperationalRepository, type OperationalControls, type OperationalRepository } from "../operations";
 import { loadOwnerAccessConfiguration, type LoadedOwnerAccessConfiguration } from "./config";
 import { GitHubOAuthIdentityProvider } from "./github";
 import { OwnerAccessService } from "./service";
@@ -12,12 +12,15 @@ export type OwnerAccessRuntime =
       configuration: LoadedOwnerAccessConfiguration;
       service: OwnerAccessService;
       operations: OperationalRepository;
+      controls: OperationalControls;
     }
   | { available: false; reason: string };
 
 export function createOwnerAccessRuntime(
   source: Record<string, string | undefined>,
   persistentStore?: OwnerAccessStore,
+  operations?: OperationalRepository,
+  controls?: OperationalControls,
 ): OwnerAccessRuntime {
   let configuration: LoadedOwnerAccessConfiguration;
   try {
@@ -40,8 +43,9 @@ export function createOwnerAccessRuntime(
     available: true,
     configuration,
     service: new OwnerAccessService({ config: configuration, store, provider }),
-    operations: new UnavailableOperationalRepository(
+    operations: operations ?? new UnavailableOperationalRepository(
       "Managed control-plane persistence is not connected; no operational result is available.",
     ),
+    controls: controls ?? new UnavailableOperationalControls(),
   };
 }

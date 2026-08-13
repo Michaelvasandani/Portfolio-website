@@ -72,7 +72,7 @@ describe("control-plane response security", () => {
       databaseUrl: "[redacted]",
       nested: { sessionToken: "[redacted]", safeCount: 0 },
       rows: [
-        { id: "[redacted]", status: "failed", evidenceGraph: "[redacted]" },
+        { id: "private-run-id", status: "failed", evidenceGraph: "[redacted]" },
         { label: "provider result", value: "[redacted]" },
       ],
     });
@@ -97,7 +97,7 @@ describe("control-plane response security", () => {
       state: "empty",
       summary: "No deployment records.",
       records: [
-        { label: "Deployment ID", value: "[redacted]" },
+        { label: "Deployment ID", value: "private-deployment-id" },
         { label: "Outcome", value: "No recorded outcome" },
       ],
     });

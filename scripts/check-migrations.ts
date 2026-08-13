@@ -6,7 +6,7 @@ import { z } from "zod";
 
 const manifestSchema = z
   .object({
-    schemaVersion: z.literal(1),
+    schemaVersion: z.number().int().positive(),
     migrations: z
       .array(
         z
@@ -38,7 +38,7 @@ for (const migration of manifest.migrations) {
 const versionRows = await database.query<{ version: number; migration_hash: string }>(
   "SELECT version, migration_hash FROM schema_versions ORDER BY version",
 );
-if (versionRows.rows.length !== 1 || versionRows.rows[0]?.version !== manifest.schemaVersion) {
+if (versionRows.rows.length !== manifest.migrations.length || versionRows.rows.at(-1)?.version !== manifest.schemaVersion) {
   throw new Error("Installed schema version does not match the migration manifest");
 }
 

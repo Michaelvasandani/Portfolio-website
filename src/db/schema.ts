@@ -36,5 +36,6 @@ export const publicationRuns = versionedTable("publication_runs");
 export const deployments = versionedTable("deployments");
 export const checkResults = versionedTable("check_results");
 export const outboxRecords = versionedTable("outbox_records");
+export const notificationRecords = versionedTable("notification_records");
 export const breakerStates = versionedTable("breaker_states");
 export const auditRecords = versionedTable("audit_records");

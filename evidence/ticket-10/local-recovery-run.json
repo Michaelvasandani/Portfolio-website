@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "outcome": "locally-complete-live-controlled-failure-open",
+  "objectiveFailure": {
+    "trigger": "immediate",
+    "kind": "manifest-hash",
+    "evidenceCount": 1
+  },
+  "recovery": {
+    "incidentId": "recovery:deployment:objective-failure",
+    "status": "recovered",
+    "databaseServedDeploymentId": "deployment:prior-valid",
+    "providerServedDeploymentId": "deployment:prior-valid",
+    "routeChangeCount": 1,
+    "providerReadCount": 1,
+    "verificationCount": 1,
+    "verificationEvidence": {
+      "checkerId": "recovery-identity-and-smoke",
+      "checkerVersion": "1.0.0",
+      "rulesHash": "sha256:da1752e876f82fe5b6085fc22fad8a3cfd3da112a0f5411e335e14a7c3102eac",
+      "configurationHash": "sha256:880280ddc4f8e6ca8ebf43030ae5f6e9e98ae0875562beae0f662331cc732f4b",
+      "environment": {
+        "runner": "in-memory",
+        "image": "local-recovery-v1",
+        "cleanEnvironmentId": "clean:6687f9f52958c2bc4dbdcce3"
+      },
+      "target": "deployment:prior-valid",
+      "startedAt": "2026-08-12T22:00:00.000Z",
+      "finishedAt": "2026-08-12T22:00:00.000Z",
+      "outcome": "passed",
+      "measurementsRecorded": true,
+      "retryHistory": [],
+      "reportPointer": "memory://recovery/ef1c0b3c704131b76124f7f3"
+    },
+    "quarantinedDeploymentId": "deployment:objective-failure",
+    "breaker": "open",
+    "rollbackOutbox": "applied",
+    "timelineEvents": [
+      "objective-failure-confirmed",
+      "breaker-opened",
+      "rollback-intent-recorded",
+      "provider-routing-observed",
+      "recovery-checks-passed",
+      "failed-deployment-quarantined",
+      "notification-recorded"
+    ]
+  },
+  "notification": {
+    "ledgerState": "delivered",
+    "providerMessageId": "resend:16c2f42c750b1a1e6d492f80",
+    "providerDeliveryCount": 1,
+    "duplicateDeliveryCount": 1,
+    "outboxState": "applied"
+  },
+  "retention": {
+    "idempotencyKey": "retention:ddecc03176d2a89dbd405cd2b5ddeed8ffcfd54a",
+    "latestValidPreserved": 20,
+    "validDeleted": 1,
+    "manifestPreserved": 20,
+    "expiredAuditDeleted": 1,
+    "expiredDiagnosticDeleted": 1,
+    "blockedDependencyIds": [],
+    "applicationOutcome": "applied",
+    "providerApplicationCount": 1,
+    "idempotentRerunMatches": true
+  },
+  "continuity": {
+    "status": "healthy",
+    "pointInTimeRecovery": true
+  },
+  "runbookExercise": {
+    "id": "exercise:ticket-10-local-controlled-recovery",
+    "status": "passed",
+    "discrepancies": [],
+    "publicOutputHash": "sha256:bf7155460d3aa40ce11835314cbf5c9f5854b0ee903bbb78567dd3896b134d5e"
+  },
+  "operationalExercises": {
+    "manualRestore": {
+      "deploymentId": "deployment:older-valid",
+      "verified": true,
+      "breakerAfterRestore": "open",
+      "audit": {
+        "actor": "owner:local-runbook",
+        "reason": "Local runbook exercise retained-version restore",
+        "selectedDeploymentId": "deployment:older-valid",
+        "outcome": "recovered",
+        "notificationState": "not-required"
+      }
+    },
+    "breakerClearance": "closed",
+    "retentionRerunMatches": true,
+    "backupDatabaseRecovery": {
+      "mode": "isolated-local-snapshot-restore-reload",
+      "status": "passed",
+      "discrepancies": [],
+      "databaseServedDeploymentId": "deployment:older-valid",
+      "observedProviderServedDeploymentId": "deployment:older-valid",
+      "observedPublicOutputHash": "sha256:0bac4da6654a0a3bc39901663945ee53d572f2b88fea631f558848b5e3a78b09"
+    }
+  }
+}

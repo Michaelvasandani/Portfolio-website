@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "ticket": "10-prove-recovery-and-continued-operation",
+  "status": "open",
+  "blockers": [
+    {
+      "code": "live-vercel-controlled-failure-and-routing-evidence-unavailable",
+      "requiredEvidence": "Controlled production failure, provider routing reads/change, public hash, recovery-check reports, quarantine and breaker state."
+    },
+    {
+      "code": "live-neon-transaction-backup-and-pitr-evidence-unavailable",
+      "requiredEvidence": "Transactional recovery/outbox records, retention dry-run/application, backup status and point-in-time recovery exercise."
+    },
+    {
+      "code": "live-resend-ledger-provider-id-evidence-unavailable",
+      "requiredEvidence": "PostgreSQL notification ledger row reconciled to one live Resend provider message ID."
+    }
+  ],
+  "closureRule": "Keep the ticket open until the live controlled exercise passes without waived checks and the linked provider evidence exists."
+}

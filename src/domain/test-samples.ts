@@ -201,6 +201,18 @@ export const contractSamples: Record<ContractName, Record<string, unknown>> = {
     providerReference: null,
     attempts: 0,
   },
+  notificationRecord: {
+    ...immutable("notification:one"),
+    kind: "automatic-rollback",
+    aggregateId: "recovery:one",
+    idempotencyKey: "notification:automatic-rollback:recovery:one",
+    subject: "Portfolio restored after objective failure",
+    details: "The preceding Valid deployment is served and verified.",
+    manualSteps: [],
+    state: "pending",
+    providerMessageId: null,
+    attempts: 0,
+  },
   breakerState: {
     ...immutable("breaker:production"),
     state: "closed",

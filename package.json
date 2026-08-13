@@ -22,6 +22,7 @@
     "verify:career-ingestion": "NODE_OPTIONS=--conditions=react-server tsx scripts/verify-career-ingestion.ts",
     "verify:publication-checks": "tsx scripts/publication-checks/verify.ts",
     "verify:publication-orchestration": "tsx scripts/publication/verify.ts",
+    "verify:recovery": "tsx scripts/recovery/verify.ts",
     "test:renderer": "vitest run src/renderer && playwright test tests/browser/renderer.spec.ts",
     "renderer:pdf": "tsx scripts/renderer/generate-resume-pdf.ts",
     "renderer:baselines": "tsx scripts/renderer/capture-baselines.ts",
