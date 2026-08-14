@@ -2,7 +2,8 @@ import "server-only";
 
 import { neon } from "@neondatabase/serverless";
 
-import { getRendererFixture, type RendererFixture } from "../renderer/fixtures";
+import { getRendererFixture } from "../renderer/fixtures";
+import type { PublishedPortfolio } from "./publication-store";
 import { runPortfolioAgent } from "./portfolio-agent";
 import { createPortfolioPublicationStore } from "./publication-store";
 import { collectGitHubRepositories, generatePortfolioDraft } from "./runtime";
@@ -19,7 +20,7 @@ function databaseStore(source: Record<string, string | undefined> = process.env)
 
 export async function readLatestPublishedPortfolio(
   source: Record<string, string | undefined> = process.env,
-): Promise<RendererFixture | null> {
+): Promise<PublishedPortfolio | null> {
   return (await databaseStore(source)?.latest()) ?? null;
 }
 

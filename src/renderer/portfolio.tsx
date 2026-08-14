@@ -1,4 +1,7 @@
-import type { RendererFixture } from "./fixtures";
+import Image from "next/image";
+
+import type { DossierProjection } from "../agentic/dossier-publication";
+import type { Contact, RendererFixture } from "./fixtures";
 import { PublicationNote } from "./publication-note";
 
 const sections = [
@@ -9,10 +12,10 @@ const sections = [
   ["V", "Links", "links"],
 ] as const;
 
-function ContactLinks({ fixture, location }: { fixture: RendererFixture; location: "card" | "links" }) {
+function ContactLinks({ contacts, location }: { contacts: readonly Contact[]; location: "card" | "links" }) {
   return (
     <div className={`contact-links contact-links--${location}`}>
-      {fixture.contacts.map((contact) => (
+      {contacts.map((contact) => (
         <a className="discrete-link meta" href={contact.href} key={contact.kind}>
           {contact.label}
         </a>
@@ -33,7 +36,7 @@ function SectionHeader({ sectionId }: { sectionId: SectionId }) {
   );
 }
 
-export function Portfolio({ fixture }: { fixture: RendererFixture }) {
+function LegacyPortfolio({ fixture }: { fixture: RendererFixture }) {
   return (
     <div className="folio" data-renderer-fixture={fixture.fixture}>
       <a className="skip-link" href="#portfolio-content">Skip to portfolio content</a>
@@ -47,7 +50,7 @@ export function Portfolio({ fixture }: { fixture: RendererFixture }) {
           <p className="role">{fixture.role}</p>
           <p className="proof">{fixture.cardProof}</p>
         </div>
-        <ContactLinks fixture={fixture} location="card" />
+        <ContactLinks contacts={fixture.contacts} location="card" />
         <a className="discrete-link meta enter-link" href="#about">Read the work <span aria-hidden="true">↓</span></a>
       </header>
 
@@ -126,7 +129,7 @@ export function Portfolio({ fixture }: { fixture: RendererFixture }) {
 
         <section className="folio-section" id="links">
           <SectionHeader sectionId="links" />
-          <ContactLinks fixture={fixture} location="links" />
+          <ContactLinks contacts={fixture.contacts} location="links" />
           <a className="discrete-link meta return-link" href="#top">Return to top <span aria-hidden="true">↑</span></a>
         </section>
 
@@ -134,4 +137,138 @@ export function Portfolio({ fixture }: { fixture: RendererFixture }) {
       </main>
     </div>
   );
+}
+
+function DossierPortfolio({ projection }: { projection: DossierProjection }) {
+  const { card, about, experience, projects, capabilities, contact, statusStrip } = projection;
+  return (
+    <div className="folio" data-renderer-fixture="dossier-v2">
+      <a className="skip-link" href="#portfolio-content">Skip to portfolio content</a>
+
+      <header className="card-view" id="top">
+        <p className="meta card-location">{card.location}<br />{card.yearLabel}</p>
+        <p className="meta card-status">{card.statusLines[0]}<br />{card.statusLines[1]}</p>
+        <div className="identity">
+          <p className="kicker">{card.kicker}</p>
+          <h1>{card.name}</h1>
+          <p className="role">{card.role}</p>
+          <p className="proof">{card.proof}</p>
+        </div>
+        <ContactLinks contacts={card.contacts} location="card" />
+        <a className="discrete-link meta enter-link" href="#about">Read the work <span aria-hidden="true">↓</span></a>
+      </header>
+
+      <main className="reading" id="portfolio-content">
+        <section className="folio-section" id="about">
+          <header className="section-heading">
+            <span className="section-number" aria-hidden="true">I</span>
+            <h2>About</h2>
+          </header>
+          <p className="lede">{about.lede}</p>
+          <p className="body-copy">{about.body}</p>
+          {about.education.map((education) => (
+            <article className="resume-group" key={`${education.institution}-${education.degree}`}>
+              <p className="meta">Education</p>
+              <div>
+                <h3>{education.degree}</h3>
+                <p>{education.institution} · {education.graduationDate}</p>
+                {education.gpa ? <p><strong>GPA:</strong> {education.gpa}</p> : null}
+                {education.courses.length ? <p><strong>Relevant courses:</strong> {education.courses.join(", ")}</p> : null}
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="folio-section" id="experience">
+          <header className="section-heading">
+            <span className="section-number" aria-hidden="true">II</span>
+            <h2>Experience</h2>
+          </header>
+          <div className="entries">
+            {experience.map((role) => (
+              <article className="entry" id={role.id} key={role.id}>
+                <div className="entry-meta meta">
+                  <p>{role.dates}</p>
+                  {role.location ? <p>{role.location}</p> : null}
+                </div>
+                <div className="entry-content">
+                  <h3>{role.title}<span>{role.organization}</span></h3>
+                  <p>{role.narrative}</p>
+                  {role.evidenceCallouts.length ? (
+                    <ul aria-label={`${role.organization} evidence callouts`}>
+                      {role.evidenceCallouts.map((callout) => <li key={`${callout.label}-${callout.value}`}>{callout.label}: {callout.value}</li>)}
+                    </ul>
+                  ) : null}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="folio-section" id="projects">
+          <header className="section-heading">
+            <span className="section-number" aria-hidden="true">III</span>
+            <h2>Projects</h2>
+          </header>
+          <div className="entries">
+            {projects.map((project) => (
+              <article className={`entry project-entry project-entry--${project.prominence}`} key={project.repositoryHref}>
+                <p className="entry-meta meta">{project.technologies.join(" · ")}</p>
+                <div className="entry-content">
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  {project.bullets.length ? <ul>{project.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
+                  <div className="project-artifact" data-artifact-kind={project.artifact.kind}>
+                    <p className="meta">{project.artifact.alt}</p>
+                    {project.artifact.kind === "typeset-repository" ? <p>{project.artifact.repositoryName} · {project.artifact.description}</p> : <Image src={project.artifact.src} alt={project.artifact.alt} width={960} height={540} />}
+                  </div>
+                  <a className="discrete-link project-link meta" href={project.repositoryHref}>View {project.name} repository</a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="folio-section" id="skills">
+          <header className="section-heading">
+            <span className="section-number" aria-hidden="true">IV</span>
+            <h2>Skills &amp; Tools</h2>
+          </header>
+          {capabilities.map((group) => (
+            <div className="resume-row" key={group.name}>
+              <h3>{group.name}</h3><p>{group.tools.join(", ")}</p>
+            </div>
+          ))}
+        </section>
+
+        <section className="folio-section" id="contact">
+          <header className="section-heading">
+            <span className="section-number" aria-hidden="true">V</span>
+            <h2>Contact</h2>
+          </header>
+          <p className="lede">{contact.prompt}</p>
+          <ContactLinks contacts={contact.contacts} location="links" />
+          <div className="actions">
+            <a className="discrete-link" href={contact.resumeHtmlPath}>Read the complete résumé in HTML</a>
+            <a className="discrete-link" href={contact.resumePdfPath} download>Download résumé as tagged PDF</a>
+          </div>
+        </section>
+
+        <footer className="publication-note publication-status" aria-label="Publication status">
+          <p>Portfolio verified by its agent · <time dateTime={statusStrip.lastUpdated}>{new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" }).format(new Date(statusStrip.lastUpdated))}</time></p>
+          <p>{statusStrip.resumeSource} résumé source · {statusStrip.githubSource} GitHub source · publication checks {statusStrip.publicationChecks}</p>
+          <details>
+            <summary>How publication is verified</summary>
+            <ol>{statusStrip.stages.map((stage) => <li key={stage}>{stage}</li>)}</ol>
+          </details>
+          <p><span className="visually-hidden">Public manifest hash: </span><code>{statusStrip.publicManifestHash}</code></p>
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+export function Portfolio({ fixture }: { fixture: RendererFixture | DossierProjection }) {
+  if ("schemaVersion" in fixture) return <DossierPortfolio projection={fixture} />;
+  return <LegacyPortfolio fixture={fixture} />;
 }

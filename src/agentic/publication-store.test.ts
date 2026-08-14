@@ -2,6 +2,7 @@ import { PGlite } from "@electric-sql/pglite";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { getRendererFixture } from "../renderer/fixtures";
+import { buildDossierProjection } from "./dossier-publication";
 import { buildPublishedPortfolio, type AgentDraft, type RepositoryEvidence } from "./portfolio-agent";
 import { createPortfolioPublicationStore } from "./publication-store";
 
@@ -65,5 +66,104 @@ describe("Neon publication store contract", () => {
 
     const rows = await database.query<{ count: number }>("SELECT count(*)::int AS count FROM publication_manifests");
     expect(rows.rows[0]?.count).toBe(1);
+  });
+
+  it("round-trips a version-two dossier beside the current version", async () => {
+    const database = new PGlite();
+    databases.push(database);
+    const store = createPortfolioPublicationStore(async (text, parameters = []) =>
+      (await database.query<Record<string, unknown>>(text, parameters)).rows);
+    const current = fixture("2026-08-12T00:00:00.000Z");
+    const dossier = buildDossierProjection({
+      base: current.portfolio,
+      publishedAt: "2026-08-14T00:00:00.000Z",
+    });
+
+    await store.publish(current.portfolio, current.repositories);
+    await store.publishDossier(dossier, current.repositories);
+
+    await expect(store.latest()).resolves.toEqual(dossier);
+  });
+
+  it("skips invalid newer envelopes and keeps the last valid publication serveable", async () => {
+    const database = new PGlite();
+    databases.push(database);
+    const store = createPortfolioPublicationStore(async (text, parameters = []) =>
+      (await database.query<Record<string, unknown>>(text, parameters)).rows);
+    const current = fixture("2026-08-12T00:00:00.000Z");
+    const dossier = buildDossierProjection({
+      base: current.portfolio,
+      publishedAt: "2026-08-14T00:00:00.000Z",
+    });
+
+    await store.publish(current.portfolio, current.repositories);
+    await database.query(
+      `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
+       VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)`,
+      [
+        "publication:unknown-version",
+        `sha256:${"a".repeat(64)}`,
+        JSON.stringify({ kind: "agentic-portfolio-publication-v99" }),
+        "2026-08-15T00:00:00.000Z",
+      ],
+    );
+    await database.query(
+      `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
+       VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)`,
+      [
+        "publication:invalid-hash",
+        `sha256:${"b".repeat(64)}`,
+        JSON.stringify({
+          kind: "agentic-portfolio-publication-v1",
+          fixture: { ...current.portfolio, manifestHash: `sha256:${"c".repeat(64)}` },
+          repositoryEvidence: current.repositories,
+        }),
+        "2026-08-16T00:00:00.000Z",
+      ],
+    );
+    await database.query(
+      `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
+       VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)`,
+      [
+        "publication:incomplete-dossier",
+        `sha256:${"d".repeat(64)}`,
+        JSON.stringify({
+          kind: "agentic-portfolio-publication-v2",
+          projection: { ...dossier, projects: [] },
+          repositoryEvidence: current.repositories,
+        }),
+        "2026-08-17T00:00:00.000Z",
+      ],
+    );
+    await database.query(
+      `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
+       VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)`,
+      [
+        "publication:invalid-dossier-hash",
+        `sha256:${"f".repeat(64)}`,
+        JSON.stringify({
+          kind: "agentic-portfolio-publication-v2",
+          projection: {
+            ...dossier,
+            publicOutputHash: `sha256:${"f".repeat(64)}`,
+            statusStrip: { ...dossier.statusStrip, publicManifestHash: `sha256:${"f".repeat(64)}` },
+          },
+          repositoryEvidence: current.repositories,
+        }),
+        "2026-08-18T00:00:00.000Z",
+      ],
+    );
+    await database.query(
+      `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
+       VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)`,
+      [
+        "publication:malformed-envelope",
+        `sha256:${"e".repeat(64)}`,
+        JSON.stringify({ kind: "agentic-portfolio-publication-v2", projection: dossier }),
+        "2026-08-19T00:00:00.000Z",
+      ],
+    );
+
+    await expect(store.latest()).resolves.toEqual(current.portfolio);
   });
 });
