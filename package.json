@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "22.23.1"
+    "node": "22.x"
   },
   "packageManager": "pnpm@10.4.1",
   "scripts": {
@@ -36,6 +36,7 @@
     "verify": "pnpm lint && pnpm typecheck && pnpm test:schema && pnpm test && pnpm test:migrations && pnpm build && pnpm test:browser"
   },
   "dependencies": {
+    "@neondatabase/serverless": "1.1.0",
     "drizzle-orm": "0.45.2",
     "next": "16.3.0",
     "react": "19.2.8",

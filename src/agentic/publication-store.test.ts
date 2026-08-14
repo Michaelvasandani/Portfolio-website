@@ -1,0 +1,69 @@
+import { PGlite } from "@electric-sql/pglite";
+import { afterEach, describe, expect, it } from "vitest";
+
+import { getRendererFixture } from "../renderer/fixtures";
+import { buildPublishedPortfolio, type AgentDraft, type RepositoryEvidence } from "./portfolio-agent";
+import { createPortfolioPublicationStore } from "./publication-store";
+
+const databases: PGlite[] = [];
+afterEach(async () => Promise.all(databases.splice(0).map((database) => database.close())));
+
+function fixture(at: string) {
+  const repositories: RepositoryEvidence[] = ["one", "two", "three"].map((name, index) => ({
+    fullName: `Michaelvasandani/${name}`,
+    name,
+    url: `https://github.com/Michaelvasandani/${name}`,
+    description: `Repository ${name}`,
+    language: index % 2 ? "Python" : "TypeScript",
+    topics: ["agents"],
+    updatedAt: `2026-08-${String(12 - index).padStart(2, "0")}T00:00:00.000Z`,
+    fork: false,
+    archived: false,
+  }));
+  const draft: AgentDraft = {
+    cardProof: "I build dependable agentic systems that convert source evidence into useful software, measurable outcomes, and safe automated decisions.",
+    aboutLede: "I build practical agentic software grounded in real project and career evidence.",
+    aboutBody: "My work combines reliable automation, retrieval, APIs, and product judgment to turn ambiguous problems into maintainable systems.",
+    projects: repositories.map((repository) => ({
+      repositoryFullName: repository.fullName,
+      description: "This source-grounded project demonstrates dependable agentic software through documented workflows and practical automated systems for users.",
+    })),
+  };
+  return {
+    repositories,
+    portfolio: buildPublishedPortfolio({ base: getRendererFixture("typical"), repositories, draft, publishedAt: at }),
+  };
+}
+
+describe("Neon publication store contract", () => {
+  it("installs its immutable table and returns the newest valid publication", async () => {
+    const database = new PGlite();
+    databases.push(database);
+    const store = createPortfolioPublicationStore(async (text, parameters = []) =>
+      (await database.query<Record<string, unknown>>(text, parameters)).rows);
+    const first = fixture("2026-08-12T00:00:00.000Z");
+    const second = fixture("2026-08-13T00:00:00.000Z");
+
+    expect(await store.latest()).toBeNull();
+    await store.publish(first.portfolio, first.repositories);
+    await store.publish(second.portfolio, second.repositories);
+
+    await expect(store.latest()).resolves.toEqual(second.portfolio);
+    const rows = await database.query<{ count: number }>("SELECT count(*)::int AS count FROM publication_manifests");
+    expect(rows.rows[0]?.count).toBe(2);
+  });
+
+  it("deduplicates retrying the exact same immutable publication", async () => {
+    const database = new PGlite();
+    databases.push(database);
+    const store = createPortfolioPublicationStore(async (text, parameters = []) =>
+      (await database.query<Record<string, unknown>>(text, parameters)).rows);
+    const published = fixture("2026-08-13T00:00:00.000Z");
+
+    await store.publish(published.portfolio, published.repositories);
+    await store.publish(published.portfolio, published.repositories);
+
+    const rows = await database.query<{ count: number }>("SELECT count(*)::int AS count FROM publication_manifests");
+    expect(rows.rows[0]?.count).toBe(1);
+  });
+});

@@ -1,10 +1,12 @@
 # Agentic Portfolio
 
-The repository foundation for Michael Vasandani's autonomous Portfolio. It currently provides the pinned Next.js runtime, strict versioned domain contracts, trust-boundary validators, state machines, migration baseline, and normative executable fixture catalogue. Source ingestion, candidate generation, full rendering, deployment, and production operation belong to later implementation tickets.
+Michael Vasandani's autonomous portfolio. In production, a secured daily Vercel Cron run collects current public GitHub repository evidence, asks a schema-constrained model through Vercel AI Gateway to select and describe three representative projects, validates the result, and writes an immutable publication to Neon. The public page reads the newest valid publication and preserves its prior content whenever collection, generation, validation, or persistence fails.
+
+Vercel deployments authenticate to AI Gateway with their automatically provisioned OIDC token, so production does not require a model API key. The refresh endpoint is `GET /api/agent/refresh` and requires the `CRON_SECRET` bearer token; `vercel.json` schedules it once daily.
 
 ## Pinned toolchain
 
-- Node.js 22.23.1 (`.nvmrc` and `engines`)
+- Node.js 22.23.1 for local and CI reproducibility (`.nvmrc`); managed deployments may use a compatible Node.js 22 patch (`engines`)
 - pnpm 10.4.1 (`packageManager`)
 - Next.js 16.3.0, React 19.2.8, TypeScript 5.9.3
 - Vitest 4.1.10 and Playwright 1.51.1

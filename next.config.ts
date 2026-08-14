@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
       { source: "/control/:path*", headers: privateHeaders },
       { source: "/api/control/:path*", headers: privateHeaders },
       { source: "/api/auth/:path*", headers: privateHeaders },
+      { source: "/api/agent/:path*", headers: privateHeaders },
     ];
   },
 };
