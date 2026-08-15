@@ -15,6 +15,8 @@ import {
   artifactEvidenceFieldPaths,
   createTypesetArtifactFromRepository,
   prominenceByRepositoryId,
+  selectProjectArtifact,
+  type ProjectArtifact,
 } from "./project-presentation";
 import { independentPublicLeakScan, walkPublicLeaves, type PublicContact, type PublicProjection, type PublicResumeInput } from "./projection";
 import { reconcileProjects } from "./selection";
@@ -45,11 +47,12 @@ type Candidate = {
     evidenceGraph: EvidenceGraphEntry[];
     artifactProvenance: {
       repositoryId: string;
-      kind: "typeset-repository";
+      kind: ProjectArtifact["kind"];
       contentHash: `sha256:${string}`;
       evidenceIds: string[];
       fieldPaths: string[];
     }[];
+    artifactWarnings: string[];
     matchingDecisions: ProjectEvaluation["match"][];
     scoreBreakdowns: { repositoryId: string; score: ProjectEvaluation["score"] }[];
     stabilityHistory: SelectionState["comparisons"];
@@ -339,6 +342,7 @@ function buildProjection(
   selected: (ProjectEvaluation & { order: number })[],
   narrative: GeneratorOutput,
   manifestHash: `sha256:${string}`,
+  projectArtifacts: ReadonlyMap<string, ProjectArtifact>,
 ): PublicProjection {
   const sentence = new Map(narrative.sentences.map((item) => [item.requestId, item.text]));
   const contacts = contactLinks(input);
@@ -391,7 +395,7 @@ function buildProjection(
         : {}),
       bullets: careerProject ? ordered(careerProject.bullets).map(({ text }) => display(text)) : [],
       prominence: prominence.get(item.repositoryId)!,
-      artifact: createTypesetArtifactFromRepository(repository),
+      artifact: projectArtifacts.get(item.repositoryId) ?? createTypesetArtifactFromRepository(repository),
     };
   });
   const matchedRepository = new Map(
@@ -550,7 +554,8 @@ function evidenceGraph(projection: PublicProjection, evidence: EvidencePointer[]
   const generated = new Map(narrative.sentences.map((sentence) => [sentence.text, sentence.clauses.flatMap(({ evidenceIds }) => evidenceIds)]));
   const entries: EvidenceGraphEntry[] = [];
   walkPublicLeaves(projection, (item, path) => {
-    if (typeof item !== "string" || path === "manifestHash" || path.endsWith(".kind") || path.endsWith(".contentHash") || path.endsWith(".prominence")) return;
+    const artifactPresentationField = path.includes(".artifact.") && /\.(?:alt|source|src)$/.test(path);
+    if (typeof item !== "string" || path === "manifestHash" || path.endsWith(".kind") || path.endsWith(".contentHash") || path.endsWith(".prominence") || artifactPresentationField) return;
     const generatedReferences = generated.get(item);
     const direct = byValue.get(item) ?? [];
     let references = generatedReferences ?? direct;
@@ -620,6 +625,20 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
   const evidence = [...careerEvidence(input.career), ...githubEvidence(input.github, selectedIds), ...presentationEvidence(input)];
   const thesis = selectedThesis(input);
   const request = generationRequest(input, selection.selected, evidence, thesis);
+  const projectArtifacts = new Map<string, ProjectArtifact>();
+  const artifactWarnings: string[] = [];
+  for (const selectedProject of selection.selected) {
+    const repository = input.github.repositories.find(({ id }) => id === selectedProject.repositoryId)!;
+    const profile = input.profiles.find(({ repositoryId }) => repositoryId === selectedProject.repositoryId)!;
+    const result = selectProjectArtifact({
+      repository,
+      fallback: createTypesetArtifactFromRepository(repository),
+      screenshot: profile.verifiedScreenshot,
+      diagram: profile.evidenceDiagram,
+    });
+    projectArtifacts.set(selectedProject.repositoryId, result.artifact);
+    artifactWarnings.push(...result.warnings);
+  }
   let generatedResult: Awaited<ReturnType<typeof generateOrReuseNarrative>>;
   let narrative: GeneratorOutput;
   try {
@@ -643,14 +662,14 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
   }));
   let placeholderProjection: PublicProjection;
   try {
-    placeholderProjection = buildProjection(input, selection.selected, narrative, sha256("pending"));
+    placeholderProjection = buildProjection(input, selection.selected, narrative, sha256("pending"), projectArtifacts);
   } catch (error) {
     return { status: "rejected", code: "completeness-invalid", message: error instanceof Error ? error.message : "Public projection could not be assembled.", preserved: preservedState };
   }
   const renderedContentHash = sha256(canonicalJson({ ...placeholderProjection, manifestHash: undefined }));
   const candidateHash = sha256(canonicalJson({ semanticSourceHash, renderedContentHash, narrative, versions: input.versions }));
   const publicManifestHash = sha256(canonicalJson({ schemaVersion: 1, candidateHash, renderedContentHash }));
-  const projection = buildProjection(input, selection.selected, narrative, publicManifestHash);
+  const projection = buildProjection(input, selection.selected, narrative, publicManifestHash, projectArtifacts);
   const complete = completeness(input, projection, selection.selected);
   if (complete.missing.length || complete.duplicates.length) {
     return { status: "rejected", code: "completeness-invalid", message: "Public projection is incomplete or duplicated.", preserved: preservedState };
@@ -666,7 +685,9 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
   }
   const artifactProvenance = projection.sections[3].entries.map((project) => {
     const repository = input.github.repositories.find(({ url }) => url === project.repositoryHref)!;
+    const profile = input.profiles.find(({ repositoryId }) => repositoryId === repository.id)!;
     const fieldPaths = artifactEvidenceFieldPaths(repository);
+    if (project.artifact.kind === "evidence-derived-diagram") fieldPaths.push(...(profile.evidenceDiagram?.evidencePaths ?? []));
     return {
       repositoryId: repository.id,
       kind: project.artifact.kind,
@@ -690,6 +711,7 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
     generatedOutput: narrative,
     evidenceGraph: graph,
     artifactProvenance,
+    artifactWarnings,
     matchingDecisions: selection.evaluations.map(({ match }) => match),
     scoreBreakdowns: selection.evaluations.map(({ repositoryId, score }) => ({ repositoryId, score })),
     stabilityHistory: selection.comparisons,

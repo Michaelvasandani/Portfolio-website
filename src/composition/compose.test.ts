@@ -4,6 +4,7 @@ import { composeCandidate } from "./compose";
 import type { GeneratorRequest } from "./contracts";
 import { DeterministicLocalGenerator } from "./generator";
 import { independentPublicLeakScan } from "./projection";
+import { createTypesetArtifactFromRepository } from "./project-presentation";
 import { makeCompositionInput, repositoryProfile } from "./test-fixtures";
 
 describe("candidate composition", () => {
@@ -262,6 +263,54 @@ describe("candidate composition", () => {
       ]),
     }));
     expect(JSON.stringify(project.artifact)).not.toContain("repository:artifact");
+  });
+
+  it("uses verified screenshots first, then evidence diagrams, and records fallback warnings", async () => {
+    const input = makeCompositionInput({
+      projectTarget: 1,
+      repositories: [repositoryProfile("artifacts", { relevance: 10 })],
+    });
+    const repository = input.github.repositories[0]!;
+    repository.homepageUrl = "https://demo.example.com/artifacts";
+    input.profiles[0]!.verifiedScreenshot = {
+      repositoryUrl: repository.url,
+      demonstrationUrl: repository.homepageUrl,
+      publicPath: "/artifacts/artifacts.png",
+      alt: "Verified project interface",
+      contentHash: `sha256:${"d".repeat(64)}`,
+      checkedAt: input.runAt,
+      status: "reachable",
+      repositoryIdentityConfirmed: true,
+      viewport: { width: 1440, height: 900, deviceScaleFactor: 1 },
+    };
+
+    const screenshot = await composeCandidate({ ...input, generator: new DeterministicLocalGenerator() });
+    expect(screenshot.status).toBe("accepted");
+    if (screenshot.status !== "accepted") return;
+    expect(screenshot.candidate.publicProjection.sections[3].entries[0]?.artifact.kind).toBe("verified-deployment-screenshot");
+    expect(screenshot.candidate.manifest.artifactWarnings).toEqual([]);
+
+    input.profiles[0]!.verifiedScreenshot = {
+      ...input.profiles[0]!.verifiedScreenshot,
+      demonstrationUrl: "http://untrusted.example.com",
+    };
+    input.profiles[0]!.evidenceDiagram = {
+      publicPath: "/artifacts/artifacts.svg",
+      alt: "Repository-supported workflow diagram",
+      contentHash: `sha256:${"e".repeat(64)}`,
+      evidencePaths: [`repositories.${repository.id}.documents.0.renderedContent`],
+      status: "generated",
+    };
+
+    const diagram = await composeCandidate({ ...input, generator: new DeterministicLocalGenerator() });
+    expect(diagram.status).toBe("accepted");
+    if (diagram.status !== "accepted") return;
+    expect(diagram.candidate.publicProjection.sections[3].entries[0]?.artifact.kind).toBe("evidence-derived-diagram");
+    expect(diagram.candidate.manifest.artifactWarnings).toContain(`screenshot-fallback:${repository.id}`);
+    expect(diagram.candidate.manifest.artifactProvenance[0]?.fieldPaths).toContain(
+      `repositories.${repository.id}.documents.0.renderedContent`,
+    );
+    expect(createTypesetArtifactFromRepository(repository).kind).toBe("typeset-repository");
   });
 
   it("derives a material repository conflict from snapshots and records source normalizations", async () => {

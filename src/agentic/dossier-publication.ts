@@ -4,7 +4,7 @@ import { canonicalJson, sha256 } from "../github/canonical";
 import {
   createTypesetRepositoryArtifact,
   prominenceByRepositoryId,
-  typesetRepositoryArtifactSchema,
+  projectArtifactSchema,
 } from "../composition/project-presentation";
 import type {
   Contact,
@@ -58,27 +58,7 @@ const dossierExperienceSchema = z.object({
   evidenceCallouts: z.array(experienceEvidenceCalloutSchema),
 }).strict();
 
-const screenshotArtifactSchema = z.object({
-  kind: z.literal("verified-deployment-screenshot"),
-  alt: z.string().min(1),
-  source: z.literal("verified-deployment"),
-  contentHash: z.string().regex(/^sha256:[a-f0-9]{64}$/),
-  src: publicPath,
-}).strict();
-
-const diagramArtifactSchema = z.object({
-  kind: z.literal("evidence-derived-diagram"),
-  alt: z.string().min(1),
-  source: z.literal("repository-evidence"),
-  contentHash: z.string().regex(/^sha256:[a-f0-9]{64}$/),
-  src: publicPath,
-}).strict();
-
-export const evidenceArtifactSchema = z.discriminatedUnion("kind", [
-  typesetRepositoryArtifactSchema,
-  screenshotArtifactSchema,
-  diagramArtifactSchema,
-]);
+export const evidenceArtifactSchema = projectArtifactSchema;
 
 const dossierProjectSchema = z.object({
   name: z.string().min(1),
@@ -295,7 +275,8 @@ function experienceFromFixture(base: RendererFixture): DossierProjectionInput["e
   });
 }
 
-function artifactFor(project: PortfolioProject): z.infer<typeof typesetRepositoryArtifactSchema> {
+function artifactFor(project: PortfolioProject): z.infer<typeof projectArtifactSchema> {
+  if (project.evidenceArtifact) return project.evidenceArtifact;
   const metadata = project.repositoryMetadata;
   return createTypesetRepositoryArtifact({
     name: project.name,

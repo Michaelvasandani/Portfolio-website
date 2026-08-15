@@ -43,6 +43,24 @@ export type RepositoryProfile = {
     status: "reachable";
     repositoryIdentityConfirmed: true;
   };
+  verifiedScreenshot?: {
+    repositoryUrl: string;
+    demonstrationUrl: string;
+    publicPath: string;
+    alt: string;
+    contentHash: `sha256:${string}`;
+    checkedAt: string;
+    status: "reachable";
+    repositoryIdentityConfirmed: true;
+    viewport: { width: 1440; height: 900; deviceScaleFactor: 1 };
+  };
+  evidenceDiagram?: {
+    publicPath: string;
+    alt: string;
+    contentHash: `sha256:${string}`;
+    evidencePaths: readonly string[];
+    status: "generated";
+  };
   aliasMatches: {
     careerProjectId: string;
     alias: string;

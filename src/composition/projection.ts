@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { typesetRepositoryArtifactSchema, type TypesetRepositoryArtifact } from "./project-presentation";
+import { projectArtifactSchema, type ProjectArtifact } from "./project-presentation";
 
 const publicContactSchema = z.object({ kind: z.enum(["email", "github", "linkedin"]), label: z.string(), href: z.string() }).strict();
 const publicExperienceSchema = z.object({ organization: z.string(), title: z.string(), location: z.string().optional(), dates: z.string(), bullets: z.array(z.string()) }).strict();
@@ -14,7 +14,7 @@ const publicPortfolioProjectSchema = z.object({
   demonstrationHref: z.string().optional(),
   bullets: z.array(z.string()),
   prominence: z.enum(["wide", "compact"]),
-  artifact: typesetRepositoryArtifactSchema,
+  artifact: projectArtifactSchema,
 }).strict();
 const publicOptionalSectionSchema = z.object({ kind: z.string(), heading: z.string(), items: z.array(z.string()) }).strict();
 const publicSkillsSchema = z.object({ name: z.string(), items: z.array(z.string()) }).strict();
@@ -38,7 +38,7 @@ export type PublicContact = z.infer<typeof publicContactSchema>;
 export type PublicExperience = z.infer<typeof publicExperienceSchema>;
 export type PublicEducation = z.infer<typeof publicEducationSchema>;
 export type PublicCareerProject = z.infer<typeof publicCareerProjectSchema>;
-export type PublicPortfolioProject = z.infer<typeof publicPortfolioProjectSchema> & { artifact: TypesetRepositoryArtifact };
+export type PublicPortfolioProject = z.infer<typeof publicPortfolioProjectSchema> & { artifact: ProjectArtifact };
 export type PublicResumeInput = z.infer<typeof publicResumeInputSchema>;
 
 export type PublicProjection = z.infer<typeof publicProjectionSchema> & { manifestHash: `sha256:${string}` };

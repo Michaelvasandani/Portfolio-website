@@ -1,3 +1,5 @@
+import type { ProjectArtifact } from "../composition/project-presentation";
+
 export const fixtureNames = [
   "sparse",
   "typical",
@@ -53,6 +55,7 @@ export type PortfolioProject = CareerProject & {
     releaseCount?: number;
     pinned?: boolean;
   };
+  evidenceArtifact?: ProjectArtifact;
 };
 
 export type SkillGroup = {
