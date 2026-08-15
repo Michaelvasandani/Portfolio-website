@@ -105,6 +105,14 @@ const statusStripSchema = z.object({
   ]),
 }).strict();
 
+const publicationStatusInputSchema = z.object({
+  resumeSource: z.enum(["approved", "stale", "unavailable"]).optional(),
+  githubSource: z.enum(["fresh", "stale", "unavailable"]).optional(),
+  publicationChecks: z.enum(["passed", "unavailable"]).optional(),
+}).strict();
+
+export type PublicationStatusInput = z.infer<typeof publicationStatusInputSchema>;
+
 export const dossierProjectionInputSchema = z.object({
   schemaVersion: z.literal(2),
   card: cardProjectionSchema,
@@ -324,7 +332,33 @@ function contactsFromFixture(contacts: readonly Contact[]) {
   return contacts.map(({ kind, label, href }) => ({ kind, label, href }));
 }
 
-export function buildDossierProjection(input: { base: RendererFixture; publishedAt: string }): DossierProjection {
+function statusStripFromFixture(
+  base: RendererFixture,
+  publishedAt: string,
+  publicationStatus: PublicationStatusInput | undefined,
+): DossierProjectionInput["statusStrip"] {
+  const status = publicationStatusInputSchema.parse(publicationStatus ?? {});
+  const resumeSource = status.resumeSource ?? "approved";
+  const githubSource = status.githubSource ?? "fresh";
+  const publicationChecks = status.publicationChecks ?? "passed";
+  const unavailable = resumeSource === "unavailable" || githubSource === "unavailable" || publicationChecks === "unavailable";
+  const stale = resumeSource === "stale" || githubSource === "stale";
+
+  return {
+    state: unavailable ? "unavailable" : stale ? "stale-but-valid" : "verified",
+    lastUpdated: unavailable ? z.iso.datetime({ offset: true }).parse(base.lastUpdated) : publishedAt,
+    resumeSource,
+    githubSource,
+    publicationChecks,
+    stages: ["Approved sources", "Evidence processing", "Publication checks", "Validated deployment"],
+  };
+}
+
+export function buildDossierProjection(input: {
+  base: RendererFixture;
+  publishedAt: string;
+  publicationStatus?: PublicationStatusInput;
+}): DossierProjection {
   const lastUpdated = z.iso.datetime({ offset: true }).parse(input.publishedAt);
   return createDossierProjection({
     schemaVersion: 2,
@@ -343,13 +377,6 @@ export function buildDossierProjection(input: { base: RendererFixture; published
       resumeHtmlPath: "/resume",
       resumePdfPath: "/michael-vasandani-resume.pdf",
     },
-    statusStrip: {
-      state: "verified",
-      lastUpdated,
-      resumeSource: "approved",
-      githubSource: "fresh",
-      publicationChecks: "passed",
-      stages: ["Approved sources", "Evidence processing", "Publication checks", "Validated deployment"],
-    },
+    statusStrip: statusStripFromFixture(input.base, lastUpdated, input.publicationStatus),
   });
 }

@@ -2,9 +2,17 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 
-import { buildDossierProjection } from "../agentic/dossier-publication";
+import { buildDossierProjection, type PublicationStatusInput } from "../agentic/dossier-publication";
 import { getRendererFixture, type RendererFixture } from "./fixtures";
 import { Portfolio } from "./portfolio";
+
+function buildProjectionWithStatus(overrides: PublicationStatusInput) {
+  return buildDossierProjection({
+    base: getRendererFixture("typical"),
+    publishedAt: "2026-08-14T00:00:00.000Z",
+    publicationStatus: overrides,
+  });
+}
 
 describe("living dossier renderer", () => {
   it("selects four relevant courses deterministically instead of taking the first four", () => {
@@ -119,6 +127,44 @@ describe("living dossier renderer", () => {
     });
 
     expect(changed.experience[0]?.id).toBe(original.experience[0]?.id);
+  });
+
+  it("renders truthful verified, source-stale, and unavailable publication states", () => {
+    const verified = renderToStaticMarkup(createElement(Portfolio, {
+      fixture: buildDossierProjection({ base: getRendererFixture("typical"), publishedAt: "2026-08-14T00:00:00.000Z" }),
+    }));
+    const stale = renderToStaticMarkup(createElement(Portfolio, {
+      fixture: buildProjectionWithStatus({ githubSource: "stale" }),
+    }));
+    const unavailable = renderToStaticMarkup(createElement(Portfolio, {
+      fixture: buildProjectionWithStatus({ publicationChecks: "unavailable" }),
+    }));
+
+    expect(verified).toContain('data-publication-status="verified"');
+    expect(verified).toContain("Portfolio verified by its agent");
+    expect(stale).toContain('data-publication-status="stale-but-valid"');
+    expect(stale).toContain("Portfolio still valid; source refresh is due");
+    expect(unavailable).toContain('data-publication-status="unavailable"');
+    expect(unavailable).toContain("Publication status is temporarily unavailable");
+    expect(unavailable).not.toContain("August 14, 2026");
+    expect(unavailable).toContain("August 12, 2026");
+  });
+
+  it("explains the public pipeline in order without private operational details", () => {
+    const projection = buildDossierProjection({ base: getRendererFixture("typical"), publishedAt: "2026-08-14T00:00:00.000Z" });
+    const html = renderToStaticMarkup(createElement(Portfolio, { fixture: projection }));
+    const status = html.slice(html.indexOf('aria-label="Publication status"'));
+
+    expect(status).toContain("Approved sources");
+    expect(status).toContain("Evidence processing");
+    expect(status).toContain("Publication checks");
+    expect(status).toContain("Validated deployment");
+    expect(status.indexOf("Approved sources")).toBeLessThan(status.indexOf("Evidence processing"));
+    expect(status.indexOf("Evidence processing")).toBeLessThan(status.indexOf("Publication checks"));
+    expect(status.indexOf("Publication checks")).toBeLessThan(status.indexOf("Validated deployment"));
+    expect(status).toContain("The approved résumé and public GitHub record are checked first.");
+    expect(status).toContain("The public result is checked before the validated deployment is served.");
+    expect(status).not.toMatch(/(?:snapshot|evidence:|prompt|diagnostic|log|credential|\/api\/control|postgresql:\/\/)/i);
   });
 
   it("promotes the most AI-relevant projects with stable ties and renders safe artifact fallbacks", () => {

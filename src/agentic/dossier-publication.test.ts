@@ -4,8 +4,17 @@ import { getRendererFixture } from "../renderer/fixtures";
 import {
   buildDossierProjection,
   dossierProjectionSchema,
+  type PublicationStatusInput,
   type DossierProjection,
 } from "./dossier-publication";
+
+function buildProjectionWithStatus(overrides: PublicationStatusInput) {
+  return buildDossierProjection({
+    base: getRendererFixture("typical"),
+    publishedAt: "2026-08-14T00:00:00.000Z",
+    publicationStatus: overrides,
+  });
+}
 
 describe("dossier publication projection", () => {
   it("projects supported source skills into one ordered best-fit capability group", () => {
@@ -101,5 +110,27 @@ describe("dossier publication projection", () => {
     const incomplete = { ...projection, projects: [] } as DossierProjection;
 
     expect(() => dossierProjectionSchema.parse(incomplete)).toThrow();
+  });
+
+  it("derives a stale-but-valid status without overstating the source freshness", () => {
+    const projection = buildProjectionWithStatus({ githubSource: "stale" });
+
+    expect(projection.statusStrip).toMatchObject({
+      state: "stale-but-valid",
+      resumeSource: "approved",
+      githubSource: "stale",
+      publicationChecks: "passed",
+      lastUpdated: "2026-08-14T00:00:00.000Z",
+    });
+  });
+
+  it("keeps the last successful update when publication status is unavailable", () => {
+    const projection = buildProjectionWithStatus({ publicationChecks: "unavailable" });
+
+    expect(projection.statusStrip).toMatchObject({
+      state: "unavailable",
+      publicationChecks: "unavailable",
+      lastUpdated: "2026-08-12T00:00:00.000Z",
+    });
   });
 });

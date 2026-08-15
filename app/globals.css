@@ -271,6 +271,29 @@ a:hover { text-decoration-thickness: .13em; }
 
 .publication-note p { margin: 0; }
 .publication-note code { font-family: ui-monospace, monospace; font-size: .65rem; overflow-wrap: anywhere; text-transform: none; }
+.publication-status {
+  display: grid;
+  justify-content: initial;
+  gap: 1rem;
+  color: var(--ink-soft);
+  font: 1rem/1.55 var(--serif);
+  letter-spacing: normal;
+  text-transform: none;
+}
+.publication-status__heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; align-items: baseline; }
+.publication-status__title { color: var(--ink); font: 700 .8rem/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.publication-status__updated { font-size: .95rem; }
+.publication-status__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem 1.5rem; margin: 0; }
+.publication-status__facts div { min-width: 0; padding-top: .65rem; border-top: 1px solid var(--rule-soft); }
+.publication-status__facts dt { color: var(--ink-soft); font: 700 .68rem/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.publication-status__facts dd { margin: .2rem 0 0; color: var(--ink); }
+.publication-status__details summary { width: fit-content; min-height: 2.75rem; padding: .5rem 0; color: var(--oxblood); cursor: pointer; font: 700 .72rem/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.publication-status__details ol { max-width: 60rem; margin: .25rem 0 0; padding-left: 1.25rem; }
+.publication-status__details li + li { margin-top: .55rem; }
+.publication-status__hash { max-width: 100%; }
+.publication-status__hash code { color: var(--ink); }
+.publication-status--stale-but-valid { border-top-color: var(--focus); }
+.publication-status--unavailable { border-top-color: var(--rule); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 .folio--dossier .dossier-reading {
@@ -423,6 +446,7 @@ a:hover { text-decoration-thickness: .13em; }
   .dossier-index__list,
   .dossier-index__actions { flex-basis: 100%; }
   .dossier-index__actions { border-top: 1px solid var(--rule-soft); padding-top: .25rem; }
+  .publication-status__facts { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 32.5rem) {

@@ -160,6 +160,23 @@ function LegacyPortfolio({ fixture }: { fixture: RendererFixture }) {
 
 function DossierPortfolio({ projection, fixtureName }: { projection: DossierProjection; fixtureName?: string }) {
   const { card, about, experience, projects, capabilities, contact, statusStrip } = projection;
+  const statusDate = new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" }).format(new Date(statusStrip.lastUpdated));
+  const statusTitle = {
+    verified: "Portfolio verified by its agent",
+    "stale-but-valid": "Portfolio still valid; source refresh is due",
+    unavailable: "Publication status is temporarily unavailable",
+  }[statusStrip.state];
+  const statusLabels = {
+    resumeSource: { approved: "Approved", stale: "Stale", unavailable: "Unavailable" },
+    githubSource: { fresh: "Fresh", stale: "Stale", unavailable: "Unavailable" },
+    publicationChecks: { passed: "Passed", unavailable: "Unavailable" },
+  } as const;
+  const stageDescriptions = {
+    "Approved sources": "The approved résumé and public GitHub record are checked first.",
+    "Evidence processing": "Relevant public project and experience evidence is shaped into the dossier.",
+    "Publication checks": "The public result is checked before the validated deployment is served.",
+    "Validated deployment": "The validated deployment serves the last successful public result.",
+  } as const;
   return (
     <div className="folio folio--dossier" data-renderer-fixture={fixtureName ?? "dossier-v2"}>
       <a className="skip-link" href="#portfolio-content">Skip to portfolio content</a>
@@ -304,14 +321,21 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
           </div>
         </section>
 
-        <footer className="publication-note publication-status" aria-label="Publication status">
-          <p>Portfolio verified by its agent · <time dateTime={statusStrip.lastUpdated}>{new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeZone: "UTC" }).format(new Date(statusStrip.lastUpdated))}</time></p>
-          <p>{statusStrip.resumeSource} résumé source · {statusStrip.githubSource} GitHub source · publication checks {statusStrip.publicationChecks}</p>
-          <details>
+        <footer className={`publication-note publication-status publication-status--${statusStrip.state}`} aria-label="Publication status" data-publication-status={statusStrip.state}>
+          <div className="publication-status__heading">
+            <p className="publication-status__title">{statusTitle}</p>
+            <p className="publication-status__updated">Latest successful update · <time dateTime={statusStrip.lastUpdated}>{statusDate}</time></p>
+          </div>
+          <dl className="publication-status__facts">
+            <div><dt>Résumé source</dt><dd>{statusLabels.resumeSource[statusStrip.resumeSource]}</dd></div>
+            <div><dt>GitHub source</dt><dd>{statusLabels.githubSource[statusStrip.githubSource]}</dd></div>
+            <div><dt>Check result</dt><dd>{statusLabels.publicationChecks[statusStrip.publicationChecks]}</dd></div>
+          </dl>
+          <details className="publication-status__details">
             <summary>How publication is verified</summary>
-            <ol>{statusStrip.stages.map((stage) => <li key={stage}>{stage}</li>)}</ol>
+            <ol>{statusStrip.stages.map((stage) => <li key={stage}><strong>{stage}.</strong> {stageDescriptions[stage]}</li>)}</ol>
           </details>
-          <p><span className="visually-hidden">Public manifest hash: </span><code>{statusStrip.publicManifestHash}</code></p>
+          <p className="publication-status__hash"><span className="visually-hidden">Public manifest hash: </span><code>{statusStrip.publicManifestHash}</code></p>
         </footer>
       </main>
     </div>
