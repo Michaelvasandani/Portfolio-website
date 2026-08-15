@@ -218,6 +218,22 @@ a:hover { text-decoration-thickness: .13em; }
 .entry-detail li { padding-left: .25rem; line-height: 1.68; }
 .role-summary { color: var(--ink-soft); }
 .project-link { margin-top: .75rem; font-family: var(--sans); }
+.project-actions { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.project-artifact {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-top: .2rem solid var(--oxblood);
+  background: rgb(255 255 255 / 22%);
+}
+.project-artifact > .meta { margin: 0 0 .75rem; color: var(--oxblood); }
+.project-artifact h4 { margin: 0; font-size: clamp(1.2rem, 2.5vw, 1.7rem); font-weight: 400; line-height: 1.2; }
+.project-artifact > p:not(.meta) { margin: .75rem 0 0; line-height: 1.6; }
+.artifact-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1.25rem; margin: 1rem 0 0; }
+.artifact-facts > div { min-width: 0; }
+.artifact-facts dt { color: var(--oxblood); font: 700 .68rem/1.35 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.artifact-facts dd { margin: .25rem 0 0; line-height: 1.5; }
+.project-artifact img { display: block; width: 100%; height: auto; }
 
 .resume-group { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); }
 .resume-group > p, .resume-group h3, .resume-group div > p { margin-top: 0; }
@@ -410,6 +426,7 @@ a:hover { text-decoration-thickness: .13em; }
   .dossier-index__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .dossier-index__link,
   .dossier-index__action { justify-content: flex-start; }
+  .artifact-facts { grid-template-columns: minmax(0, 1fr); }
 }
 
 .resume-document {

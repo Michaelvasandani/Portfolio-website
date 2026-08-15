@@ -1,6 +1,11 @@
 import { z } from "zod";
 
 import { canonicalJson, sha256 } from "../github/canonical";
+import {
+  createTypesetRepositoryArtifact,
+  prominenceByRepositoryId,
+  typesetRepositoryArtifactSchema,
+} from "../composition/project-presentation";
 import type {
   Contact,
   Education,
@@ -53,17 +58,6 @@ const dossierExperienceSchema = z.object({
   evidenceCallouts: z.array(experienceEvidenceCalloutSchema),
 }).strict();
 
-const typesetRepositoryArtifactSchema = z.object({
-  kind: z.literal("typeset-repository"),
-  alt: z.string().min(1),
-  source: z.literal("public-repository"),
-  contentHash: z.string().regex(/^sha256:[a-f0-9]{64}$/),
-  repositoryName: z.string().min(1),
-  description: z.string().min(1),
-  technologies: z.array(z.string()),
-  repositoryHref: publicUrl,
-}).strict();
-
 const screenshotArtifactSchema = z.object({
   kind: z.literal("verified-deployment-screenshot"),
   alt: z.string().min(1),
@@ -91,6 +85,7 @@ const dossierProjectSchema = z.object({
   description: z.string().min(1),
   technologies: z.array(z.string()),
   repositoryHref: publicUrl,
+  demonstrationHref: publicUrl.optional(),
   bullets: z.array(z.string()),
   prominence: z.enum(["wide", "compact"]),
   artifact: evidenceArtifactSchema,
@@ -301,29 +296,33 @@ function experienceFromFixture(base: RendererFixture): DossierProjectionInput["e
 }
 
 function artifactFor(project: PortfolioProject): z.infer<typeof typesetRepositoryArtifactSchema> {
-  const content = {
-    repositoryName: project.name,
-    description: project.description,
-    technologies: [...project.technologies],
-    repositoryHref: project.repositoryHref,
-  };
-  return {
-    kind: "typeset-repository",
-    alt: `Public repository evidence for ${project.name}`,
-    source: "public-repository",
-    contentHash: sha256(canonicalJson(content)),
-    ...content,
-  };
+  const metadata = project.repositoryMetadata;
+  return createTypesetRepositoryArtifact({
+    name: project.name,
+    description: metadata && metadata.description !== undefined ? metadata.description : project.description,
+    language: metadata?.language ?? project.technologies[0] ?? null,
+    topics: metadata?.topics ?? project.technologies.slice(1),
+    lastUpdated: metadata?.lastUpdated ?? null,
+    releaseCount: metadata?.releaseCount ?? 0,
+    pinned: metadata?.pinned ?? false,
+    url: project.repositoryHref,
+  });
 }
 
 function projectsFromFixture(base: RendererFixture): DossierProjectionInput["projects"] {
-  return base.projects.map((project: PortfolioProject, index) => ({
+  const prominence = prominenceByRepositoryId(base.projects.map((project, order) => ({
+    repositoryId: project.repositoryHref,
+    order,
+    relevance: project.aiRelevance ?? 0,
+  })));
+  return base.projects.map((project: PortfolioProject) => ({
     name: project.name,
     description: project.description,
     technologies: [...project.technologies],
     repositoryHref: project.repositoryHref,
+    ...(project.demonstrationHref ? { demonstrationHref: project.demonstrationHref } : {}),
     bullets: [...project.bullets],
-    prominence: index < 2 ? "wide" : "compact",
+    prominence: prominence.get(project.repositoryHref)!,
     artifact: artifactFor(project),
   }));
 }

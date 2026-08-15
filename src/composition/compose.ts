@@ -11,6 +11,11 @@ import type {
   SelectionState,
 } from "./contracts";
 import { CompositionError, generateBoundedNarrative } from "./generator";
+import {
+  artifactEvidenceFieldPaths,
+  createTypesetArtifactFromRepository,
+  prominenceByRepositoryId,
+} from "./project-presentation";
 import { independentPublicLeakScan, walkPublicLeaves, type PublicContact, type PublicProjection, type PublicResumeInput } from "./projection";
 import { reconcileProjects } from "./selection";
 
@@ -38,6 +43,13 @@ type Candidate = {
     requestEvidenceHashes: Record<string, `sha256:${string}`>;
     generatedOutput: GeneratorOutput;
     evidenceGraph: EvidenceGraphEntry[];
+    artifactProvenance: {
+      repositoryId: string;
+      kind: "typeset-repository";
+      contentHash: `sha256:${string}`;
+      evidenceIds: string[];
+      fieldPaths: string[];
+    }[];
     matchingDecisions: ProjectEvaluation["match"][];
     scoreBreakdowns: { repositoryId: string; score: ProjectEvaluation["score"] }[];
     stabilityHistory: SelectionState["comparisons"];
@@ -149,6 +161,9 @@ function githubEvidence(github: GitHubSnapshot, selectedIds: Set<string>): Evide
     if (repository.homepageUrl) values.push(pointer("github", github.id, `${root}.homepageUrl`, repository.homepageUrl));
     repository.topics.forEach((topic, index) => values.push(pointer("github", github.id, `${root}.topics.${index}`, topic)));
     repository.languages.forEach((language, index) => values.push(pointer("github", github.id, `${root}.languages.${index}`, language.name)));
+    if (repository.meaningfulActivityAt) values.push(pointer("github", github.id, `${root}.meaningfulActivityAt`, repository.meaningfulActivityAt));
+    repository.releases.forEach((release, index) => values.push(pointer("github", github.id, `${root}.releases.${index}.tag`, release.tag)));
+    if (repository.pinPosition !== null) values.push(pointer("github", github.id, `${root}.pinPosition`, String(repository.pinPosition)));
     repository.documents.forEach((document, index) =>
       values.push(pointer("github", github.id, `${root}.documents.${index}.renderedContent`, document.renderedContent)),
     );
@@ -167,6 +182,7 @@ function presentationEvidence(input: CompositionInput): EvidencePointer[] {
     ["metadata.description", input.policy.metadata.description],
     ["resume.htmlPath", input.policy.resume.htmlPath],
     ["resume.pdfPath", input.policy.resume.pdfPath],
+    ["artifact.source", "public-repository"],
     ["contacts.email.label", "Email Michael"],
     ["contacts.github.label", "Michael Vasandani on GitHub"],
     ["contacts.linkedin.label", "LinkedIn profile"],
@@ -351,6 +367,11 @@ function buildProjection(
     heading: display(section.heading),
     items: ordered(section.items).map(({ text }) => display(text)),
   }));
+  const prominence = prominenceByRepositoryId(selected.map(({ repositoryId, order, score }) => ({
+    repositoryId,
+    order,
+    relevance: score.relevance,
+  })));
   const portfolioProjects = selected.map((item) => {
     const repository = input.github.repositories.find(({ id }) => id === item.repositoryId)!;
     const profile = input.profiles.find(({ repositoryId }) => repositoryId === item.repositoryId)!;
@@ -369,6 +390,8 @@ function buildProjection(
         ? { demonstrationHref: repository.homepageUrl }
         : {}),
       bullets: careerProject ? ordered(careerProject.bullets).map(({ text }) => display(text)) : [],
+      prominence: prominence.get(item.repositoryId)!,
+      artifact: createTypesetArtifactFromRepository(repository),
     };
   });
   const matchedRepository = new Map(
@@ -527,7 +550,7 @@ function evidenceGraph(projection: PublicProjection, evidence: EvidencePointer[]
   const generated = new Map(narrative.sentences.map((sentence) => [sentence.text, sentence.clauses.flatMap(({ evidenceIds }) => evidenceIds)]));
   const entries: EvidenceGraphEntry[] = [];
   walkPublicLeaves(projection, (item, path) => {
-    if (typeof item !== "string" || path === "manifestHash" || path.endsWith(".kind")) return;
+    if (typeof item !== "string" || path === "manifestHash" || path.endsWith(".kind") || path.endsWith(".contentHash") || path.endsWith(".prominence")) return;
     const generatedReferences = generated.get(item);
     const direct = byValue.get(item) ?? [];
     let references = generatedReferences ?? direct;
@@ -539,6 +562,10 @@ function evidenceGraph(projection: PublicProjection, evidence: EvidencePointer[]
     if (!references.length && / – /.test(item)) {
       references = evidence.filter(({ value }) => item.includes(value)).map(({ id }) => id);
       kind = "transformed";
+    }
+    if (!references.length) {
+      references = evidence.filter(({ value }) => value.length > 2 && item.includes(value)).map(({ id }) => id);
+      if (references.length) kind = "presentation";
     }
     if (!references.length && path === "lastUpdated") references = evidence.filter(({ fieldPath }) => fieldPath === "collectedAt").map(({ id }) => id);
     entries.push({ publicField: path, kind, valueHash: sha256(item), references: [...new Set(references)] });
@@ -634,8 +661,22 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
   }
   const graph = evidenceGraph(projection, evidence, narrative);
   if (graph.some(({ references }) => references.length === 0)) {
-    return { status: "rejected", code: "completeness-invalid", message: "A rendered field has no evidence reference.", preserved: preservedState };
+    const missingReferences = graph.filter(({ references }) => references.length === 0).map(({ publicField }) => publicField);
+    return { status: "rejected", code: "completeness-invalid", message: `Rendered fields have no evidence reference: ${missingReferences.join(", ")}`, preserved: preservedState };
   }
+  const artifactProvenance = projection.sections[3].entries.map((project) => {
+    const repository = input.github.repositories.find(({ url }) => url === project.repositoryHref)!;
+    const fieldPaths = artifactEvidenceFieldPaths(repository);
+    return {
+      repositoryId: repository.id,
+      kind: project.artifact.kind,
+      contentHash: project.artifact.contentHash as `sha256:${string}`,
+      evidenceIds: fieldPaths
+        .map((fieldPath) => evidence.find((item) => item.fieldPath === fieldPath)?.id)
+        .filter((id): id is string => Boolean(id)),
+      fieldPaths,
+    };
+  });
   const manifestValue = {
     pinnedInputs: {
       careerSnapshotId: input.career.id,
@@ -648,6 +689,7 @@ export async function composeCandidate(input: CompositionInput & { generator: Na
     requestEvidenceHashes: generatedResult.hashes,
     generatedOutput: narrative,
     evidenceGraph: graph,
+    artifactProvenance,
     matchingDecisions: selection.evaluations.map(({ match }) => match),
     scoreBreakdowns: selection.evaluations.map(({ repositoryId, score }) => ({ repositoryId, score })),
     stabilityHistory: selection.comparisons,

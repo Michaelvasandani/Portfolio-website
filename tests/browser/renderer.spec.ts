@@ -168,7 +168,7 @@ test("320px long words, 200% zoom, and WCAG text spacing do not hide content", a
   });
   await expectNoPageOverflow(page);
   expect(await page.evaluate(() => document.documentElement.clientWidth / parseFloat(getComputedStyle(document.documentElement).fontSize) * 16)).toBe(320);
-  await expect(page.getByText("sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")).toBeVisible();
+  await expect(page.getByText("sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", { exact: true })).toBeVisible();
 });
 
 test("forced colors, reduced motion, and keyboard focus preserve the journey", async ({ page, browserName }) => {

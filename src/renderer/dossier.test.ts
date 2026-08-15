@@ -98,4 +98,48 @@ describe("living dossier renderer", () => {
 
     expect(changed.experience[0]?.id).toBe(original.experience[0]?.id);
   });
+
+  it("promotes the most AI-relevant projects with stable ties and renders safe artifact fallbacks", () => {
+    const base = getRendererFixture("typical");
+    const projection = buildDossierProjection({
+      base: {
+        ...base,
+        projects: [
+          {
+            ...base.projects[0]!,
+            aiRelevance: 4,
+            repositoryMetadata: {
+              description: null,
+              language: "TypeScript",
+              topics: ["verified-topic"],
+              lastUpdated: "2026-08-11T00:00:00.000Z",
+              releaseCount: 2,
+              pinned: false,
+            },
+          },
+          { ...base.projects[1]!, aiRelevance: 10, demonstrationHref: "https://demo.example.com/safe-trip" },
+          { ...base.projects[2]!, aiRelevance: 10 },
+        ],
+      },
+      publishedAt: base.lastUpdated,
+    });
+    const html = renderToStaticMarkup(createElement(Portfolio, { fixture: projection }));
+
+    expect(projection.projects.map(({ name, prominence }) => ({ name, prominence }))).toEqual([
+      { name: "Hackathon-In-A-Box", prominence: "compact" },
+      { name: "SafeTrip SF", prominence: "wide" },
+      { name: "Personal Call Agent", prominence: "wide" },
+    ]);
+    expect(projection.projects[0]?.artifact).toMatchObject({
+      kind: "typeset-repository",
+      description: null,
+      language: "TypeScript",
+      topics: ["verified-topic"],
+      metadata: { lastUpdated: "2026-08-11T00:00:00.000Z", releaseCount: 2, pinned: false },
+    });
+    expect(html).toContain("No public repository description supplied.");
+    expect(html).toContain("Open verified SafeTrip SF demonstration");
+    expect(html).toContain('data-artifact-kind="typeset-repository"');
+    expect(html).not.toContain("evidence:");
+  });
 });

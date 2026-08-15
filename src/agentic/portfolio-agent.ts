@@ -69,6 +69,14 @@ function projectFromEvidence(
     repositoryHref: evidence.url,
     description,
     bullets: careerProject?.bullets ?? [],
+    repositoryMetadata: {
+      description: evidence.description,
+      language: evidence.language,
+      topics: evidence.topics,
+      lastUpdated: evidence.updatedAt,
+      releaseCount: 0,
+      pinned: false,
+    },
   };
 }
 

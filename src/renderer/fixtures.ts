@@ -43,6 +43,16 @@ export type CareerProject = {
 export type PortfolioProject = CareerProject & {
   description: string;
   repositoryHref: string;
+  demonstrationHref?: string;
+  aiRelevance?: number;
+  repositoryMetadata?: {
+    description?: string | null;
+    language?: string | null;
+    topics?: readonly string[];
+    lastUpdated?: string | null;
+    releaseCount?: number;
+    pinned?: boolean;
+  };
 };
 
 export type SkillGroup = {

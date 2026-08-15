@@ -232,10 +232,24 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
                   <p>{project.description}</p>
                   {project.bullets.length ? <ul>{project.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
                   <div className="project-artifact" data-artifact-kind={project.artifact.kind}>
-                    <p className="meta">{project.artifact.alt}</p>
-                    {project.artifact.kind === "typeset-repository" ? <p>{project.artifact.repositoryName} · {project.artifact.description}</p> : <Image src={project.artifact.src} alt={project.artifact.alt} width={960} height={540} />}
+                    <p className="meta">Evidence artifact · typeset repository</p>
+                    {project.artifact.kind === "typeset-repository" ? (
+                      <>
+                        <h4>{project.artifact.repositoryName}</h4>
+                        <p>{project.artifact.description ?? "No public repository description supplied."}</p>
+                        <dl className="artifact-facts">
+                          <div><dt>Language</dt><dd>{project.artifact.language ?? "Not specified"}</dd></div>
+                          {project.artifact.topics.length ? <div><dt>Topics</dt><dd>{project.artifact.topics.join(" · ")}</dd></div> : null}
+                          {project.artifact.metadata.lastUpdated ? <div><dt>Updated</dt><dd>{project.artifact.metadata.lastUpdated}</dd></div> : null}
+                          <div><dt>Releases</dt><dd>{project.artifact.metadata.releaseCount}</dd></div>
+                        </dl>
+                      </>
+                    ) : <Image src={project.artifact.src} alt={project.artifact.alt} width={960} height={540} />}
                   </div>
-                  <a className="discrete-link project-link meta" href={project.repositoryHref}>View {project.name} repository</a>
+                  <div className="project-actions">
+                    <a className="discrete-link project-link meta" href={project.repositoryHref}>View {project.name} repository</a>
+                    {project.demonstrationHref ? <a className="discrete-link project-link meta" href={project.demonstrationHref}>Open verified {project.name} demonstration</a> : null}
+                  </div>
                 </div>
               </article>
             ))}

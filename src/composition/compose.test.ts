@@ -4,7 +4,7 @@ import { composeCandidate } from "./compose";
 import type { GeneratorRequest } from "./contracts";
 import { DeterministicLocalGenerator } from "./generator";
 import { independentPublicLeakScan } from "./projection";
-import { makeCompositionInput } from "./test-fixtures";
+import { makeCompositionInput, repositoryProfile } from "./test-fixtures";
 
 describe("candidate composition", () => {
   it("assembles a complete deterministic Public projection, résumé inputs, and private evidence graph", async () => {
@@ -190,6 +190,78 @@ describe("candidate composition", () => {
     if (verified.status === "accepted") {
       expect(verified.candidate.publicProjection.sections[3].entries[0]!.demonstrationHref).toBe("https://portfolio.example.com");
     }
+  });
+
+  it("keeps autonomous selection membership while assigning wide prominence by AI relevance", async () => {
+    const input = makeCompositionInput({
+      projectTarget: 3,
+      repositories: [
+        repositoryProfile("lower-relevance", { relevance: 4 }),
+        repositoryProfile("highest-relevance", { relevance: 10 }),
+        repositoryProfile("tied-relevance", { relevance: 10 }),
+      ],
+    });
+    const selection = (await composeCandidate({ ...input, generator: new DeterministicLocalGenerator() }));
+
+    expect(selection.status).toBe("accepted");
+    if (selection.status !== "accepted") return;
+
+    const selectedIds = selection.candidate.selectionState.selected.map(({ repositoryId }) => repositoryId);
+    const projectEntries = selection.candidate.publicProjection.sections[3].entries;
+    expect(projectEntries.map(({ repositoryHref }) => repositoryHref.replace("https://github.com/michael/", ""))).toEqual(
+      selection.candidate.selectionState.selected.map(({ repositoryName }) => repositoryName),
+    );
+    expect(projectEntries.filter(({ prominence }) => prominence === "wide")).toHaveLength(2);
+    expect(projectEntries.filter(({ prominence }) => prominence === "compact")).toHaveLength(1);
+    expect(selectedIds).toHaveLength(3);
+  });
+
+  it("builds a complete typeset artifact from public repository metadata and records private provenance", async () => {
+    const input = makeCompositionInput({
+      projectTarget: 1,
+      repositories: [repositoryProfile("artifact", { relevance: 10 })],
+    });
+    const repository = input.github.repositories[0]!;
+    repository.description = null;
+    repository.topics = ["verified-topic"];
+    repository.languages = [{ name: "TypeScript", bytes: 10_000 }];
+    repository.meaningfulActivityAt = "2026-08-11T00:00:00.000Z";
+    repository.releases = [{
+      tag: "v1.0.0",
+      name: "First release",
+      publishedAt: "2026-08-11T00:00:00.000Z",
+      sourceUrl: "https://github.com/michael/artifact/releases/tag/v1.0.0",
+    }];
+
+    const result = await composeCandidate({ ...input, generator: new DeterministicLocalGenerator() });
+
+    expect(result.status).toBe("accepted");
+    if (result.status !== "accepted") return;
+    const project = result.candidate.publicProjection.sections[3].entries[0]!;
+    expect(project.artifact).toMatchObject({
+      kind: "typeset-repository",
+      source: "public-repository",
+      repositoryName: "artifact",
+      description: null,
+      language: "TypeScript",
+      topics: ["verified-topic"],
+      metadata: {
+        lastUpdated: "2026-08-11T00:00:00.000Z",
+        releaseCount: 1,
+        pinned: false,
+      },
+      repositoryHref: "https://github.com/michael/artifact",
+    });
+    expect(project.artifact.contentHash).toMatch(/^sha256:[a-f0-9]{64}$/);
+    expect(independentPublicLeakScan(project.artifact)).toEqual([]);
+    expect(result.candidate.manifest.artifactProvenance).toContainEqual(expect.objectContaining({
+      repositoryId: "repository:artifact",
+      kind: "typeset-repository",
+      evidenceIds: expect.arrayContaining([
+        expect.stringMatching(/^evidence:/),
+      ]),
+    }));
+    expect(JSON.stringify(project.artifact)).not.toContain("repository:artifact");
   });
 
   it("derives a material repository conflict from snapshots and records source normalizations", async () => {

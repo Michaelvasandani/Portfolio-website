@@ -41,6 +41,16 @@ const careerProjectSchema = z.object({
 const portfolioProjectSchema = careerProjectSchema.extend({
   description: z.string(),
   repositoryHref: z.string(),
+  demonstrationHref: z.string().optional(),
+  aiRelevance: z.number().optional(),
+  repositoryMetadata: z.object({
+    description: z.string().nullable().optional(),
+    language: z.string().nullable().optional(),
+    topics: z.array(z.string()).optional(),
+    lastUpdated: z.iso.datetime({ offset: true }).nullable().optional(),
+    releaseCount: z.number().int().nonnegative().optional(),
+    pinned: z.boolean().optional(),
+  }).strict().optional(),
 }).strict();
 const rendererFixtureSchema = z.object({
   fixture: z.enum(fixtureNames),

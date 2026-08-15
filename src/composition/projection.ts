@@ -1,10 +1,21 @@
 import { z } from "zod";
 
+import { typesetRepositoryArtifactSchema, type TypesetRepositoryArtifact } from "./project-presentation";
+
 const publicContactSchema = z.object({ kind: z.enum(["email", "github", "linkedin"]), label: z.string(), href: z.string() }).strict();
 const publicExperienceSchema = z.object({ organization: z.string(), title: z.string(), location: z.string().optional(), dates: z.string(), bullets: z.array(z.string()) }).strict();
 const publicEducationSchema = z.object({ institution: z.string(), degree: z.string(), location: z.string().optional(), dates: z.string(), gpa: z.string().optional(), coursework: z.array(z.string()), details: z.array(z.string()) }).strict();
 const publicCareerProjectSchema = z.object({ name: z.string(), technologies: z.array(z.string()), repositoryHref: z.string().optional(), bullets: z.array(z.string()) }).strict();
-const publicPortfolioProjectSchema = z.object({ name: z.string(), technologies: z.array(z.string()), description: z.string(), repositoryHref: z.string(), demonstrationHref: z.string().optional(), bullets: z.array(z.string()) }).strict();
+const publicPortfolioProjectSchema = z.object({
+  name: z.string(),
+  technologies: z.array(z.string()),
+  description: z.string(),
+  repositoryHref: z.string(),
+  demonstrationHref: z.string().optional(),
+  bullets: z.array(z.string()),
+  prominence: z.enum(["wide", "compact"]),
+  artifact: typesetRepositoryArtifactSchema,
+}).strict();
 const publicOptionalSectionSchema = z.object({ kind: z.string(), heading: z.string(), items: z.array(z.string()) }).strict();
 const publicSkillsSchema = z.object({ name: z.string(), items: z.array(z.string()) }).strict();
 const publicResumeInputSchema = z.object({ name: z.string(), location: z.string().optional(), contacts: z.array(publicContactSchema), experience: z.array(publicExperienceSchema), education: z.array(publicEducationSchema), projects: z.array(publicCareerProjectSchema), skills: z.array(publicSkillsSchema), optionalSections: z.array(publicOptionalSectionSchema) }).strict();
@@ -27,7 +38,7 @@ export type PublicContact = z.infer<typeof publicContactSchema>;
 export type PublicExperience = z.infer<typeof publicExperienceSchema>;
 export type PublicEducation = z.infer<typeof publicEducationSchema>;
 export type PublicCareerProject = z.infer<typeof publicCareerProjectSchema>;
-export type PublicPortfolioProject = z.infer<typeof publicPortfolioProjectSchema>;
+export type PublicPortfolioProject = z.infer<typeof publicPortfolioProjectSchema> & { artifact: TypesetRepositoryArtifact };
 export type PublicResumeInput = z.infer<typeof publicResumeInputSchema>;
 
 export type PublicProjection = z.infer<typeof publicProjectionSchema> & { manifestHash: `sha256:${string}` };
