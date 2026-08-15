@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import type { DossierProjection } from "../agentic/dossier-publication";
 import type { Contact, RendererFixture } from "./fixtures";
+import { DossierIndex } from "./dossier-index";
 import { PublicationNote } from "./publication-note";
 
 const sections = [
@@ -139,10 +140,10 @@ function LegacyPortfolio({ fixture }: { fixture: RendererFixture }) {
   );
 }
 
-function DossierPortfolio({ projection }: { projection: DossierProjection }) {
+function DossierPortfolio({ projection, fixtureName }: { projection: DossierProjection; fixtureName?: string }) {
   const { card, about, experience, projects, capabilities, contact, statusStrip } = projection;
   return (
-    <div className="folio" data-renderer-fixture="dossier-v2">
+    <div className="folio folio--dossier" data-renderer-fixture={fixtureName ?? "dossier-v2"}>
       <a className="skip-link" href="#portfolio-content">Skip to portfolio content</a>
 
       <header className="card-view" id="top">
@@ -158,25 +159,52 @@ function DossierPortfolio({ projection }: { projection: DossierProjection }) {
         <a className="discrete-link meta enter-link" href="#about">Read the work <span aria-hidden="true">↓</span></a>
       </header>
 
-      <main className="reading" id="portfolio-content">
+      <main className="reading dossier-reading" id="portfolio-content">
+        <DossierIndex />
+
         <section className="folio-section" id="about">
           <header className="section-heading">
             <span className="section-number" aria-hidden="true">I</span>
             <h2>About</h2>
           </header>
-          <p className="lede">{about.lede}</p>
-          <p className="body-copy">{about.body}</p>
-          {about.education.map((education) => (
-            <article className="resume-group" key={`${education.institution}-${education.degree}`}>
-              <p className="meta">Education</p>
-              <div>
-                <h3>{education.degree}</h3>
-                <p>{education.institution} · {education.graduationDate}</p>
-                {education.gpa ? <p><strong>GPA:</strong> {education.gpa}</p> : null}
-                {education.courses.length ? <p><strong>Relevant courses:</strong> {education.courses.join(", ")}</p> : null}
+          <div className="about-layout">
+            <div className="about-copy">
+              <p className="lede">{about.lede}</p>
+              <p className="body-copy">{about.body}</p>
+            </div>
+            {about.education.length ? (
+              <div className="about-education">
+                {about.education.map((education) => (
+                  <article className="education-record" key={`${education.institution}-${education.degree}`}>
+                    <p className="annotation meta">Education</p>
+                    <h3>{education.degree}</h3>
+                    <dl className="education-facts">
+                      <div>
+                        <dt>University</dt>
+                        <dd>{education.institution}</dd>
+                      </div>
+                      <div>
+                        <dt>Graduated</dt>
+                        <dd>{education.graduationDate}</dd>
+                      </div>
+                      {education.gpa && !education.degree.includes(education.gpa) ? (
+                        <div>
+                          <dt>GPA</dt>
+                          <dd>{education.gpa}</dd>
+                        </div>
+                      ) : null}
+                      {education.courses.length ? (
+                        <div>
+                          <dt>Relevant courses</dt>
+                          <dd>{education.courses.join(" · ")}</dd>
+                        </div>
+                      ) : null}
+                    </dl>
+                  </article>
+                ))}
               </div>
-            </article>
-          ))}
+            ) : null}
+          </div>
         </section>
 
         <section className="folio-section" id="experience">
@@ -268,7 +296,7 @@ function DossierPortfolio({ projection }: { projection: DossierProjection }) {
   );
 }
 
-export function Portfolio({ fixture }: { fixture: RendererFixture | DossierProjection }) {
-  if ("schemaVersion" in fixture) return <DossierPortfolio projection={fixture} />;
+export function Portfolio({ fixture, fixtureName }: { fixture: RendererFixture | DossierProjection; fixtureName?: string }) {
+  if ("schemaVersion" in fixture) return <DossierPortfolio projection={fixture} fixtureName={fixtureName} />;
   return <LegacyPortfolio fixture={fixture} />;
 }

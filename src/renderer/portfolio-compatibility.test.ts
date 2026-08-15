@@ -19,6 +19,9 @@ describe("versioned portfolio rendering", () => {
     expect(html).toContain("About");
     expect(html).toContain("Experience");
     expect(html).toContain("Projects");
+    expect(html).toContain("Skills &amp; Tools");
+    expect(html).toContain("Contact");
+    expect(html).toContain('aria-label="Dossier index"');
     expect(html).toContain("Building production AI? Let’s talk.");
     expect(html).toContain("Portfolio verified by its agent");
   });

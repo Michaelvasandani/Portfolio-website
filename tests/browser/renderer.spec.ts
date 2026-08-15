@@ -4,7 +4,7 @@ import { expect, test, type Page } from "@playwright/test";
 
 import { fixtureNames } from "../../src/renderer/fixtures";
 
-const sectionOrder = ["About", "Experience", "Projects", "Résumé", "Links"];
+const sectionOrder = ["About", "Experience", "Projects", "Skills & Tools", "Contact"];
 const viewports = [
   { width: 320, height: 568 },
   { width: 390, height: 844 },
@@ -45,7 +45,9 @@ test("Portfolio renders the Engraved Folio journey and public provenance", async
   await expect(page.getByRole("heading", { level: 1, name: "Michael Sagar Vasandani" })).toBeVisible();
   await expect(page.locator("main > section > header > h2").allTextContents()).resolves.toEqual(sectionOrder);
   await expect(page.getByRole("link", { name: "Email Michael" })).toHaveCount(2);
-  await expect(page.getByText(/Last updated/)).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Dossier index" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Public résumé" })).toHaveAttribute("href", "/resume");
+  await expect(page.getByText(/Portfolio verified by its agent/)).toBeVisible();
   await expect(page.getByText(/^sha256:[a-f0-9]{64}$/)).toBeVisible();
   await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
   await expectNoAxeViolations(page);
@@ -65,6 +67,43 @@ test("Public résumé HTML is complete, semantic, and links to the PDF", async (
   const pdf = page.getByRole("link", { name: "Download résumé as tagged PDF" });
   await expect(pdf).toHaveAttribute("href", "/michael-vasandani-resume.pdf");
   await expectNoAxeViolations(page);
+});
+
+test("the Dossier index is persistent, keyboard-operable, and keeps anchored headings visible", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  const index = page.getByRole("navigation", { name: "Dossier index" });
+  const experienceLink = index.getByRole("link", { name: "Experience", exact: true });
+  await expect(index).toBeVisible();
+  await expect(index.getByRole("link", { name: "About", exact: true })).toHaveAttribute("aria-current", "location");
+
+  await experienceLink.focus();
+  await expect(experienceLink).toBeFocused();
+  await expect(experienceLink).toHaveCSS("outline-style", "solid");
+  await experienceLink.click();
+  await expect(page).toHaveURL(/#experience$/);
+  await expect(experienceLink).toHaveAttribute("aria-current", "location");
+
+  const headingTop = await page.locator("#experience .section-heading").evaluate((element) => element.getBoundingClientRect().top);
+  const indexBottom = await index.evaluate((element) => element.getBoundingClientRect().bottom);
+  expect(headingTop).toBeGreaterThanOrEqual(indexBottom - 1);
+});
+
+test("the essential dossier remains readable without scripting", async ({ browser }) => {
+  const context = await browser.newContext({
+    baseURL: "http://127.0.0.1:3100",
+    javaScriptEnabled: false,
+  });
+  const noScriptPage = await context.newPage();
+
+  await noScriptPage.goto("/renderer-fixtures/sparse");
+  await expect(noScriptPage.getByRole("heading", { name: "About", exact: true })).toBeVisible();
+  await expect(noScriptPage.getByRole("heading", { name: "Experience", exact: true })).toBeVisible();
+  await expect(noScriptPage.getByRole("link", { name: "Projects", exact: true })).toHaveAttribute("href", "#projects");
+  await expect(noScriptPage.getByRole("heading", { name: "Software Engineer Example" })).toBeVisible();
+
+  await context.close();
 });
 
 for (const width of [320, 390]) {

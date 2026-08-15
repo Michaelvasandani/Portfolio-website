@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { buildDossierProjection } from "@/src/agentic/dossier-publication";
 import { fixtureNames, getRendererFixture, isRendererFixtureName } from "@/src/renderer/fixtures";
 import { Portfolio } from "@/src/renderer/portfolio";
 
@@ -12,5 +13,6 @@ export function generateStaticParams() {
 export default async function RendererFixturePage({ params }: { params: Promise<{ fixture: string }> }) {
   const { fixture } = await params;
   if (!isRendererFixtureName(fixture)) notFound();
-  return <Portfolio fixture={getRendererFixture(fixture)} />;
+  const base = getRendererFixture(fixture);
+  return <Portfolio fixture={buildDossierProjection({ base, publishedAt: base.lastUpdated })} fixtureName={fixture} />;
 }

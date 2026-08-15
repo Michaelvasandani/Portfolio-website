@@ -214,13 +214,39 @@ function cardFromFixture(base: RendererFixture): DossierProjectionInput["card"] 
   };
 }
 
+const relevantCoursePatterns = [
+  "algorithm",
+  "object-oriented",
+  "machine learning",
+  "ml/ai",
+  "data structure",
+  "database",
+  "software engineering",
+  "operating system",
+  "data visualization",
+] as const;
+
+function coursePriority(course: string): number {
+  const normalized = course.trim().toLowerCase();
+  return relevantCoursePatterns.findIndex((pattern) => normalized.includes(pattern));
+}
+
+function selectRelevantCourses(courses: readonly string[]): string[] {
+  return courses
+    .map((course, sourceIndex) => ({ course, sourceIndex, priority: coursePriority(course) }))
+    .filter(({ priority }) => priority >= 0)
+    .sort((left, right) => left.priority - right.priority || left.sourceIndex - right.sourceIndex)
+    .slice(0, 4)
+    .map(({ course }) => course);
+}
+
 function educationFromFixture(base: RendererFixture): DossierProjectionInput["about"]["education"] {
   return base.education.map((education: Education) => ({
     institution: education.institution,
     degree: education.degree,
     graduationDate: education.dates,
     gpa: education.gpa,
-    courses: (education.coursework ?? []).slice(0, 4),
+    courses: selectRelevantCourses(education.coursework ?? []),
   }));
 }
 

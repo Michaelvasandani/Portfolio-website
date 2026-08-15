@@ -1,11 +1,14 @@
 import { getRendererFixture } from "@/src/renderer/fixtures";
+import { buildDossierProjection } from "@/src/agentic/dossier-publication";
 import { Portfolio } from "@/src/renderer/portfolio";
 import { readLatestPublishedPortfolio } from "@/src/agentic/server";
 import { connection } from "next/server";
 
 export default async function PortfolioPage() {
   await connection();
-  const fixture = await readLatestPublishedPortfolio().catch(() => null) ?? getRendererFixture("typical");
+  const fallback = getRendererFixture("typical");
+  const fixture = await readLatestPublishedPortfolio().catch(() => null)
+    ?? buildDossierProjection({ base: fallback, publishedAt: fallback.lastUpdated });
   const identity = "schemaVersion" in fixture
     ? { name: fixture.card.name, contacts: fixture.card.contacts, role: fixture.card.role, lastUpdated: fixture.statusStrip.lastUpdated }
     : { name: fixture.name, contacts: fixture.contacts, role: fixture.role, lastUpdated: fixture.lastUpdated };
