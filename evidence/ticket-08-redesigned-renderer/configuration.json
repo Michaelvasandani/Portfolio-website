@@ -1,0 +1,22 @@
+{
+  "node": "v22.23.1",
+  "operatingSystem": "darwin 23.6.0",
+  "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+  "formFactor": "mobile",
+  "throttlingMethod": "simulate",
+  "throttling": {
+    "rttMs": 40,
+    "throughputKbps": 10240,
+    "cpuSlowdownMultiplier": 2
+  },
+  "coldRunsPerFixture": 3,
+  "chromeFlags": [
+    "--headless",
+    "--no-sandbox"
+  ],
+  "fixtures": [
+    "sparse",
+    "dense"
+  ],
+  "configurationHash": "06cdddbb0bd878924b29db49a69eb9a98e3e65a17b95158740017de53245782a"
+}

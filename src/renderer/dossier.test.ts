@@ -210,4 +210,44 @@ describe("living dossier renderer", () => {
     expect(html).toContain('data-artifact-kind="typeset-repository"');
     expect(html).not.toContain("evidence:");
   });
+
+  it("distinguishes every safe Evidence artifact kind and keeps artifact paths local", () => {
+    const base = getRendererFixture("typical");
+    const projection = buildDossierProjection({
+      base: {
+        ...base,
+        projects: base.projects.map((project, index) => ({
+          ...project,
+          evidenceArtifact: index === 0
+            ? {
+                kind: "verified-deployment-screenshot" as const,
+                alt: "Verified deployment screenshot fixture",
+                source: "verified-deployment" as const,
+                contentHash: `sha256:${"4".repeat(64)}`,
+                src: "/artifacts/qualification-deployment.svg",
+              }
+            : index === 1
+              ? {
+                  kind: "evidence-derived-diagram" as const,
+                  alt: "Evidence-derived workflow diagram fixture",
+                  source: "repository-evidence" as const,
+                  contentHash: `sha256:${"5".repeat(64)}`,
+                  src: "/artifacts/qualification-diagram.svg",
+                }
+              : undefined,
+        })),
+      },
+      publishedAt: base.lastUpdated,
+    });
+    const html = renderToStaticMarkup(createElement(Portfolio, { fixture: projection }));
+
+    expect(html).toContain("Evidence artifact · verified deployment screenshot");
+    expect(html).toContain("Evidence artifact · evidence-derived diagram");
+    expect(html).toContain("Evidence artifact · typeset repository");
+    expect(html).toContain('alt="Verified deployment screenshot fixture"');
+    expect(html).toContain('alt="Evidence-derived workflow diagram fixture"');
+    expect(html).toContain('src="/artifacts/qualification-deployment.svg"');
+    expect(html).toContain('src="/artifacts/qualification-diagram.svg"');
+    expect(html).not.toContain('src="https://');
+  });
 });

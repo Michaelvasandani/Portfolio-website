@@ -1,0 +1,63 @@
+{"report":{"buildInformation":{"releaseDetails":[{
+  "id" : "core",
+  "version" : "1.30.2",
+  "buildDate" : 1780508580000
+},{
+  "id" : "validation-model",
+  "version" : "1.30.2",
+  "buildDate" : 1780508760000
+},{
+  "id" : "apps",
+  "version" : "1.30.2",
+  "buildDate" : 1780509300000
+}]},"jobs":[{"itemDetails":{
+  "name" : "/Users/michaelvasandani/Documents/Portfolio-website/evidence/ticket-03/pdfs/dense.pdf",
+  "size" : 93280
+},"validationResult":[ {
+  "details" : {
+    "passedRules" : 106,
+    "failedRules" : 0,
+    "passedChecks" : 20726,
+    "failedChecks" : 0,
+    "ruleSummaries" : [ ]
+  },
+  "jobEndStatus" : "normal",
+  "profileName" : "PDF/UA-1 validation profile",
+  "statement" : "PDF file is compliant with Validation Profile requirements.",
+  "compliant" : true
+} ],"processingTime":{
+  "start" : 1786756956578,
+  "finish" : 1786756957143,
+  "duration" : "00:00:00.565",
+  "difference" : 565
+}}],"batchSummary":{
+  "duration" : {
+    "start" : 1786756956528,
+    "finish" : 1786756957156,
+    "duration" : "00:00:00.628",
+    "difference" : 628
+  },
+  "totalJobs" : 1,
+  "outOfMemory" : 0,
+  "veraExceptions" : 0,
+  "featuresSummary" : {
+    "failedJobCount" : 0,
+    "totalJobCount" : 0,
+    "successfulJobCount" : 0
+  },
+  "repairSummary" : {
+    "failedJobCount" : 0,
+    "totalJobCount" : 0,
+    "successfulJobCount" : 0
+  },
+  "multiJob" : false,
+  "failedEncryptedJobs" : 0,
+  "failedParsingJobs" : 0,
+  "validationSummary" : {
+    "failedJobCount" : 0,
+    "compliantPdfaCount" : 1,
+    "totalJobCount" : 1,
+    "nonCompliantPdfaCount" : 0,
+    "successfulJobCount" : 1
+  }
+}}}

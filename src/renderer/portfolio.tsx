@@ -14,6 +14,12 @@ const sections = [
   ["V", "Links", "links"],
 ] as const;
 
+const artifactLabels = {
+  "verified-deployment-screenshot": "verified deployment screenshot",
+  "evidence-derived-diagram": "evidence-derived diagram",
+  "typeset-repository": "typeset repository",
+} as const;
+
 function ContactLinks({ contacts, location, conciseLabels = false }: {
   contacts: readonly Contact[];
   location: "card" | "links" | "closing";
@@ -266,7 +272,7 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
                   <p>{project.description}</p>
                   {project.bullets.length ? <ul>{project.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul> : null}
                   <div className="project-artifact" data-artifact-kind={project.artifact.kind}>
-                    <p className="meta">Evidence artifact · typeset repository</p>
+                    <p className="meta">Evidence artifact · {artifactLabels[project.artifact.kind]}</p>
                     {project.artifact.kind === "typeset-repository" ? (
                       <>
                         <h4>{project.artifact.repositoryName}</h4>

@@ -1,0 +1,201 @@
+{
+  "checker": "lighthouse",
+  "version": "13.4.1",
+  "environment": {
+    "node": "v22.23.1",
+    "operatingSystem": "darwin 23.6.0",
+    "chrome": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36",
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "throttling": {
+      "rttMs": 40,
+      "throughputKbps": 10240,
+      "cpuSlowdownMultiplier": 2
+    },
+    "coldRunsPerFixture": 3,
+    "chromeFlags": [
+      "--headless",
+      "--no-sandbox"
+    ],
+    "fixtures": [
+      "sparse",
+      "dense"
+    ]
+  },
+  "runs": [
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 222.8977,
+      "speedIndex": 222.8977,
+      "lcp": 576.8977,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 213.69150000000002,
+      "speedIndex": 213.69150000000002,
+      "lcp": 566.6915,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 218.0473,
+      "speedIndex": 218.0473,
+      "lcp": 578.0473000000001,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 208.63639999999998,
+      "speedIndex": 208.63639999999998,
+      "lcp": 568.6364,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 208.8472,
+      "speedIndex": 208.8472,
+      "lcp": 561.8472,
+      "tbt": 0,
+      "cls": 0
+    },
+    {
+      "performance": 100,
+      "accessibility": 100,
+      "fcp": 215.2371,
+      "speedIndex": 215.2371,
+      "lcp": 583.2370999999999,
+      "tbt": 0,
+      "cls": 0
+    }
+  ],
+  "fixtureGroups": {
+    "sparse": {
+      "runs": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 222.8977,
+          "speedIndex": 222.8977,
+          "lcp": 576.8977,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 213.69150000000002,
+          "speedIndex": 213.69150000000002,
+          "lcp": 566.6915,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 218.0473,
+          "speedIndex": 218.0473,
+          "lcp": 578.0473000000001,
+          "tbt": 0,
+          "cls": 0
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "fcp": 218.0473,
+        "speedIndex": 218.0473,
+        "lcp": 576.8977,
+        "tbt": 0,
+        "cls": 0
+      }
+    },
+    "dense": {
+      "runs": [
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 208.63639999999998,
+          "speedIndex": 208.63639999999998,
+          "lcp": 568.6364,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 208.8472,
+          "speedIndex": 208.8472,
+          "lcp": 561.8472,
+          "tbt": 0,
+          "cls": 0
+        },
+        {
+          "performance": 100,
+          "accessibility": 100,
+          "fcp": 215.2371,
+          "speedIndex": 215.2371,
+          "lcp": 583.2370999999999,
+          "tbt": 0,
+          "cls": 0
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "fcp": 208.8472,
+        "speedIndex": 208.8472,
+        "lcp": 568.6364,
+        "tbt": 0,
+        "cls": 0
+      }
+    }
+  },
+  "median": {
+    "performance": 100,
+    "fcp": 215.2371,
+    "speedIndex": 215.2371,
+    "lcp": 576.8977,
+    "tbt": 0,
+    "cls": 0
+  },
+  "configurationHash": "06cdddbb0bd878924b29db49a69eb9a98e3e65a17b95158740017de53245782a",
+  "seo": 100,
+  "budgets": {
+    "compressedJavaScript": 130317,
+    "initialTransfer": 291756
+  },
+  "pdfUaFixtures": [
+    "sparse",
+    "typical",
+    "dense",
+    "long-word",
+    "optional-section",
+    "six-pin"
+  ],
+  "hashes": [
+    {
+      "path": "package.json",
+      "sha256": "d91112a5babab7349e72c62c8ee31e1476e4bb71ebc5c8d08f16865efa1bde92"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "6f41c20b085094dbfd17c014cd31bccfee3eb15241d723151901b7ede5f3b98d"
+    },
+    {
+      "path": "app/globals.css",
+      "sha256": "62ebae27fb0bc0c7103a7ddde51be9e0ff3ca0e327ec0f56d1abf4e23b4185be"
+    },
+    {
+      "path": "public/michael-vasandani-resume.pdf",
+      "sha256": "3be92edaac5d51ba120e7b259fe54cc9dbae650e4c1c4d11c3fa11ea1daa2d5e"
+    }
+  ]
+}
