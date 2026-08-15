@@ -14,6 +14,7 @@ import type {
   RendererFixture,
 } from "../renderer/fixtures";
 import { repositoryEvidenceSchema, type RepositoryEvidence } from "./portfolio-agent";
+import { capabilityGroupNames, projectCapabilityGroups } from "./capability-policy";
 
 const publicUrl = z.url().refine((value) => value.startsWith("https://"), "public links must use HTTPS");
 const publicPath = z.string().startsWith("/");
@@ -72,9 +73,16 @@ const dossierProjectSchema = z.object({
 }).strict();
 
 const capabilityGroupSchema = z.object({
-  name: z.string().min(1),
+  name: z.enum(capabilityGroupNames),
   tools: z.array(z.string().min(1)),
 }).strict();
+
+const capabilitiesSchema = z.array(capabilityGroupSchema).superRefine((groups, context) => {
+  const names = groups.map(({ name }) => name);
+  if (new Set(names).size !== names.length) {
+    context.addIssue({ code: "custom", message: "capability groups must be unique", path: ["name"] });
+  }
+});
 
 const contactSchema = z.object({
   kind: z.enum(["email", "github", "linkedin"]),
@@ -107,7 +115,7 @@ export const dossierProjectionInputSchema = z.object({
   }).strict(),
   experience: z.array(dossierExperienceSchema).min(1),
   projects: z.array(dossierProjectSchema).min(1),
-  capabilities: z.array(capabilityGroupSchema),
+  capabilities: capabilitiesSchema,
   contact: z.object({
     prompt: z.string().min(1),
     contacts: z.array(contactSchema).min(1),
@@ -309,7 +317,7 @@ function projectsFromFixture(base: RendererFixture): DossierProjectionInput["pro
 }
 
 function capabilitiesFromFixture(base: RendererFixture): DossierProjectionInput["capabilities"] {
-  return base.skills.map((group) => ({ name: group.name, tools: [...group.items] }));
+  return projectCapabilityGroups(base.skills);
 }
 
 function contactsFromFixture(contacts: readonly Contact[]) {

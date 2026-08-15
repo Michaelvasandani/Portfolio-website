@@ -49,6 +49,28 @@ describe("living dossier renderer", () => {
     expect(html).not.toContain('id="links"');
   });
 
+  it("renders capability-first toolkits and concise closing links with descriptive names", () => {
+    const base = getRendererFixture("typical");
+    const projection = buildDossierProjection({ base, publishedAt: base.lastUpdated });
+    const html = renderToStaticMarkup(createElement(Portfolio, { fixture: projection }));
+    const skills = html.slice(html.indexOf('id="skills"'), html.indexOf('id="contact"'));
+
+    expect(skills).toContain('class="capability-group"');
+    expect(skills).toContain('aria-labelledby="capability-ai-systems"');
+    expect(skills.indexOf("AI Systems")).toBeLessThan(skills.indexOf("LangGraph"));
+    expect(skills).not.toContain(">Languages<");
+    expect(skills).not.toContain(">Frameworks<");
+    const contact = html.slice(html.indexOf('id="contact"'), html.indexOf('aria-label="Publication status"'));
+    expect(contact).toContain('class="contact-link contact-link--primary discrete-link meta"');
+    expect(contact).toContain('class="contact-link contact-link--secondary discrete-link meta"');
+    expect(contact).toContain('aria-label="Email Michael"');
+    expect(contact).toContain('aria-label="Michael Vasandani on GitHub"');
+    expect(contact).toContain('aria-label="LinkedIn profile"');
+    expect(contact).toContain(">Email<");
+    expect(contact).toContain(">GitHub<");
+    expect(contact).toContain(">LinkedIn<");
+  });
+
   it("omits optional education labels when the source has no education record", () => {
     const base = getRendererFixture("sparse");
     const projection = buildDossierProjection({ base, publishedAt: base.lastUpdated });

@@ -8,6 +8,54 @@ import {
 } from "./dossier-publication";
 
 describe("dossier publication projection", () => {
+  it("projects supported source skills into one ordered best-fit capability group", () => {
+    const base = getRendererFixture("typical");
+    const projection = buildDossierProjection({ base, publishedAt: "2026-08-14T00:00:00.000Z" });
+
+    expect(projection.capabilities).toEqual([
+      {
+        name: "AI Systems",
+        tools: ["LangGraph", "Ollama", "LangChain", "Hugging Face Transformers"],
+      },
+      {
+        name: "Backend & APIs",
+        tools: ["Java", "Python", "C++", "SQL", "JavaScript", "TypeScript", "Node.js", "FastAPI", "Pydantic"],
+      },
+      {
+        name: "Data & ML",
+        tools: ["R", "Pinecone", "pgvector", "pandas", "NumPy", "scikit-learn", "PyTorch", "TensorFlow"],
+      },
+      {
+        name: "Product Interfaces",
+        tools: ["HTML/CSS", "React", "Angular", "Material-UI"],
+      },
+      {
+        name: "Infrastructure",
+        tools: ["Git", "GitHub Actions", "Docker", "Kubernetes", "AWS", "GCP"],
+      },
+    ]);
+  });
+
+  it("preserves source spellings, removes duplicate and unsupported skills, and omits empty groups", () => {
+    const base = getRendererFixture("typical");
+    const projection = buildDossierProjection({
+      base: {
+        ...base,
+        skills: [
+          { name: "Source one", items: [" TypeScript ", "LangGraph", "Unsupported Tool"] },
+          { name: "Source two", items: ["TypeScript", "React"] },
+        ],
+      },
+      publishedAt: "2026-08-14T00:00:00.000Z",
+    });
+
+    expect(projection.capabilities).toEqual([
+      { name: "AI Systems", tools: ["LangGraph"] },
+      { name: "Backend & APIs", tools: [" TypeScript "] },
+      { name: "Product Interfaces", tools: ["React"] },
+    ]);
+  });
+
   it("composes the version-two public contract without losing the Card inputs", () => {
     const projection = buildDossierProjection({
       base: getRendererFixture("typical"),

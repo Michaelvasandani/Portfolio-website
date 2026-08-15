@@ -155,6 +155,10 @@ a:hover { text-decoration-thickness: .13em; }
 .proof { width: min(100%, 38rem); margin: 1.1rem auto 0; color: var(--ink-soft); font-size: 1.1rem; line-height: 1.65; }
 .contact-links { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 .contact-links--card { align-self: end; }
+.contact-links--closing { gap: .5rem .75rem; margin-top: 1.5rem; }
+.contact-link { text-decoration: none; }
+.contact-link--primary { padding-inline: .9rem; background: var(--oxblood); color: var(--paper); }
+.contact-link--secondary { color: var(--oxblood); }
 .enter-link { align-self: end; justify-self: end; }
 
 .reading {
@@ -240,6 +244,11 @@ a:hover { text-decoration-thickness: .13em; }
 .resume-row { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 2rem; padding: 1rem 0; border-top: 1px solid var(--rule-soft); }
 .resume-row h3, .resume-row p { margin: 0; line-height: 1.65; }
 .resume-row h3 { font-size: 1rem; }
+.capability-groups { display: grid; gap: 1rem; }
+.capability-group { min-width: 0; padding: 1.25rem; border: 1px solid var(--rule); border-top: .2rem solid var(--oxblood); background: rgb(255 255 255 / 18%); }
+.capability-group h3 { margin: 0; font-size: clamp(1.2rem, 2.2vw, 1.65rem); font-weight: 400; line-height: 1.2; }
+.capability-toolkit { margin: 1rem 0 0; line-height: 1.7; }
+.capability-toolkit .meta { display: block; margin-bottom: .35rem; color: var(--oxblood); }
 .resume-optional { padding: 1.25rem 0; border-top: 1px solid var(--rule-soft); }
 .resume-optional h3 { margin: 0; }
 .resume-optional ul { margin-bottom: 0; }
@@ -383,6 +392,8 @@ a:hover { text-decoration-thickness: .13em; }
 
 @media (min-width: 52rem) {
   .folio--dossier .about-layout { grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr); }
+
+  .folio--dossier .capability-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .folio--dossier #experience .entries,
   .folio--dossier #projects .entries {

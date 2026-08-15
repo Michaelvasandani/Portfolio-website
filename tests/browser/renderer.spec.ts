@@ -53,6 +53,32 @@ test("Portfolio renders the Engraved Folio journey and public provenance", async
   await expectNoAxeViolations(page);
 });
 
+test("Skills & Tools presents capability groups and the closing area prioritizes concise contact actions", async ({ page }) => {
+  await page.goto("/");
+
+  const capabilityGroups = page.locator("#skills .capability-group");
+  await expect(capabilityGroups).toHaveCount(5);
+  await expect(capabilityGroups.locator("h3").allTextContents()).resolves.toEqual([
+    "AI Systems",
+    "Backend & APIs",
+    "Data & ML",
+    "Product Interfaces",
+    "Infrastructure",
+  ]);
+  await expect(page.locator("#skills")).not.toContainText("Languages");
+  await expect(page.locator("#skills")).not.toContainText("Frameworks");
+
+  const contact = page.locator("#contact");
+  await expect(contact.getByText("Building production AI? Let’s talk.")).toBeVisible();
+  await expect(contact.getByRole("link", { name: "Email Michael" })).toHaveText("Email");
+  await expect(contact.getByRole("link", { name: "Michael Vasandani on GitHub" })).toHaveText("GitHub");
+  await expect(contact.getByRole("link", { name: "LinkedIn profile" })).toHaveText("LinkedIn");
+  await expect(contact.locator(".contact-link--primary")).toHaveAttribute("href", "mailto:michaelvasandani6@gmail.com");
+  await expect(contact.locator(".contact-link--secondary")).toHaveCount(2);
+  await expect(contact.getByRole("link", { name: "Read the complete résumé in HTML" })).toHaveAttribute("href", "/resume");
+  await expect(contact.getByRole("link", { name: "Download résumé as tagged PDF" })).toHaveAttribute("href", "/michael-vasandani-resume.pdf");
+});
+
 test("Public résumé HTML is complete, semantic, and links to the PDF", async ({ page }) => {
   await page.goto("/resume");
 

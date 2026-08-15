@@ -14,14 +14,31 @@ const sections = [
   ["V", "Links", "links"],
 ] as const;
 
-function ContactLinks({ contacts, location }: { contacts: readonly Contact[]; location: "card" | "links" }) {
+function ContactLinks({ contacts, location, conciseLabels = false }: {
+  contacts: readonly Contact[];
+  location: "card" | "links" | "closing";
+  conciseLabels?: boolean;
+}) {
   return (
     <div className={`contact-links contact-links--${location}`}>
-      {contacts.map((contact) => (
-        <a className="discrete-link meta" href={contact.href} key={contact.kind}>
-          {contact.label}
-        </a>
-      ))}
+      {contacts.map((contact) => {
+        const label = conciseLabels
+          ? { email: "Email", github: "GitHub", linkedin: "LinkedIn" }[contact.kind]
+          : contact.label;
+        const contactClass = conciseLabels
+          ? `contact-link contact-link--${contact.kind === "email" ? "primary" : "secondary"} discrete-link meta`
+          : "discrete-link meta";
+        return (
+          <a
+            className={contactClass}
+            href={contact.href}
+            key={contact.kind}
+            {...(conciseLabels ? { "aria-label": contact.label } : {})}
+          >
+            {label}
+          </a>
+        );
+      })}
     </div>
   );
 }
@@ -261,11 +278,17 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
             <span className="section-number" aria-hidden="true">IV</span>
             <h2>Skills &amp; Tools</h2>
           </header>
-          {capabilities.map((group) => (
-            <div className="resume-row" key={group.name}>
-              <h3>{group.name}</h3><p>{group.tools.join(", ")}</p>
-            </div>
-          ))}
+          <div className="capability-groups">
+            {capabilities.map((group) => {
+              const headingId = `capability-${group.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+              return (
+                <article className="capability-group" key={group.name} aria-labelledby={headingId}>
+                  <h3 id={headingId}>{group.name}</h3>
+                  <p className="capability-toolkit"><span className="meta">Toolkit</span> {group.tools.join(" · ")}</p>
+                </article>
+              );
+            })}
+          </div>
         </section>
 
         <section className="folio-section" id="contact">
@@ -274,7 +297,7 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
             <h2>Contact</h2>
           </header>
           <p className="lede">{contact.prompt}</p>
-          <ContactLinks contacts={contact.contacts} location="links" />
+          <ContactLinks contacts={contact.contacts} location="closing" conciseLabels />
           <div className="actions">
             <a className="discrete-link" href={contact.resumeHtmlPath}>Read the complete résumé in HTML</a>
             <a className="discrete-link" href={contact.resumePdfPath} download>Download résumé as tagged PDF</a>
