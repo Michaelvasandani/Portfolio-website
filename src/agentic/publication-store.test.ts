@@ -83,6 +83,10 @@ describe("Neon publication store contract", () => {
     await store.publishDossier(dossier, current.repositories);
 
     await expect(store.latest()).resolves.toEqual(dossier);
+    const versions = await database.query<{ schema_version: number }>(
+      "SELECT schema_version FROM publication_manifests ORDER BY created_at",
+    );
+    expect(versions.rows.map(({ schema_version }) => schema_version)).toEqual([1, 2]);
   });
 
   it("skips invalid newer envelopes and keeps the last valid publication serveable", async () => {

@@ -112,7 +112,7 @@ export function buildPublishedPortfolio(input: BuildInput): RendererFixture {
 type AgentDependencies = {
   collect(): Promise<readonly RepositoryEvidence[]>;
   generate(repositories: readonly RepositoryEvidence[]): Promise<AgentDraft>;
-  publish(fixture: RendererFixture, evidence: readonly RepositoryEvidence[]): Promise<void>;
+  publish(fixture: RendererFixture, evidence: readonly RepositoryEvidence[]): Promise<{ manifestHash?: `sha256:${string}` } | void>;
   base: RendererFixture;
   now?: () => Date;
 };
@@ -126,6 +126,10 @@ export async function runPortfolioAgent(dependencies: AgentDependencies) {
     draft,
     publishedAt: (dependencies.now ?? (() => new Date()))().toISOString(),
   });
-  await dependencies.publish(fixture, repositories);
-  return { status: "published" as const, manifestHash: fixture.manifestHash, projectCount: fixture.projects.length };
+  const publication = await dependencies.publish(fixture, repositories);
+  return {
+    status: "published" as const,
+    manifestHash: publication?.manifestHash ?? fixture.manifestHash,
+    projectCount: fixture.projects.length,
+  };
 }

@@ -105,6 +105,19 @@ describe("portfolio agent", () => {
     expect(publish).toHaveBeenCalledOnce();
   });
 
+  it("reports the hash returned by the active publication contract", async () => {
+    const publicManifestHash = `sha256:${"f".repeat(64)}` as const;
+    const result = await runPortfolioAgent({
+      collect: async () => repositories,
+      generate: async () => draft,
+      publish: async () => ({ manifestHash: publicManifestHash }),
+      base: getRendererFixture("typical"),
+      now: () => new Date("2026-08-13T12:00:00.000Z"),
+    });
+
+    expect(result.manifestHash).toBe(publicManifestHash);
+  });
+
   it("preserves the last valid publication when generation fails", async () => {
     const publish = vi.fn(async () => undefined);
 

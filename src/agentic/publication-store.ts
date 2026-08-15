@@ -110,12 +110,17 @@ export function createPortfolioPublicationStore(query: Query) {
   const ensureInstalled = () => installed ??= query(`
     CREATE TABLE IF NOT EXISTS publication_manifests (
       id text PRIMARY KEY,
-      schema_version integer NOT NULL CHECK (schema_version = 1),
+      schema_version integer NOT NULL,
       content_hash text NOT NULL CHECK (content_hash ~ '^sha256:[a-f0-9]{64}$'),
       payload jsonb NOT NULL,
       created_at timestamptz NOT NULL
     )
-  `).then(() => undefined);
+  `)
+    .then(() => query("ALTER TABLE publication_manifests DROP CONSTRAINT IF EXISTS publication_manifests_schema_version_v1"))
+    .then(() => query("ALTER TABLE publication_manifests DROP CONSTRAINT IF EXISTS publication_manifests_schema_version_check"))
+    .then(() => query("ALTER TABLE publication_manifests DROP CONSTRAINT IF EXISTS publication_manifests_schema_version_v2"))
+    .then(() => query("ALTER TABLE publication_manifests ADD CONSTRAINT publication_manifests_schema_version_v2 CHECK (schema_version IN (1, 2))"))
+    .then(() => undefined);
 
   return {
     async publish(fixture: RendererFixture, repositoryEvidence: readonly RepositoryEvidence[]): Promise<void> {
@@ -146,7 +151,7 @@ export function createPortfolioPublicationStore(query: Query) {
       });
       await query(
         `INSERT INTO publication_manifests (id, schema_version, content_hash, payload, created_at)
-         VALUES ($1, 1, $2, $3::jsonb, $4::timestamptz)
+         VALUES ($1, 2, $2, $3::jsonb, $4::timestamptz)
          ON CONFLICT (id) DO NOTHING`,
         [
           `publication:${validatedProjection.publicOutputHash.slice(7)}`,

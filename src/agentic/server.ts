@@ -3,6 +3,7 @@ import "server-only";
 import { neon } from "@neondatabase/serverless";
 
 import { getRendererFixture } from "../renderer/fixtures";
+import { buildDossierProjection } from "./dossier-publication";
 import type { PublishedPortfolio } from "./publication-store";
 import { runPortfolioAgent } from "./portfolio-agent";
 import { createPortfolioPublicationStore } from "./publication-store";
@@ -40,7 +41,11 @@ export async function runProductionPortfolioAgent(
       token,
       model: source.PORTFOLIO_MODEL ?? "openai/gpt-5.4-mini",
     }),
-    publish: (fixture, evidence) => store.publish(fixture, evidence),
+    publish: async (fixture, evidence) => {
+      const dossier = buildDossierProjection({ base: fixture, publishedAt: fixture.lastUpdated });
+      await store.publishDossier(dossier, evidence);
+      return { manifestHash: dossier.publicOutputHash as `sha256:${string}` };
+    },
     base: getRendererFixture("typical"),
   });
 }
