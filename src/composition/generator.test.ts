@@ -45,4 +45,22 @@ describe("evidence-bound generation", () => {
       provider: "deterministic-local",
     });
   });
+
+  it("accepts first-person Experience stories and preserves their clause evidence references", async () => {
+    const request = makeGenerationRequest();
+    request.requests.push({
+      id: "experience:engineer",
+      placement: "experience",
+      minimumWords: 8,
+      maximumWords: 40,
+      evidenceIds: ["evidence:career"],
+      subject: "AI Engineer at Example Corp",
+    });
+
+    const output = await generateBoundedNarrative(new DeterministicLocalGenerator(), request);
+    const story = output.sentences.find(({ requestId }) => requestId === "experience:engineer");
+
+    expect(story?.text).toMatch(/^I /);
+    expect(story?.clauses[0]?.evidenceIds).toEqual(["evidence:career"]);
+  });
 });

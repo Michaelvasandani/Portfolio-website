@@ -197,6 +197,23 @@ function generationRequest(
     { id: "about.lede", placement: "about", minimumWords: 8, maximumWords: 30, evidenceIds: [...careerIds.slice(0, 2), thesisId], subject: "about" },
     { id: "about.body", placement: "about", minimumWords: 12, maximumWords: 60, evidenceIds: careerIds.length ? careerIds : [thesisId], subject: "about" },
   ];
+  for (const role of ordered(input.career.experience)) {
+    const root = `experience.${role.id}`;
+    const roleEvidence = evidence
+      .filter(({ source, fieldPath }) => source === "career" && fieldPath.startsWith(`${root}.bullets.`))
+      .map(({ id }) => id);
+    const fallbackEvidence = evidence
+      .filter(({ source, fieldPath }) => source === "career" && (fieldPath === `${root}.title` || fieldPath === `${root}.organization`))
+      .map(({ id }) => id);
+    requests.push({
+      id: `experience.${role.id}`,
+      placement: "experience",
+      minimumWords: role.bullets.length > 1 ? 10 : 8,
+      maximumWords: 90,
+      evidenceIds: roleEvidence.length ? roleEvidence : fallbackEvidence,
+      subject: `${display(role.title)} at ${display(role.organization)}`,
+    });
+  }
   for (const project of selected) {
     const root = `repositories.${project.repositoryId}.`;
     const projectEvidence = evidence.filter(({ source, fieldPath }) => source === "github" && fieldPath.startsWith(root)).map(({ id }) => id);

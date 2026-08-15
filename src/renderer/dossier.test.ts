@@ -41,6 +41,10 @@ describe("living dossier renderer", () => {
     expect(html).toContain('href="/resume"');
     expect(html).toContain('aria-current="location"');
     expect(html).toContain("Skills &amp; Tools");
+    expect(html).toContain("<details");
+    expect(html).toContain("<summary");
+    expect(html).toContain('id="role-');
+    expect(html.match(/<details class="entry experience-entry"[^>]*open=""/g)).toHaveLength(projection.experience.length);
     expect(html).not.toContain('id="resume"');
     expect(html).not.toContain('id="links"');
   });
@@ -54,5 +58,44 @@ describe("living dossier renderer", () => {
     expect(html).not.toContain(">Education<");
     expect(html).not.toContain("Relevant courses:");
     expect(html).not.toContain("GPA:");
+  });
+
+  it("creates unique role anchors and first-person stories for duplicate source roles", () => {
+    const base = getRendererFixture("typical");
+    const duplicate = { ...base.experience[0]! };
+    const projection = buildDossierProjection({ base: { ...base, experience: [duplicate, duplicate] }, publishedAt: base.lastUpdated });
+
+    expect(new Set(projection.experience.map(({ id }) => id)).size).toBe(2);
+    expect(projection.experience.every(({ narrative }) => narrative.startsWith("I "))).toBe(true);
+    expect(projection.experience[0]?.summary).toContain("I ");
+  });
+
+  it("keeps role anchors stable when source order changes", () => {
+    const base = getRendererFixture("typical");
+    const original = buildDossierProjection({ base, publishedAt: base.lastUpdated });
+    const reordered = buildDossierProjection({
+      base: { ...base, experience: [...base.experience].reverse() },
+      publishedAt: base.lastUpdated,
+    });
+
+    for (const role of original.experience) {
+      expect(reordered.experience.find(({ organization }) => organization === role.organization)?.id).toBe(role.id);
+    }
+  });
+
+  it("keeps role anchors stable when a role's evidence changes", () => {
+    const base = getRendererFixture("typical");
+    const original = buildDossierProjection({ base, publishedAt: base.lastUpdated });
+    const changed = buildDossierProjection({
+      base: {
+        ...base,
+        experience: base.experience.map((role, index) => index === 0
+          ? { ...role, bullets: ["Updated evidence without changing the role identity."] }
+          : role),
+      },
+      publishedAt: base.lastUpdated,
+    });
+
+    expect(changed.experience[0]?.id).toBe(original.experience[0]?.id);
   });
 });

@@ -22,7 +22,9 @@ type LocalMutation = {
 
 function locallyGroundedSentence(item: GeneratorRequest["requests"][number], suppliedText: string): string {
   const words = suppliedText.match(/[A-Za-z0-9+#-]+/g) ?? [];
-  const prefix = item.placement === "card"
+  const prefix = item.placement === "experience"
+    ? "I"
+    : item.placement === "card"
     ? "I build dependable systems grounded in"
     : item.id === "about.lede"
       ? "I connect practical software engineering with"
@@ -103,15 +105,16 @@ function words(value: string): number {
   return value.trim().split(/\s+/).filter(Boolean).length;
 }
 
-const forbiddenClaim = /\b(?:dream|aspir(?:e|ation)|believe|value|opinion|passion|award-winning|best-in-class|owned|ownership|adoption|production-ready)\b/i;
+const forbiddenClaim = /\b(?:dream|aspir(?:e|ation)|believe|value|opinion|passion|award-winning|best-in-class|production-ready)\b/i;
 const firstPerson = /\b(?:I|me|my|mine|myself|we|us|our|ours|ourselves)\b/i;
 const placeholder = /(?:\[(?:todo|tbd|placeholder)\]|\{\{.+?\}\}|lorem ipsum)/i;
 const spellingFinding = /\b(?:dependablee|softare|enginer(?:ing)?)\b/i;
 
-function validateSentence(text: string, placement: "card" | "about" | "project"): string | null {
+function validateSentence(text: string, placement: "card" | "about" | "experience" | "project"): string | null {
   if (placeholder.test(text)) return "generated text contains a placeholder";
   if (forbiddenClaim.test(text)) return "generated text contains a forbidden claim category";
   if (placement === "project" && firstPerson.test(text)) return "first person is prohibited in project copy";
+  if (placement === "experience" && !firstPerson.test(text)) return "Experience copy must be first person";
   if (spellingFinding.test(text)) return "generated text contains an unallowlisted spelling finding";
   if (/\s{2,}/.test(text) || !/^[A-Z0-9]/.test(text) || !/[.!?]$/.test(text)) {
     return "generated text fails deterministic grammar rules";

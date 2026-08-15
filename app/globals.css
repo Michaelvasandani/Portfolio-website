@@ -206,6 +206,17 @@ a:hover { text-decoration-thickness: .13em; }
 .entry-content ul { margin: .9rem 0 0; padding-left: 1.25rem; }
 .entry-content li { padding-left: .25rem; line-height: 1.68; }
 .entry-content li + li { margin-top: .7rem; }
+.experience-entry { display: block; }
+.experience-entry > summary { list-style: none; }
+.experience-entry > summary::-webkit-details-marker { display: none; }
+.entry-summary { cursor: pointer; }
+.entry-summary::after { display: block; margin-top: .65rem; color: var(--oxblood); content: "+ expand"; font: 700 .7rem/1.35 var(--sans); letter-spacing: .08em; text-transform: uppercase; }
+.experience-entry[open] .entry-summary::after { content: "− collapse"; }
+.entry-detail { margin: 1rem 0 0 clamp(0rem, 12.5rem, 18vw); }
+.entry-detail p { margin: 0; font-size: 1.03rem; line-height: 1.65; }
+.entry-detail ul { margin: .9rem 0 0; padding-left: 1.25rem; }
+.entry-detail li { padding-left: .25rem; line-height: 1.68; }
+.role-summary { color: var(--ink-soft); }
 .project-link { margin-top: .75rem; font-family: var(--sans); }
 
 .resume-group { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr); gap: 2rem; padding: 1.5rem 0; border-top: 1px solid var(--rule); }
@@ -372,6 +383,8 @@ a:hover { text-decoration-thickness: .13em; }
     min-width: 0;
   }
 
+  .folio--dossier #experience .entry-detail { margin-left: 0; }
+
   .folio--dossier #experience .entry:first-child { grid-column: span 7; }
   .folio--dossier #experience .entry:nth-child(2) { grid-column: span 5; }
   .folio--dossier #projects .project-entry--wide { grid-column: span 6; }
@@ -423,6 +436,7 @@ a:hover { text-decoration-thickness: .13em; }
   .folio { width: 100%; margin-top: 0; }
   .card-view { min-height: 100svh; }
   .entry, .resume-group, .resume-row { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+  .entry-detail { margin-left: 0; }
   .body-copy { margin-left: 0; }
 }
 

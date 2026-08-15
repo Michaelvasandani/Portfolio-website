@@ -157,7 +157,7 @@ export const generatorRequestSchema = z
       z
         .object({
           id: z.string().min(1),
-          placement: z.enum(["card", "about", "project"]),
+          placement: z.enum(["card", "about", "experience", "project"]),
           minimumWords: z.number().int().positive(),
           maximumWords: z.number().int().positive(),
           evidenceIds: z.array(z.string().startsWith("evidence:")).min(1),

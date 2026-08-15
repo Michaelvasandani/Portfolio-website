@@ -37,6 +37,7 @@ const aboutEducationSchema = z.object({
 }).strict();
 
 const experienceEvidenceCalloutSchema = z.object({
+  kind: z.enum(["situation", "shipped-system", "production-impact", "evidence"]).optional(),
   label: z.string().min(1),
   value: z.string().min(1),
 }).strict();
@@ -197,8 +198,14 @@ function display(value: string): string {
   return value.trim();
 }
 
-function roleId(role: Experience): `role-${string}` {
-  return `role-${sha256(`${role.organization}:${role.title}:${role.dates}`).slice(7, 23)}`;
+function roleId(role: Experience, duplicateOrdinal: number): `role-${string}` {
+  const identity = canonicalJson({
+    organization: role.organization,
+    title: role.title,
+    location: role.location ?? null,
+    dates: role.dates,
+  });
+  return `role-${sha256(`${identity}:${duplicateOrdinal}`).slice(7, 23)}`;
 }
 
 function cardFromFixture(base: RendererFixture): DossierProjectionInput["card"] {
@@ -251,17 +258,44 @@ function educationFromFixture(base: RendererFixture): DossierProjectionInput["ab
 }
 
 function experienceFromFixture(base: RendererFixture): DossierProjectionInput["experience"] {
+  const duplicateOrdinals = new Map<string, number>();
   return base.experience.map((role: Experience) => {
     const bullets = role.bullets.map(display);
+    const identity = canonicalJson({
+      organization: role.organization,
+      title: role.title,
+      location: role.location ?? null,
+      dates: role.dates,
+    });
+    const duplicateOrdinal = duplicateOrdinals.get(identity) ?? 0;
+    duplicateOrdinals.set(identity, duplicateOrdinal + 1);
+    const clauses = bullets.length
+      ? bullets.map((bullet) => `I ${bullet.charAt(0).toLocaleLowerCase()}${bullet.slice(1)}`)
+      : [`I held the ${role.title} role at ${role.organization}.`];
     return {
-      id: roleId(role),
+      id: roleId(role, duplicateOrdinal),
       organization: role.organization,
       title: role.title,
       location: role.location,
       dates: role.dates,
-      narrative: bullets.join(" "),
-      summary: bullets[0] ?? `${role.title} at ${role.organization}`,
-      evidenceCallouts: bullets.slice(0, 3).map((value) => ({ label: "Evidence", value })),
+      narrative: clauses.join(" "),
+      summary: clauses[0] ?? `${role.title} at ${role.organization}`,
+      evidenceCallouts: bullets.slice(0, 4).map((value) => {
+        const kind = /\d/.test(value)
+          ? "production-impact" as const
+          : /\b(?:built|engineer(?:ed|ing)?|architected|integrated|launched|implemented|designed|developed)\b/i.test(value)
+            ? "shipped-system" as const
+            : /\b(?:for|to|when|after|across|internal|users|teams)\b/i.test(value)
+              ? "situation" as const
+              : "evidence" as const;
+        const labels = {
+          situation: "Situation",
+          "shipped-system": "Shipped system",
+          "production-impact": "Production impact",
+          evidence: "Evidence",
+        } as const;
+        return { kind, label: labels[kind], value };
+      }),
     };
   });
 }

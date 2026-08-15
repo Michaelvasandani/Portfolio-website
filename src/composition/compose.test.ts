@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { composeCandidate } from "./compose";
+import type { GeneratorRequest } from "./contracts";
 import { DeterministicLocalGenerator } from "./generator";
 import { independentPublicLeakScan } from "./projection";
 import { makeCompositionInput } from "./test-fixtures";
@@ -82,6 +83,35 @@ describe("candidate composition", () => {
     });
     expect(second.status).toBe("accepted");
     expect(calls).toBe(1);
+  });
+
+  it("requests one evidence-bound story per Career snapshot role while keeping the Public résumé verbatim", async () => {
+    const input = makeCompositionInput();
+    const requests: GeneratorRequest[] = [];
+    const generator = {
+      generate: async (request: GeneratorRequest) => {
+        requests.push(request);
+        return new DeterministicLocalGenerator().generate(request);
+      },
+    };
+
+    const result = await composeCandidate({ ...input, generator });
+
+    expect(result.status).toBe("accepted");
+    if (result.status !== "accepted") return;
+    const storyRequest = requests[0]?.requests.find(({ placement }) => placement === "experience");
+    const story = result.candidate.manifest.generatedOutput.sentences.find(({ requestId }) => requestId === "experience.experience:engineer");
+    const roleEvidenceIds = result.candidate.manifest.evidencePacket
+      .filter(({ fieldPath }) => fieldPath.startsWith("experience.experience:engineer.bullets."))
+      .map(({ id }) => id);
+
+    expect(requests[0]?.requests.filter(({ placement }) => placement === "experience")).toHaveLength(input.career.experience.length);
+    expect(storyRequest?.evidenceIds).toEqual(roleEvidenceIds);
+    expect(story?.clauses.flatMap(({ evidenceIds }) => evidenceIds)).toEqual(expect.arrayContaining(roleEvidenceIds));
+    expect(result.candidate.publicProjection.resume.html.experience[0]?.bullets).toEqual([
+      "Built dependable agentic software systems.",
+      "Shipped tested data services.",
+    ]);
   });
 
   it("regenerates only copy whose recorded supporting evidence changed", async () => {

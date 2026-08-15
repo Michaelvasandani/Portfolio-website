@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { DossierProjection } from "../agentic/dossier-publication";
 import type { Contact, RendererFixture } from "./fixtures";
 import { DossierIndex } from "./dossier-index";
+import { ExperienceTimeline } from "./experience-timeline";
 import { PublicationNote } from "./publication-note";
 
 const sections = [
@@ -213,23 +214,7 @@ function DossierPortfolio({ projection, fixtureName }: { projection: DossierProj
             <h2>Experience</h2>
           </header>
           <div className="entries">
-            {experience.map((role) => (
-              <article className="entry" id={role.id} key={role.id}>
-                <div className="entry-meta meta">
-                  <p>{role.dates}</p>
-                  {role.location ? <p>{role.location}</p> : null}
-                </div>
-                <div className="entry-content">
-                  <h3>{role.title}<span>{role.organization}</span></h3>
-                  <p>{role.narrative}</p>
-                  {role.evidenceCallouts.length ? (
-                    <ul aria-label={`${role.organization} evidence callouts`}>
-                      {role.evidenceCallouts.map((callout) => <li key={`${callout.label}-${callout.value}`}>{callout.label}: {callout.value}</li>)}
-                    </ul>
-                  ) : null}
-                </div>
-              </article>
-            ))}
+            <ExperienceTimeline roles={experience} />
           </div>
         </section>
 
